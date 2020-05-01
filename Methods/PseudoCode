@@ -1,0 +1,337 @@
+def chatFilter(userID, userInp) :
+    Arr = [list of taboo words]
+    For i in Arr :
+        If (userInp == i) :
+            userInp = “***”
+            display userInp to chatbox
+            if(word used three times or more)
+                updatePoints(userID, -5)
+            else
+                updatePoints(userID, -1)
+    display userInp to chatbox
+
+def updatePoints(userID, amount) :
+    userID.addToScore(amount)
+    if(userID.getScore() < 0) :
+        blacklist(userID)
+    elif(userID.getScore() > 30 and userID.getFlag() == ou) :
+        promotion(userID)
+    elif(userID.getScore() < 25 and userID.getFlag() == vip) :
+        demotion(userID)
+    else :
+        updateRanking(userID)
+
+def blacklist(userID) :
+    userID.setScore(-1)
+    updateRanking(userID)
+    move user to blacklist database
+    return user to login screen
+    
+def promotion(userID) :
+    userID.setFlag(vip)
+    updateRanking(userID)
+
+def demotion(userID) :
+    userID.setFlag(ou)
+    updateRanking(userID)
+
+def updateRanking(userID) :
+    search for userID in list of sorted users by rank
+    if(userID.getScore() == -1) :
+        remove from list of rankings
+    elif(userID.getScore() > score one position before it) :
+        while (userID score > score before it) :
+            swap positions
+    elif(userID.getScore() < score one position after it) :
+        while (userID score < score after it) :
+            swap positions
+
+def updateRankingGrp(groupID) :
+    groupScore = groupID.getScore()
+    for i in list of groups :
+        if(groupScore > list[i].getScore()) :
+            insert groupID in front
+            break;
+
+def kick(userID) :
+    move user to kicked database
+    return user to the login page
+    display kicked message
+    
+def shutdownGroup(groupID) :
+    remove groupID from group list
+    removes groupID from all member's list of affiliated groups
+    
+def approveRegist(email) :
+    generate random userID
+    generate random password
+    add userID to list of users
+    email userID and password to the new user
+    userID.setScore(initialScore(input from referal textbox))
+    updateRanking(userID)
+
+def rejectRegist(email) :
+    if(first time) :
+        email visitor of rejection and chance to appeal
+    else :
+        email visitor of final rejection decision
+        blacklist(the visitor)
+        
+def assignVIP(userID, groupID) :
+    while(userID.getFlag() == ou) :
+        prompt superuser to enter another userID
+    val = groupScore(userID)
+    for i in list of members:
+        updateScore(i, val)
+    groupID.setScore(val)
+    updateRankingGrp(groupID)
+  
+def groupScore(userID, groupID) :
+    val = prompts userID to enter a score for the group
+    return val    
+
+def initialScore(userID) :
+    if(userID.getFlag() == ou) :
+        initScor = prompt the user to give their friend a score from 0 to 10
+        return initScor
+    else :
+        initScor = prompt the user to give their friend a score from 0 to 20
+        return initScor
+            
+def compliment(userID, text) :
+    if(number of compliments for this user < 3) :
+        prompts superuser to read text
+        prompts superuser to increase score
+    else
+        promotion(userId)
+    
+def complaint(id, text) :
+    prompts superuser to read text
+    prompts superuser to shutdown group, deduct points, or kick
+    
+def invite(userID) :
+    if current user not in userID's blackbox or whitebox :
+        prompts userID to accept or reject the invite
+        asks userID if they want to whitebox or blackbox
+        if(whitebox) :
+            addToWB(self.userID)
+        else :
+            addToBB(self.userID)
+        if rejected :
+            displays text from textbox
+        else:
+            userID added to groupID
+            userID gains access to groupID features
+    elif(current user in userID's whitebox) :
+        userID added to groupID
+        userID gains access to groupID features
+    else :
+        display userID.getAutoMsg()
+        
+def addToWB(userID) :
+    adds userID to the current user's whitebox
+    
+def addToBB() :
+    adds userID to the current user's blackbox
+    
+def setAutoMsg(text) :
+    autoMsg = text
+    
+def voteSU(userID) :
+    if(self.flag == vip) :
+        while(userID.getFlag() == ou) :
+            prompt the user to enter another userID
+        increment vote count for userID
+        if(sum of all votes == # of vips) :
+            user with highest vote becomes superuser
+        
+def createGroup() :
+    creates a new groupID
+    adds groupID to list of available groups
+    adds group to creator's grouplist
+    makes group page available to creator
+    returns groupID
+
+def visibility(groupID, val) :
+    if(val != 0 or val != 1)
+        invalid parameter message
+    groupID.setVisibility(val)
+    
+def voteClose() :
+    display a prompt to all group members, let yes clicked = 1, no clicked = 0
+    adds votes to self.groupID's group_closure_and_evaluation_DB
+    if(number of yes' equal to group size)
+        clear group_closure_and_evaluation_DB
+        exitEvaluation()
+
+def exitEvaluation() :
+    displays exit evaluation UI for each member
+    average of inputs stored in group_closure_and_evaluation_DB
+    position of input based on pos of members in member list
+    pos = 0
+    if(all members done with evaluation) :
+        for i in member list:
+            updatePoints(i, group_closure_and_evaluation_DB[pos])
+            pos = pos + 1
+    closeGroup(groupID)
+    
+def closeGroup(groupID) :
+    removes groupID from each member's list of groups
+    visibility(groupID, 0)
+    prompts the superusers to enter a vip userID for group evaluation
+    
+def voteKick(userID) :
+    prompts group members to vote to kick userID, let yes clicked = 1, no clicked = 0
+    counter = 0;
+    increment on yes click
+    if(number of yes' equal to group size - 1) :
+        removeFromGroup(userID, -10)
+
+def removeFromGroup(userID, amount) :
+    add userID to group_kick_out_poll_DB
+    remove group from userID's list of groups
+    updatePoints(userID, amount)
+
+def meetUpPoll() :
+    prompts group members to select a time for a meeting
+    votes stored in group_poll_DB
+    if(number of votes equal to group size) :
+        return time with most votes
+
+def praiseVote(userID) :
+    prompts group members to vote to praise userID, let yes clicked = 1, no clicked = 0
+    counter = 0;
+    increment on yes click
+    if(number of yes' equal to group size - 1) :
+        increment value for user in group_praise_DB
+        display a praise message to userID
+
+def warningVote(userID) :
+    prompts group members to vote to warn userID, let yes clicked = 1, no clicked = 0
+    counter = 0;
+    increment on yes click
+    if(number of yes' equal to group size - 1) :
+        increment value for user in group_warning_DB
+        if(value in group_warning_DB == 3) :
+            removeFromGroup(userID, -5)
+        else :
+            display a warning message to userID
+            
+def login() :
+	displays login GUI
+	userInp = text from "username"
+	passInp = text from "password"
+	for i in blacklist list :
+		if account information matches a userID:
+			display "account is blacklisted" message
+			return -1;
+	for i in kicked list :
+		if account information matches a userID:
+			display "last login" message
+			move userID to blacklist list
+			homepage(userID)
+			return -1;
+	for i in users list :
+		if account information matches a userID:
+			if(first login) :
+				display "set a password" message
+				userID.setPassword(user input)
+			homepage(userID)
+			return 0;
+
+def register() :
+	display registration GUI
+	if(register clicked again) :
+		if(some fields are empty) :
+			display "incomplete form"
+		else :
+			add form to superuser pending registrations list
+			
+def appeal(email) :
+	displays appeal GUI
+	for(i in list of rejected forms) :
+		if(form contains email) :
+			add form and appeal message to superuser pending registrations list
+			
+def displayRankings() :
+	for i in range(3) :
+		add list of ranked users at i to users textfield
+		add list of ranked groups at i to groups textfield
+		
+def seeMoreUsers(order) :
+	display profiles GUI
+	if(order == 1) :
+		for i in list of ranked users :
+			add list of ranked users at i to textfield
+	elif(order == -1) :
+		x = size(list of ranked users) - 1
+		for i in range(x, -1, -1) :
+			add list of ranked users at i to textfield
+			
+def seeMoreGroups(order) :
+	display groups GUI
+	if(order == 1) :
+		for i in list of ranked groups :
+			add list of ranked groups at i to textfield if public
+	elif(order == -1) :
+		x = size(list of ranked groups) - 1
+		for i in range(x, -1, -1) :
+			add list of ranked groups at i to textfield if public
+	elif(order == 0) :
+		for i in list of all groups :
+			add list of all groups at i to textfield if public
+			
+def onClickProfile(userID) :
+	display profile GUI
+	for i in userID.getGroups() :
+		add userID.getGroups() at i to groups textfield
+	for i in userID.getLanguages() :
+		add userID.getLanguages() at i to program_languages_used textfield
+	display userID.getEmail() in email textfield
+	display userID.getInterests() in interests textfield
+	display userID.getScore() in reputation textfield
+	
+def onClickGroup(groupID) :
+	if(groupID.getVisibility() == 1) :
+		display "group is private" message
+	else :
+		display group page GUI
+		display groupID.getMembers() in group members textfield
+		display groupID.getProjects() in projects textfield
+		display groupID.getLanguages() in program_languages_used textfield
+		
+def homepage(userID) :
+	display homepage GUI
+	for i in userID.getGroups() :
+		add userID.getGroups() at i to groups textfield
+	for i in userID.getLanguages() :
+		add userID.getLanguages() at i to program languages used textfield
+	display userID.getEmail() in email textfield
+	display userID.getInterests() in interests textfield
+	display userID.getScore() in reputation textfield
+	
+def browser() :
+	display browser GUI
+	displayRankings()
+	
+def inbox(userID) :
+	display user.getInvitations() in invitations textfield
+	display user.getPolls() in other_messages textfield
+	
+def groupManagement(userID) :
+	display group management GUI
+	group1 = userID.getGroups()[0]
+	display group1.getMembers() in group_members textfield
+	
+def adminSU(userID) :
+	if(userID.getFlag() == superuser) :
+		display admin SU GUI
+		display list of pending registrations in account_approval textfield
+		display list of complaints in group_member_complaints textfield
+		display list of compliments and complaints in compliments_&_complaints textfield
+		display list of vip assignment prompts in assign_vips_to_group textfield
+		
+def adminVIP(userID) :
+	if(userID.getFlag() == vip) :
+		display admin VIP GUI
+		display list of pending group evaluations in group_evaluations textfield
