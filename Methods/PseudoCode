@@ -335,3 +335,20 @@ def adminVIP(userID) :
 	if(userID.getFlag() == vip) :
 		display admin VIP GUI
 		display list of pending group evaluations in group_evaluations textfield
+
+def updateCommit(groupID) :
+	//group has a dictionary variable (commits) with key (date) : value (# of commits)
+	//getCommit is a getter for the dictionary variable
+	date = obtain current date
+	if((groupID.getCommits()).get(date, -1) == -1) :
+		(groupID.getCommits()).add(date, 1)
+	else :
+		val = (groupID.getCommits()).get(date, -1)
+		(groupID.getCommits()).add(date, val + 1)
+		
+def projectManagement(userID) :
+	display creative features GUI
+	groups = userID.getGroups()
+	selectedGroup = groups[value from widget]
+	display selectedGroup's member list(already in join date order) in hierarchy tree pane
+	display selectedGroup's commits variable with seaborn and matplotlib graphing in project tracker pane
