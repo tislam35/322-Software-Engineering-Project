@@ -1,0 +1,51 @@
+class OU(object):
+	
+	__numOfUsers = 0
+	
+	def __init__(self, username, password, name, email, phoneNumber, interests, score):
+		OU.__numOfUsers += 1
+		self.userID = OU.__numOfUsers
+		self.username = username
+		self.password = password
+		self.name = name
+		self.email = email
+		self.phoneNumber = phoneNumber
+		self.score = score
+		self.affiliatedGroups = []
+		
+	#methods not yet added
+	
+	
+class VIP(OU):
+	
+	def __init__(self, username, password, name, email, phoneNumber, interests, score):
+		self.voted = False
+		super().__init__(username, password, name, email, phoneNumber, interests, score)
+		
+	#methods not yet added
+	
+	
+class SU(VIP):
+	
+	def __init__(self, username, password, name, email, phoneNumber, interests, score):
+		self.voted = True
+		super().__init__(username, password, name, email, phoneNumber, interests, score)
+		
+	#methods not yet added
+	
+	
+class Groups:
+	
+	__numOfGroups = 0
+	
+	def __init__(self, userID):
+		Groups.__numOfGroups += 1
+		self.groupID = Groups.__numOfGroups
+		self.members = [userID]
+		self.groupScore = 0
+		self.languages = []
+		
+	#methods not yet added
+		
+#Another py file will exist (system.py?) that will import these classes and manage lists of users
+#blacklists, groups, etc, as well as event handlers
