@@ -33,7 +33,8 @@ Implementation
 ### Implementation
 
 1. In your console or terminal, go the TeamMe project directory.
-2. Type `python app.py` to start TeamMe application.
+2. Type `cd gui`. 
+3. Type `python browsing_home_page.py` to start TeamMe application.
 
 ## TeamMe Application Walkthrough
 
