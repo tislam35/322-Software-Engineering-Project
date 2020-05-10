@@ -12,6 +12,13 @@ from users import *
 
 
 class Ui_Dialog(object):
+    
+    #function calling the compliment function
+    def complimentClicked(self):
+        username = self.lineEdit_2.text()
+        message = self.textEdit_2.toPlainText()
+        OU.compliment(OU, username, message)
+    
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 298)
@@ -48,12 +55,9 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+        #connects button to compliment
         self.pushButton_16.clicked.connect(self.complimentClicked)
 
-    def complimentClicked(self):
-        username = self.lineEdit_2.text()
-        message = self.textEdit_2.toPlainText()
-        OU.compliment(OU, username, message)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
