@@ -1,4 +1,4 @@
-from users import *
+# from users import *
 
 class system:
 
@@ -21,6 +21,18 @@ class system:
     taboo_list = []
     rejected_visitor_list = []
     rejected_visitor_twice_list = []
+    complaints = []
+    compliments = []
+
+
+    #0 find OU by email. RETURN OU id
+    def find_OU_by_info(self, first_name, last_name, email):
+        for i in range(system.OU_count):
+            if system.OU_list[i].email == email:
+                if system.OU_list.first_name == first_name:
+                    if system.OU_list.last_name == last_name:
+                        return i
+        return None
 
 
     #1 adds approved visitor to OU list
@@ -72,6 +84,16 @@ class system:
         system.blacklist.append(new_blacklist_user)
         system.blacklist_count += 1
         del system.OU_list[OU_index]
+        system.OU_count -= 1
+
+    #9 checks to validate user when login, RETURN index if valid ELSE None
+    def login(self, username, password):
+        print("SYSTEM: method 9")
+        for i in range(system.OU_count):
+            if system.OU_list[i].username == username and system.OU_list[i].password == password:
+                return i
+            else:
+                return None
 
     #7 updates the sorted list to be sorted (after score changes or add new user)
     def update_rankings(self, OU_id):
@@ -105,7 +127,7 @@ class system:
     def check_group_id(self, group_id):
         group = None
         for i in range(system.group_count):
-            if system.group_list[i] == group_id
+            if system.group_list[i] == group_id:
                 return i
         return None                                     #*** Exceptional Cases: Group id not found
 

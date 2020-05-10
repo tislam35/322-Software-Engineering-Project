@@ -10,7 +10,24 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 class Ui_RegisterMain(object):
+
+    def registerClicked(self):
+        first_name = self.lineEdit.text()
+        last_name = self.lineEdit_2.text()
+        email = self.lineEdit_3.text()
+        area_code = self.lineEdit_4.text()
+        last_digits = self.lineEdit_5.text()
+        phone_number = str(area_code) + " - " + str(last_digits)
+        interests = self.lineEdit_9.text()
+        affilated_classes = self.lineEdit_10.text()
+        reference_first_name = self.lineEdit_7.text()
+        reference_last_name = self.lineEdit_6.text()
+        reference_email = self.lineEdit_8.text()
+        # put in into class register visitor
+
+
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")
         RegisterMain.resize(364, 558)
@@ -132,6 +149,10 @@ class Ui_RegisterMain(object):
 
         self.retranslateUi(RegisterMain)
         QtCore.QMetaObject.connectSlotsByName(RegisterMain)
+
+        # our code
+
+        self.pushButton.clicked.connect(self.registerClicked)
 
     def retranslateUi(self, RegisterMain):
         _translate = QtCore.QCoreApplication.translate
