@@ -5,7 +5,8 @@
 class system:
 
     # NOTE: user_taboo_list will be in the OU class
-    # NOTE: We might not do online_users or current_time  **added. but can be removed if there is no use**
+    # NOTE: We might not do online_users or current_time  **added time system is created and current time function
+    #but can be removed if there is no use**
 
     # variables
     founder_SU = None
@@ -25,7 +26,7 @@ class system:
     rejected_visitor_twice_list = []
     complaints = []
     compliments = []
-    #current_time = datetime.now()
+    #time_created = datetime.now()                  #time system has been instantiated
 
 
     #0 find OU by email. RETURN OU id
@@ -144,4 +145,5 @@ class system:
             arr_top_3[1].append(system.group_list[i])
         return arr_top_3
 
-
+    def current_time():                                    #returns current time in the format YYYY-MM-YY HH:MM:SS.MS
+        return datetime.now()
