@@ -128,11 +128,13 @@ class system:
         return
 
     def check_group_id(self, group_id):
-        group = None
-        for i in range(system.group_count):
-            if system.group_list[i] == group_id:
-                return i
-        return None                                     #*** Exceptional Cases: Group id not found
+        #group = None
+        if(group_id in system.group_list):                  #returns true if group_id exist in group_list
+            for i in system.group_list:
+                if system.group_list[i] == group_id:
+                    return i
+        else:                                               #if not returns false
+            return None                                     #*** Exceptional Cases: Group id not found
 
     #12 return top 3 user and groups. RETURNS 2-D array
     def top_3(self):
