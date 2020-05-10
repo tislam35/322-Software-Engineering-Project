@@ -8,9 +8,17 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from users import *
 
 
 class Ui_Dialog(object):
+
+    #function that calls complaint
+    def complaintClicked(self):
+        username = self.lineEdit.text()
+        message = self.textEdit.toPlainText()
+        OU.complaint(username, message)
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
@@ -46,6 +54,9 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        #connecting button to complaint
+        self.pushButton_15.clicked.connect(self.complaintClicked)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
