@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from users import *
 
 
 class Ui_Dialog(object):
@@ -46,6 +47,13 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        self.pushButton_16.clicked.connect(self.complimentClicked)
+
+    def complimentClicked(self):
+        username = self.lineEdit_2.text()
+        message = self.textEdit_2.toPlainText()
+        OU.compliment(OU, username, message)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
