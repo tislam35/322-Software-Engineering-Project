@@ -8,9 +8,35 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import time
 
+# import from TeamMe GUI classes
+from gui.user_home_page import *
+
+# import from TeamMe classes
+from system import *
 
 class Ui_Dialog(object):
+
+    def loginClicked(self):
+        print("METHOD: loginClicked")
+        username = self.lineEdit.text()
+        password = self.lineEdit_2.text()
+        index = system.login(system, username, password)
+        #  NEED TO FIX IMPORTANT: NEED TO VALIDDATE AND DECIDE ACTION FORM THERE
+        if index != None:
+            print(index)
+        else:
+            print("Error")
+
+        # open and close windows
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_userHomeMain()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        Dialog.hide()
+        return
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(421, 300)
@@ -65,6 +91,9 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        # your code
+        self.pushButton.clicked.connect(self.loginClicked)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
