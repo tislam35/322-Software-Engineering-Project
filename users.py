@@ -1,4 +1,4 @@
-from system import system
+from system import *
 
 class OU(object):
 

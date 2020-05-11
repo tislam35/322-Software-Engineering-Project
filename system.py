@@ -5,6 +5,7 @@ from users import *
 
 # SYSTEM CLASS
 from users import OU, VIP
+from registered_visitor import *
 
 
 class system:
@@ -254,7 +255,16 @@ class system:
         except:
             print("error: METHOD: #10: update_group_rankings: group not found")
         system.group_list.sort(key=lambda x: x.score, reverse = True)
-    # 11 register input
-    # INPUT: registertion info PROCESS: check and then add info to register_visitor
-    def register(self, first_name, last_name, username, phone):
-        return
+
+    # 11 register registered visitor
+    # INPUT: registertion info PROCESS: check and then add info to register_visitor OUTPUT: True if successful ELSE False if same email found
+    def register(self, first_name, last_name, email, phone_number, interests, reference_email):
+        all_recored_users = system.OU_list + system.VIP_list + system.blacklist + system.registered_visitor_list + system.rejected_once_visitor_list
+        for user in all_recored_users:
+            if email == user.email:
+                print("error: METHOD: # 11: email already in system")
+                return False
+        new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests, reference_email)
+        system.registered_visitor_list.append(new_registered_visitor)
+        print("visitor registered as registered visitor")
+        return True
