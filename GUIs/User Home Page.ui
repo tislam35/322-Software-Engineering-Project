@@ -34,30 +34,17 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="homeTab">
      <attribute name="title">
       <string>Home</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>700</x>
-        <y>10</y>
-        <width>51</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Edit</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>220</y>
+        <x>40</x>
+        <y>200</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -66,302 +53,33 @@
        <string>Edit</string>
       </property>
      </widget>
-     <widget class="QListWidget" name="listWidget_4">
+     <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>279</x>
-        <y>300</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>HTML</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>C++</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Python</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-     </widget>
-     <widget class="QListWidget" name="listWidget_5">
-      <property name="geometry">
-       <rect>
-        <x>564</x>
-        <y>300</y>
-        <width>186</width>
-        <height>192</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Group A</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>    group summary</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Group B</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>    group summary</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Group C</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>    group summary</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QListWidget" name="listWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>279</x>
-        <y>46</y>
-        <width>471</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Project A</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>       Project summary</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Project B</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>       Project summary</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Project C</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Project summary</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>564</x>
-        <y>269</y>
-        <width>152</width>
-        <height>24</height>
+        <x>46</x>
+        <y>39</y>
+        <width>181</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>Groups Affiliation</string>
+       <string>John Smith</string>
       </property>
      </widget>
-     <widget class="QGraphicsView" name="graphicsView">
+     <widget class="QWidget" name="layoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>211</width>
-        <height>241</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>279</x>
-        <y>11</y>
-        <width>80</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Projects</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>279</x>
-        <y>269</y>
-        <width>271</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Programming Languages Used</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>12</x>
-        <y>369</y>
-        <width>119</width>
-        <height>21</height>
+        <x>40</x>
+        <y>159</y>
+        <width>128</width>
+        <height>26</height>
        </rect>
       </property>
       <property name="font">
@@ -369,28 +87,69 @@
         <pointsize>10</pointsize>
        </font>
       </property>
-      <property name="text">
-       <string>Affiliated group:</string>
-      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Reputation</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_26">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>25</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>138</x>
-        <y>369</y>
-        <width>56</width>
-        <height>21</height>
+        <x>90</x>
+        <y>99</y>
+        <width>127</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>group a</string>
+       <string>johnsmith@email.com</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>419</y>
+        <x>120</x>
+        <y>129</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>IT, Computer Graphics</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>41</x>
+        <y>130</y>
         <width>78</width>
         <height>21</height>
        </rect>
@@ -404,24 +163,29 @@
        <string>Interests: </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>97</x>
-        <y>419</y>
-        <width>167</width>
-        <height>21</height>
+        <x>310</x>
+        <y>30</y>
+        <width>80</width>
+        <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>IT, Computer Graphics</string>
+       <string>Projects</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>319</y>
+        <x>40</x>
+        <y>100</y>
         <width>47</width>
         <height>21</height>
        </rect>
@@ -435,17 +199,79 @@
        <string>Email:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_8">
+     <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="geometry">
        <rect>
-        <x>66</x>
-        <y>319</y>
-        <width>164</width>
-        <height>21</height>
+        <x>310</x>
+        <y>60</y>
+        <width>341</width>
+        <height>211</height>
        </rect>
       </property>
+      <property name="plainText">
+       <string>Edit here</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>320</y>
+        <width>341</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Edit here</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>320</y>
+        <width>241</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Edit here</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>311</x>
+        <y>289</y>
+        <width>152</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>johnsmith@email.com</string>
+       <string>Groups Affiliation</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>31</x>
+        <y>289</y>
+        <width>221</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Programming Languages</string>
       </property>
      </widget>
     </widget>
