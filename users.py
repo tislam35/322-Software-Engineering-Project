@@ -21,6 +21,9 @@ class OU(object):
         self.whiteBox = []
         self.blackBox = []
         self.invites = []
+        #if the list below isnt empty we should display the initial
+        #score dialog on user login for each user in the list
+        self.initialScoresNeeded = []
         self.complimentsCount = 0
         self.complaintsCount = 0
         #setting automessage will be done in the ui file
@@ -41,9 +44,14 @@ class OU(object):
         targetUser = system.search_by_username(username)
         system.complaints.append([targetUser, message])
 
-    #initial score method
-    def initialScore(self):
-        #
+    #initial score method, obtains parameters from gui
+    #while this function returns -1 display "invalid score"
+    def initialScore(self, username, score):
+        if(score > 10 or score < 0):
+            return -1
+        targetUser = system.search_by_username(username)
+        targetUser.score = score
+        return 0
 
     #invite method called on inviting a user
     #a return of 0 means user was successfully invited to the group
@@ -65,6 +73,7 @@ class OU(object):
                 return 1
         #current user isnt in white or black box
         targetUser.invites.append()
+        return 0
 
 
     
@@ -81,15 +90,22 @@ class VIP(OU):
         #
 
     #overloaded initial score method for vip user
-    def initialScore(self):
-        #
+    def initialScore(self, username, score):
+        if(score > 20 or score < 0):
+            return -1
+        targetUser = system.search_by_username(username)
+        targetUser.score = score
+        return 0
 
     #vote SU method called on vote button clicked
     #accepts the username of voted person
     def voteDSU(self, username):
         if self.voted == False:
             #add the name to list of votes
-            system.voted_SU.append[]
+            if system.voted_DSU.has_key(username):
+                system.voted_DSU[username] = system.voted_DSU[username] + 1
+            else:
+                system.voted_DSU[username] = 1
             system.DSU_vote_count += 1
             self.voted = True
         #check if number of votes equals number of VIPs
@@ -100,9 +116,16 @@ class VIP(OU):
                 system.promote(newSU)
 
     #helper method for voteDSU, finds most voted for user
-    #only returns if no ties
+    #doesnt handle ties
     def findDSU(self):
-        #find and return most frequent user in system.voted_SU
+        #find and return most frequent user in system.voted_DSU
+        max = 0
+        newSU = None
+        for i in system.voted_DSU:
+            if system.voted_DSU[i] > max:
+                max = system.voted_DSU[i]
+                newSU = i
+        return system.search_by_username(newSU)
 
     
 
