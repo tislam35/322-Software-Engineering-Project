@@ -1,4 +1,4 @@
-from system import *
+from system import system
 
 class OU(object):
 
@@ -31,7 +31,7 @@ class OU(object):
 
 	#gets called on compliment button click
     def compliment(self, username, message):
-        targetUser = system.search_by_username(username)
+        targetUser = system.find_user_by_username(username)
         targetUser.complimentsCount += 1
         if targetUser.complimentsCount > 2:
             system.promote(targetUser)
@@ -41,7 +41,7 @@ class OU(object):
 
     #gets called on complaint button click
     def complaint(self, username, message):
-        targetUser = system.search_by_username(username)
+        targetUser = system.find_user_by_username(username)
         system.complaints.append([targetUser, message])
 
     #initial score method, obtains parameters from gui
@@ -49,7 +49,7 @@ class OU(object):
     def initialScore(self, username, score):
         if(score > 10 or score < 0):
             return -1
-        targetUser = system.search_by_username(username)
+        targetUser = system.find_user_by_username(username)
         targetUser.score = score
         return 0
 
@@ -58,8 +58,8 @@ class OU(object):
     #a return of 1 means current user is in invitee's BB, display automessage
     def invite(self, username, groupname, message):
         #check if current user is in white box
-        targetUser = system.search_by_username(username)
-        targetGroup = system.search_by_group(groupname)
+        targetUser = system.find_user_by_username(username)
+        targetGroup = system.find_group(groupname)
         for i in targetUser.whiteBox:
             if system.cur_user.id == i.id:
                 #inviting user is in invitee's whitebox
@@ -85,15 +85,16 @@ class VIP(OU):
         self.exEvals = []
         super().__init__(username, password, first_name, last_name, email, phoneNumber, interests, score)
 
-    #group score method
-    def groupScore(self):
-        #
+    #group score method, might need to change based on how we connect GUIs
+    def groupScore(self, score, groupname):
+        targetGroup = system.find_group(groupname)
+        targetGroup.reputation = score
 
     #overloaded initial score method for vip user
     def initialScore(self, username, score):
         if(score > 20 or score < 0):
             return -1
-        targetUser = system.search_by_username(username)
+        targetUser = system.find_user_by_username(username)
         targetUser.score = score
         return 0
 
@@ -111,7 +112,7 @@ class VIP(OU):
         #check if number of votes equals number of VIPs
         if system.DSU_vote_count == system.VIP_count:
             #find most voted vip
-            newSU = findDSU
+            newSU = VIP.findDSU
             if newSU != None:
                 system.promote(newSU)
 
@@ -125,7 +126,7 @@ class VIP(OU):
             if system.voted_DSU[i] > max:
                 max = system.voted_DSU[i]
                 newSU = i
-        return system.search_by_username(newSU)
+        return system.find_user_by_username(newSU)
 
     
 
@@ -141,8 +142,8 @@ class SU(VIP):
     #assign vip method called on assign click
     #takes groupname and vip username from text fields
     def assignVIP(self, groupname, vipUsername):
-        targetUser = system.search_by_username(vipUsername)
-        targetGroup = system.search_by_group(groupname)
+        targetUser = system.find_user_by_username(vipUsername)
+        targetGroup = system.find_group(groupname)
         targetUser.exEvals.append(targetGroup)
 
     #wip
