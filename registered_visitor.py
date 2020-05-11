@@ -2,7 +2,7 @@ from system import *
 
 class registered_visitor(object):
 
-    def __init__(self, first_name, last_name, email, phone_number, interests, affiliated_classes, reference_first_name, reference_last_name, reference_email):
+    def __init__(self, first_name, last_name, email, phone_number, interests, affiliated_classes, referenceUsername):
         self.rejected = None
         self.appealed = False
         self.rejected_twice = None
@@ -13,4 +13,4 @@ class registered_visitor(object):
         self.interests = interests
         self.affilated_classes = affiliated_classes
         # we need to check this in register GUI so we don't do it here
-        self.reference_OU = system.find_OU_by_info(reference_first_name, reference_last_name, reference_email)
+        self.referenceUser = system.find_user_by_username(referenceUsername)
