@@ -1,4 +1,4 @@
-from system import *
+from system import system
 
 class OU(object):
 
@@ -21,14 +21,18 @@ class OU(object):
         self.whiteBox = []
         self.blackBox = []
         self.invites = []
+        #if the list below isnt empty we should display the initial
+        #score dialog on user login for each user in the list
+        self.initialScoresNeeded = []
         self.complimentsCount = 0
         self.complaintsCount = 0
         #setting automessage will be done in the ui file
         self.autoMsg = ""
 
 	#gets called on compliment button click
-    def compliment(self, username, message):
-        targetUser = system.search_by_username(username)
+    @staticmethod
+    def compliment(username, message):
+        targetUser = system.find_user_by_username(username)
         targetUser.complimentsCount += 1
         if targetUser.complimentsCount > 2:
             system.promote(targetUser)
@@ -37,21 +41,29 @@ class OU(object):
         system.compliments.append([targetUser, message])
 
     #gets called on complaint button click
-    def complaint(self, username, message):
-        targetUser = system.search_by_username(username)
+    @staticmethod
+    def complaint(username, message):
+        targetUser = system.find_user_by_username(username)
         system.complaints.append([targetUser, message])
 
-    #initial score method
-    def initialScore(self):
-        #
+    #initial score method, obtains parameters from gui
+    #while this function returns -1 display "invalid score"
+    @staticmethod
+    def initialScore(username, score):
+        if(score > 10 or score < 0):
+            return -1
+        targetUser = system.find_user_by_username(username)
+        targetUser.score = score
+        return 0
 
     #invite method called on inviting a user
     #a return of 0 means user was successfully invited to the group
     #a return of 1 means current user is in invitee's BB, display automessage
-    def invite(self, username, groupname, message):
+    @staticmethod
+    def invite(username, groupname, message):
         #check if current user is in white box
-        targetUser = system.search_by_username(username)
-        targetGroup = system.search_by_group(groupname)
+        targetUser = system.find_user_by_username(username)
+        targetGroup = system.find_group(groupname)
         for i in targetUser.whiteBox:
             if system.cur_user.id == i.id:
                 #inviting user is in invitee's whitebox
@@ -65,6 +77,7 @@ class OU(object):
                 return 1
         #current user isnt in white or black box
         targetUser.invites.append()
+        return 0
 
 
     
@@ -76,33 +89,51 @@ class VIP(OU):
         self.exEvals = []
         super().__init__(username, password, first_name, last_name, email, phoneNumber, interests, score)
 
-    #group score method
-    def groupScore(self):
-        #
+    #group score method, might need to change based on how we connect GUIs
+    @staticmethod
+    def groupScore(score, groupname):
+        targetGroup = system.find_group(groupname)
+        targetGroup.reputation = score
 
     #overloaded initial score method for vip user
-    def initialScore(self):
-        #
+    @staticmethod
+    def initialScore(self, username, score):
+        if(score > 20 or score < 0):
+            return -1
+        targetUser = system.find_user_by_username(username)
+        targetUser.score = score
+        return 0
 
     #vote SU method called on vote button clicked
     #accepts the username of voted person
     def voteDSU(self, username):
         if self.voted == False:
             #add the name to list of votes
-            system.voted_SU.append[]
+            if system.voted_DSU.has_key(username):
+                system.voted_DSU[username] = system.voted_DSU[username] + 1
+            else:
+                system.voted_DSU[username] = 1
             system.DSU_vote_count += 1
             self.voted = True
         #check if number of votes equals number of VIPs
         if system.DSU_vote_count == system.VIP_count:
             #find most voted vip
-            newSU = findDSU
+            newSU = VIP.findDSU
             if newSU != None:
                 system.promote(newSU)
 
     #helper method for voteDSU, finds most voted for user
-    #only returns if no ties
-    def findDSU(self):
-        #find and return most frequent user in system.voted_SU
+    #doesnt handle ties
+    @staticmethod
+    def findDSU():
+        #find and return most frequent user in system.voted_DSU
+        max = 0
+        newSU = None
+        for i in system.voted_DSU:
+            if system.voted_DSU[i] > max:
+                max = system.voted_DSU[i]
+                newSU = i
+        return system.find_user_by_username(newSU)
 
     
 
@@ -118,8 +149,8 @@ class SU(VIP):
     #assign vip method called on assign click
     #takes groupname and vip username from text fields
     def assignVIP(self, groupname, vipUsername):
-        targetUser = system.search_by_username(vipUsername)
-        targetGroup = system.search_by_group(groupname)
+        targetUser = system.find_user_by_username(vipUsername)
+        targetGroup = system.find_group(groupname)
         targetUser.exEvals.append(targetGroup)
 
     #wip

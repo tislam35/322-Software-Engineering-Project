@@ -27,6 +27,12 @@ class system:
     rejected_once_visitor_list = []
     complaints = []
     compliments = []
+    #added variables for voting
+    DSU_vote_count = 0
+    voted_DSU = {}
+    #added a kicked list
+    kicked_count = None
+    kicked_list = []
 
     # SYSTEM CLASS METHODS
 
