@@ -30,6 +30,9 @@ class system:
     #added variables for voting
     DSU_vote_count = 0
     voted_DSU = {}
+    #added a kicked list
+    kicked_count = None
+    kicked_list = []
 
     # SYSTEM CLASS METHODS
 
