@@ -157,3 +157,118 @@ class system:
 
     # def current_time():                                    #returns current time in the format YYYY-MM-YY HH:MM:SS.MS
     #     return datetime.now()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#SECOND TRY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# SYSTEM MODULE
+
+# import statments
+from users import *
+
+# SYSTEM CLASS
+
+class system:
+
+    # SYSTEM CLASS VARIABLES
+
+    current_users = None
+    FSU = None              # founding super user
+    DSU = None              # democratic super user
+    OU_count = None
+    OU_list = []
+    VIP_count = None
+    VIP_list = []
+    registered_user_count = None        # includes all non-blacklist OU, VIP, DSU
+    registered_user_list = []
+    blacklist_count = None
+    blacklist = []
+    group_count = None
+    group_list = []
+    taboo_list = []
+    registered_visitor_list = []
+    rejected_once_visitor_list = []
+    reject_twice_visitor_list = []
+    complaints = []
+    compliments = []
+
+
+    #SYSTEM CLASS METHODS
+
+    # 1 find OU by username
+    # INPUT: OU username. OUTPUT: OU object ELSE None
+    def find_OU_by_username(self, username):
+        for i in range(system.registered_user_count):
+            if system.registered_user_list[i].username == username:
+                return system.registered_user_list[i]
+        return None                                                 # EXCEPTIONAL CASE: not found
+    # VARIATION: returns index
+    def find_OU_by_username_index(self, username):
+        for i in range(system.registered_user_count):
+            if system.registered_user_list[i].username == username:
+                return i
+        return None
+
+    # 2 adds approved visitor to OU list
+    # INPUT: registered_visitor object
+    def add_visitor_to_OU(self, visitor):
+        new_OU = OU(visitor.username, visitor.password, visitor.first_name, visitor.last_name, visitor.email, visitor.phone_number, visitor.interests, visitor.score)
+        system.OU_list.append(new_OU)
+        system.OU_count += 1
+
+    # 3 changes the the reputation score of OU
+    # INPUT: OU username. PROCESS: update rankings after
+    def update_OU_score(self, username, amount):
+        index = system.find_OU_by_username_index(username)
+        if index == None:
+            print("error: METHOD: update_OU_sore")
+            return
+        system.OU_ist[index].score += amount
+        system.update_OU_status(username)
+
+
+
+
+
+

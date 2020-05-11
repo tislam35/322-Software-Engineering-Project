@@ -1,149 +1,250 @@
-# from users import *
-#datetime library is needed for current time and date
-#from datetime import datetime
+# SYSTEM MODULE
+
+# import statments
+from users import *
+
+# SYSTEM CLASS
+from users import OU, VIP
+
 
 class system:
 
-    # NOTE: user_taboo_list will be in the OU class
-    # NOTE: We might not do online_users or current_time  **added time system is created and current time function
-    #but can be removed if there is no use**
+    # SYSTEM CLASS VARIABLES
 
-    # variables
-    founder_SU = None
-    democratic_SU = None
-    OU_count = 0
+    current_user = None
+    FSU = None              # founding super user
+    DSU = None              # democratic super user
+    OU_count = None
     OU_list = []
-    VIP_count = 0
+    VIP_count = None
     VIP_list = []
-    registered_users_count = 0
-    registered_users = []
-    blacklist_count = 0
+    blacklist_count = None
     blacklist = []
-    group_count = 0
+    group_count = None
     group_list = []
     taboo_list = []
-    rejected_visitor_list = []
-    rejected_visitor_twice_list = []
+    registered_visitor_list = []
+    rejected_once_visitor_list = []
     complaints = []
     compliments = []
-    #time_created = datetime.now()                  #time system has been instantiated
 
+    # SYSTEM CLASS METHODS
 
-    #0 find OU by email. RETURN OU id
-    def find_OU_by_info(self, first_name, last_name, email):
-        for i in range(system.OU_count):
-            if system.OU_list[i].email == email:
-                if system.OU_list.first_name == first_name:
-                    if system.OU_list.last_name == last_name:
-                        return i
-        return None
+    # 1 find OU by username
+    # INPUT: OU/VIP username. OUTPUT: OU object ELSE None
+    def find_user_by_username(self, username):
+        for user in system.OU_list:
+            if user.username == username:
+                return user
+        for user in system.VIP_list:
+            if user.username == user:
+                return user
+        return None                                     # EXCEPTIONAL CASE: not found
 
-
-    #1 adds approved visitor to OU list
-    def add_new_OU(self, approved_visitor):
-        self.OU_list.append(approved_visitor)
-        system.VIP_count += 1
-
-    #3 changes/updates the reputation of an OU
-    def update_score_OU(self, OU_id, amount):
-        OU_index = self.check_OU_id(OU_id)
-        if OU_index == None:                           #*** EXCEPTIONAL CASE: invalid OU id    ***
-           print("error")
-           return
-        self.OU_list[OU_index].score -= amount
-        system.update_OU_status(OU_id)
-
-    #3a checks if OU_id is valid. RETURN: index of OU in OU_list or None
-    def check_OU_id(self, OU_id):
-        OU = None
-        for i in range(self.OU_count):
-            if self.OU_list[i].id == OU_id:
-                return i
-        return None                                   #*** EXCEPTIONAL CASE: OU id not found. RETURNS None
-
-
-    # #3b updates OU status. This is called everything time OU score changes.
-    # def update_OU_status(self, OU_id):
-    #     OU_index = self.check_OU_id(OU_id)
-    #     if OU_index == None:                            #*** EXCEPTIONAL CASE: invalid OU id    ***
-    #         print("error")
-    #         return
-    #     if self.OU_list[OU_index].score < 0:
-    #         self.blacklist_user(OU_id)
-    #     elif self.OU_list[OU_index].score > 30 and isinstance(self.OU_list[OU_index], OU):
-    #         new_VIP = VIP(self.OU_list[OU_index].id, )
-    #         self.VIP_list.append(new_VIP)
-    #     elif self.OU_list[OU_index].score < 25 and self.OU_list[OU_index].__class__.__name__ == 'VIP':
-    #     # else:
-    #     #     update_ranking()
-
-    #4 puts OU into blacklist (and also removes them from OU_list and registered_list)
-    def blacklist_user(self, OU_id):
-        OU_index = system.check_OU_id(OU_id)
-        if OU_index == None:                            #*** EXCEPTIONAL CASE: OU id not found. RETURNS None
-            print("error")
+    # 2 adds approved visitor to OU list
+    # INPUT: registered_visitor object
+    def add_visitor_to_OU(self, username):
+        visitor = None
+        for registered_visitor in system.registered_visitor_list:
+            if registered_visitor.username == username:
+                visitor = registered_visitor
+                break
+        if visitor == None:
+            for rejected_once_visitor in system.rejected_once_visitor_list:
+                if rejected_once_visitor.username == username:
+                    visitor = rejected_once_visitor
+                    break
+        if visitor == None:
+            print("error: METHOD: # 2 add_visitor_to_OU: visitor not found")
             return
-        system.OU_list[OU_index].score = -1
-        new_blacklist_user = system.OU_list[OU_index]
-        system.blacklist.append(new_blacklist_user)
-        system.blacklist_count += 1
-        del system.OU_list[OU_index]
-        system.OU_count -= 1
+        new_OU = OU(visitor.username, visitor.password, visitor.first_name, visitor.last_name, visitor.email, visitor.phone_number, visitor.interests, visitor.score)
+        system.OU_list.append(new_OU)
+        system.OU_count += 1
+        system.update_user_rankings(system.OU_list[system.OU_count - 1])
 
-    #9 checks to validate user when login, RETURN index if valid ELSE None
+    # 3 changes the the reputation score of OU
+    # INPUT: OU/VIP username. PROCESS: update rankings after
+    def update_user_score(self, username, amount):
+        user = system.find_user_by_username(username)
+        if user == None:
+            print("error: METHOD: # 3 update_OU_score: no user found")
+            return
+        user.score += amount
+        system.update_user_status(user)
+
+    # 4 update user status
+    # INPUT: OU/VIP object
+    def update_user_status(self, username):
+        user = system.find_user_by_username(username)
+        if user == None:
+            print("error 01: METHOD: # 4 update_user_status: no user found")
+            return
+        if isinstance(user, OU):
+            index = None
+            try:
+                index = system.OU_list.index(user)
+            except:
+                print("error 02: METHOD: # 4 update_user_status: no user found")
+                return
+            if user.score < 0:
+                system.blacklist.append(user)
+                system.blacklist_count += 1
+                del system.OU_list[index]
+                system.OU_count -= 1
+                return
+            if user.score > 30:
+                new_VIP = VIP(user.username, user.password, user.first_name, user.last_Name, user.email,
+                              user.phoneNumber, user.interests, user.score)
+                system.VIP_list.append(new_VIP)
+                system.VIP_count += 1
+                del system.OU_list[index]
+                system.OU_count -= 1
+                system.update_user_ranking(system.VIP_list[system.VIP_count])
+            return
+        elif isinstance(user, VIP):
+            index = None
+            try:
+                index = system.VIP_list.index(user)
+            except:
+                print("error 03: METHOD: # 4 update_user_status: no user found")
+            if user.score < 0:
+                system.blacklist.append(user)
+                system.blacklist_count += 1
+                del system.VIP_list[index]
+                system.VIP_count -= 1
+                return
+            if user.score < 25:
+                new_OU = OU(user.username, user.password, user.first_name, user.last_Name, user.email,
+                              user.phoneNumber, user.interests, user.score)
+                system.OU_list.append(new_OU)
+                system.OU_count += 1
+                del system.VIP_list[index]
+                system.VIP_count -= 1
+                system.update_user_ranking(system.OU_list[system.OU_count])
+            return
+        print("error 04: METHOD: # 4 update_user_status: no user found")
+
+
+    # 5 sorts OU list or VIP list
+    # INPUT: OU/VIP object
+    def update_user_ranking(self, user):
+        index = None
+        if isinstance(user, OU):
+            try:
+                index = system.OU_list.index(user)
+            except:
+                print("error 01: METHOD: # 5 update_user_ranking: no user found")
+            if system.OU_list[index].score > system.OU_list[index - 1].score and index != 0:
+                i = index
+                while system.OU_list[i].score > system.OU_list[i - 1].score and i != 0:
+                    system.OU_list[i], system.OU_list[i - 1] = system.OU_list[i - 1], system.OU_list[i]
+                    i -= 1
+            if system.OU_list[index].score < system.OU_list[index + 1].score and index != system.OU_count - 1:
+                i = index
+                while system.OU_list[i].score < system.OU_list[i + 1].score and i != system.OU_count - 1:
+                    system.OU_list[i], system.OU_list[i + 1] = system.OU_list[i + 1], system.OU_list[i]
+                    i += 1
+            return
+        elif isinstance(user, VIP):
+            try:
+                index = system.OU_list.index(user)
+            except:
+                print("error 02: METHOD: # 5 update_user_ranking: no user found")
+            if system.VIP_list[index].score > system.VIP_list[index - 1].score and index != 0:
+                i = index
+                while system.VIP_list[i].score > system.VIP_list[i - 1].score and i != 0:
+                    system.VIP_list[i], system.VIP_list[i - 1] = system.VIP_list[i - 1], system.VIP_list[i]
+                    i -= 1
+            elif system.VIP_list[index].score < system.VIP_list[index + 1].score and index != system.VIP_count - 1:
+                i = index
+                while system.VIP_list[i].score < system.VIP_list[i + 1].score and i != system.VIP_count - 1:
+                    system.VIP_list[i], system.VIP_list[i + 1] = system.VIP_list[i + 1], system.VIP_list[i]
+                    i += 1
+                return
+        print("error 03: METHOD: # 5 update_user_rankings: user not OU or VIP")
+
+    # 6 put OU/VIP into blacklist (and removes them form OU/VIP list)
+    # INPUT: OU/VIP username
+    def blacklist_user(self, username):
+        user = system.find_user_by_username(username)
+        if user == None:
+            print("error: METHOD: # 9: blacklist_user: no user found")
+        if isinstance(user, OU):
+            index = None
+            try:
+                index = system.OU_list.index(user)
+            except:
+                print("error 02: METHOD: # 4 update_user_status: no user found")
+                return
+            system.blacklist.append(user)
+            system.blacklist_count += 1
+            del system.OU_list[index]
+            system.OU_count -= 1
+            return
+        elif isinstance(user, VIP):
+            index = None
+            try:
+                index = system.VIP_list.index(user)
+            except:
+                print("error 03: METHOD: # 4 update_user_status: no user found")
+                return
+            system.blacklist.append(user)
+            system.blacklist_count += 1
+            del system.VIP_list[index]
+            system.VIP_count -= 1
+            return
+        print("error 04: METHOD: #9 blacklist_user: end of fucntion")
+
+
+    # 7 vaidates login
+    # INPUT: OU/VIP username and password. OUTPUT: index ELSE None. PROCESS: records current user
     def login(self, username, password):
-        print("SYSTEM: method 9")
-        for i in range(system.OU_count):
-            if system.OU_list[i].username == username and system.OU_list[i].password == password:
-                return i
-            else:
-                return None
+        for user in system.OU_list:
+            if user.username == username and user.password == password:
+                system.current_user = user
+                return system.OU_list.index(user)
+        for user in system.VIP_list:
+            if user.username == username and user.password == password:
+                system.current_user = user
+                return system.VIP_list.index(user)
+        return -1                                               # EXCEPTIONAL CASE
 
-    #7 updates the sorted list to be sorted (after score changes or add new user)
-    def update_rankings(self, OU_id):
-        OU_index = system.check_OU_id(OU_id)
-        if OU_index == None:                            #*** EXCEPTIONAL CASE: OU id not found. RETURN None.
-            print("error")
-            return
-        if system.OU_list[OU_index].score < 0:
-            system.blacklist_user(system, OU_id)
-        elif OU_index == system.OU_count - 1:
-            while system.OU_list[OU_index].score > system.OU_list[OU_index - 1].score and OU_index != 0:
-                system.OU_list[OU_index], system.OU_list[OU_index -1] = system.OU_list[OU_index -1], system.OU_list[OU_index]
-                OU_index -= 1
-        elif system.OU_list[OU_index].score > system.OU_list[OU_index + 1].score:
-            while system.OU_list[OU_index].score > system.OU_list[OU_index - 1].score and OU_index != 0:
-                system.OU_list[OU_index], system.OU_list[OU_index - 1] = system.OU_list[OU_index - 1], system.OU_list[OU_index]
-                OU_index -= 1
-        elif system.OU_list[OU_index].score < system.OU_list[OU_index + 1].score:
-            while system.OU_list[OU_index].score < system.OU_list[OU_index + 1].score:
-                system.OU_list[OU_index], system.OU_list[OU_index + 1] = system.OU_list[OU_index + 1], system.OU_list[OU_index]
-                OU_index += 1
-
-
-    #8 updates the sorted list to be sorted (after score change or add new group)
-    def update_group_ranking(self, group_id):
-        group_index = system.group_count - 1
-        while system.group_list[group_index] > system.group_list[group_index - 1] and group_index != 0:
-            system.group_list[group_index], system.group_list[group_index - 1] = system.group_list[group_index -1], system.group_lsit[group_index]
-        return
-
-    def check_group_id(self, group_id):
-        #group = None
-        if(group_id in system.group_list):                  #returns true if group_id exist in group_list
-            for i in system.group_list:
-                if system.group_list[i] == group_id:
-                    return i
-        else:                                               #if not returns false
-            return None                                     #*** Exceptional Cases: Group id not found
-
-    #12 return top 3 user and groups. RETURNS 2-D array
+    # 8 returns maximum of  3 user and groups
+    # OUTPUT: 2-D array
     def top_3(self):
         arr_top_3 = [None] * 2
+        J = 0
         for i in range(3):
-            arr_top_3[0].append(system.OU_list[i])
-            arr_top_3[1].append(system.group_list[i])
+            try:
+                arr_top_3[0].append(system.VIP_list[i])
+            except:
+                try:
+                    arr_top_3[0].append(system.OU_list[i - J])
+                except:
+                    print("Less then 3 top probiles (OU)")
+                print("Less then 3 top profiles(VIP)")
+            try:
+                arr_top_3[1].append(system.group_list[i])
+            except:
+                print("Less then 3 top gropus")
+            J += 1
         return arr_top_3
 
-    def current_time():                                    #returns current time in the format YYYY-MM-YY HH:MM:SS.MS
-        return datetime.now()
+    # 9 check group by group name
+    # INPUT: group name. OUTPUT: group object
+    def find_group(self, group_name):
+        for i in range(system.group_count):
+            if system.group_list[i].name == group_name:
+                return system.group_list[i]
+        return None
+
+    # 10 update group rankings
+    # INPUT: group name PROCESS: sort
+    def update_group_rankings(self, group_name):
+        group = system.find_group(group_name)
+        index = None
+        try:
+            index = system.group_list.index(group)
+        except:
+            print("error: METHOD: #10: update_group_rankings: group not found")
+        system.group_list.sort(key=lambda x: x.score, reverse = True)
