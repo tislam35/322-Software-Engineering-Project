@@ -9,8 +9,32 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+# import form TeamMe GUI class
+from gui.register import *
+from gui.login import *
 
 class Ui_topRatedProfileMain(object):
+
+    # the commented code causes problems after opening a third window
+    def registerClicked(self):
+        print("METHOD: registerClicked")
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_RegisterMain()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        print("END: registerClicked")
+        return
+
+    def loginClicked(self):
+        print("MEHTOD: loginClicked")
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.window)
+        topRatedProfileMain.hide()
+        self.window.show()
+        print("END: loginClicked")
+        return
+
     def setupUi(self, topRatedProfileMain):
         topRatedProfileMain.setObjectName("topRatedProfileMain")
         topRatedProfileMain.resize(795, 584)
@@ -306,6 +330,11 @@ class Ui_topRatedProfileMain(object):
 
         self.retranslateUi(topRatedProfileMain)
         QtCore.QMetaObject.connectSlotsByName(topRatedProfileMain)
+
+        # our code
+
+        self.buttonRegister.clicked.connect(self.registerClicked)
+        self.buttonLogin.clicked.connect(self.loginClicked)
 
     def retranslateUi(self, topRatedProfileMain):
         _translate = QtCore.QCoreApplication.translate

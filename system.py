@@ -60,7 +60,7 @@ class system:
         new_OU = OU(visitor.username, visitor.password, visitor.first_name, visitor.last_name, visitor.email, visitor.phone_number, visitor.interests, visitor.score)
         system.OU_list.append(new_OU)
         system.OU_count += 1
-        system.update_user_rankings(system.OU_list[system.OU_count - 1])
+        system.update_user_ranking(system.OU_list[system.OU_count - 1])
 
     # 3 changes the the reputation score of OU
     # INPUT: OU/VIP username. PROCESS: update rankings after
@@ -207,7 +207,7 @@ class system:
             if user.username == username and user.password == password:
                 system.current_user = user
                 return system.VIP_list.index(user)
-        return -1                                               # EXCEPTIONAL CASE
+        return None                                               # EXCEPTIONAL CASE
 
     # 8 returns maximum of  3 user and groups
     # OUTPUT: 2-D array
@@ -248,3 +248,7 @@ class system:
         except:
             print("error: METHOD: #10: update_group_rankings: group not found")
         system.group_list.sort(key=lambda x: x.score, reverse = True)
+    # 11 register input
+    # INPUT: registertion info PROCESS: check and then add info to register_visitor
+    def register(self, first_name, last_name, username, phone):
+        return
