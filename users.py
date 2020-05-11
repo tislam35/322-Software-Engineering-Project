@@ -30,7 +30,8 @@ class OU(object):
         self.autoMsg = ""
 
 	#gets called on compliment button click
-    def compliment(self, username, message):
+    @staticmethod
+    def compliment(username, message):
         targetUser = system.find_user_by_username(username)
         targetUser.complimentsCount += 1
         if targetUser.complimentsCount > 2:
@@ -40,13 +41,15 @@ class OU(object):
         system.compliments.append([targetUser, message])
 
     #gets called on complaint button click
-    def complaint(self, username, message):
+    @staticmethod
+    def complaint(username, message):
         targetUser = system.find_user_by_username(username)
         system.complaints.append([targetUser, message])
 
     #initial score method, obtains parameters from gui
     #while this function returns -1 display "invalid score"
-    def initialScore(self, username, score):
+    @staticmethod
+    def initialScore(username, score):
         if(score > 10 or score < 0):
             return -1
         targetUser = system.find_user_by_username(username)
@@ -56,7 +59,8 @@ class OU(object):
     #invite method called on inviting a user
     #a return of 0 means user was successfully invited to the group
     #a return of 1 means current user is in invitee's BB, display automessage
-    def invite(self, username, groupname, message):
+    @staticmethod
+    def invite(username, groupname, message):
         #check if current user is in white box
         targetUser = system.find_user_by_username(username)
         targetGroup = system.find_group(groupname)
@@ -86,11 +90,13 @@ class VIP(OU):
         super().__init__(username, password, first_name, last_name, email, phoneNumber, interests, score)
 
     #group score method, might need to change based on how we connect GUIs
-    def groupScore(self, score, groupname):
+    @staticmethod
+    def groupScore(score, groupname):
         targetGroup = system.find_group(groupname)
         targetGroup.reputation = score
 
     #overloaded initial score method for vip user
+    @staticmethod
     def initialScore(self, username, score):
         if(score > 20 or score < 0):
             return -1
@@ -118,7 +124,8 @@ class VIP(OU):
 
     #helper method for voteDSU, finds most voted for user
     #doesnt handle ties
-    def findDSU(self):
+    @staticmethod
+    def findDSU():
         #find and return most frequent user in system.voted_DSU
         max = 0
         newSU = None
