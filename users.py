@@ -1,20 +1,22 @@
-from system import *
+from system import system
+#for password generating
+import random
+import string
+
+#methods are static for testing, change if required
+#try except not yet added
 
 class OU(object):
-
-    __numOfUsers = 0
     
-    def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests, score):
-        OU.__numOfUsers += 1
-        self.id = OU.__numOfUsers
+    def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests):
         self.username = username
         self.password = password
         self.first_name = first_name
-        self.last_Name = last_name
+        self.last_name = last_name
         self.email = email
         self.phoneNumber = phoneNumber
         self.interests = interests
-        self.score = score
+        self.score = 0
         self.affiliatedGroups = []
         self.warningsCount = 0
         #adding to WB and BB will be done in invites gui
@@ -28,6 +30,7 @@ class OU(object):
         self.complaintsCount = 0
         #setting automessage will be done in the ui file
         self.autoMsg = ""
+        self.first_login = True
 
 	#gets called on compliment button click
     @staticmethod
@@ -46,15 +49,21 @@ class OU(object):
         targetUser = system.find_user_by_username(username)
         system.complaints.append([targetUser, message])
 
-    #initial score method, obtains parameters from gui
-    #while this function returns -1 display "invalid score"
+    #ou version of initial score
+    #refer to initialScore method to use this
     @staticmethod
-    def initialScore(username, score):
+    def initScore(username, score):
         if(score > 10 or score < 0):
             return -1
         targetUser = system.find_user_by_username(username)
         targetUser.score = score
         return 0
+
+    #initial score method, obtains parameters from gui
+    #while this function returns -1 display "invalid score"
+    @staticmethod
+    def initialScore(cls, username, score):
+        return cls.initScore(username, score)
 
     #invite method called on inviting a user
     #a return of 0 means user was successfully invited to the group
@@ -80,14 +89,14 @@ class OU(object):
         return 0
 
 
-    
+
 class VIP(OU):
 
-    def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests, score):
+    def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests):
         self.voted = False
         #list of closed groups that the vip needs to score
         self.exEvals = []
-        super().__init__(username, password, first_name, last_name, email, phoneNumber, interests, score)
+        super().__init__(username, password, first_name, last_name, email, phoneNumber, interests)
 
     #group score method, might need to change based on how we connect GUIs
     @staticmethod
@@ -95,9 +104,10 @@ class VIP(OU):
         targetGroup = system.find_group(groupname)
         targetGroup.reputation = score
 
-    #overloaded initial score method for vip user
+    #vip version of initial score
+    #refer to initialScore method to use this
     @staticmethod
-    def initialScore(self, username, score):
+    def initScore(username, score):
         if(score > 20 or score < 0):
             return -1
         targetUser = system.find_user_by_username(username)
@@ -118,7 +128,7 @@ class VIP(OU):
         #check if number of votes equals number of VIPs
         if system.DSU_vote_count == system.VIP_count:
             #find most voted vip
-            newSU = VIP.findDSU
+            newSU = VIP.findDSU()
             if newSU != None:
                 system.promote(newSU)
 
@@ -137,20 +147,67 @@ class VIP(OU):
 
     
 
-
-
-
 class SU(VIP):
 
-    def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests, score):
+    def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests):
 	    self.voted = True
-	    super().__init__(username, password, first_name, last_name, email, phoneNumber, interests, score)
+	    super().__init__(username, password, first_name, last_name, email, phoneNumber, interests)
 
     #assign vip method called on assign click
     #takes groupname and vip username from text fields
-    def assignVIP(self, groupname, vipUsername):
+    @staticmethod
+    def assignVIP(groupname, vipUsername):
         targetUser = system.find_user_by_username(vipUsername)
         targetGroup = system.find_group(groupname)
         targetUser.exEvals.append(targetGroup)
 
-    #wip
+    #kick method called on kick click
+    #make sure we close all windows and go back to starting home page UI
+    @staticmethod
+    def kick(username):
+        targetUser = system.find_user_by_username(username)
+        system.kicked_list.append(targetUser)
+        system.kicked_count += 1
+        system.current_user = None
+
+    #shutdown group method
+    @staticmethod
+    def shutdownGroup(groupname):
+        targetGroup = system.find_group(groupname)
+        for i in targetGroup.members:
+            i.affiliatedGroups.remove(targetGroup)
+        system.group_list.remove(targetGroup)
+
+    #approve registration method
+    #new user is of type registered_visitor
+    @staticmethod
+    def approveRegist(newUser):
+        #create new username
+        name = None
+        for i in len(system.OU_list):
+            name = newUser.first_name + newUser.last_name + i
+            if system.find_user_by_username(name) is None:
+                break
+        #create new password
+        pswrd = "".join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
+        #create new OU 
+        newOU = OU(name, pswrd, newUser.first_name, newUser.last_name, newUser.email, newUser.phoneNumber, newUser.interests)
+        #add this user to reference user list of scores to be initialized
+        newUser.referenceUser.initialScoresNeeded.append(newOU)
+        #remove from registered visitor list and add to OU list
+        system.registered_visitor_list.remove(newUser)
+        system.OU_list.append(newOU)
+        system.OU_count += 1
+        #email the new user
+
+    #reject registration method
+    #new user is of type registered_visitor
+    @staticmethod
+    def rejectRegist(registUser):
+        if registUser.rejected == False:
+            registUser.rejected = True
+            #email visitor of rejection
+        #visitor was already rejected once
+        else:
+            system.blacklist.append(registUser)
+            system.blacklist_count += 1
