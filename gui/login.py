@@ -22,19 +22,26 @@ class Ui_Dialog(object):
         print("METHOD: loginClicked")
         username = self.lineEdit.text()
         password = self.lineEdit_2.text()
-        index = system.login(system, username, password)
+        print("test01")
+        index = system.login(username, password)
+        print("test02")
         #  NEED TO FIX IMPORTANT: NEED TO VALIDDATE AND DECIDE ACTION FORM THERE
-        if index != None:
-            print(index)
-        else:
-            print("Error")
-
+        # if index != None:
+        #     print(index)
+        # else:
+        #     print("Error")
+        print("test03")
         # open and close windows
         self.window = QtWidgets.QMainWindow()
+        print("test03.1")
         self.ui = Ui_userHomeMain()
+        print("test03.2")
         self.ui.setupUi(self.window)
+        print("test03.3")
         self.window.show()
-        Dialog.hide()
+        print("test03.4")
+        # Dialog.hide()
+        print("test04")
         return
 
     def setupUi(self, Dialog):

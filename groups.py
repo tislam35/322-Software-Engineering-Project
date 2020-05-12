@@ -10,8 +10,13 @@ class Group(object):
         self.groupName = groupName
         self.members = []
         self.meetings = []
-        self.visable = True
-        self.voteCount = 0
+        # member_stat = (memberUsername, missed meeting count, warming count, praise count, commit count)
+        self.member_stat = []
+        self.meet_poll = None
+        self.warm_poll = None
+        self.praise_poll = None
+        self.remove_member_poll = None
+        self.close_group_votes = 0
         self.reputation = 0
 
 
