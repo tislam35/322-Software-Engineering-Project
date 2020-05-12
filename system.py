@@ -531,4 +531,4 @@ class system:
 
 system.FSU = users.SU("FSU", "pass123", "Group", "S", "FSU@gmail.com", "718-123-567", "coding, teamwork")
 system.FSU.score = 100
-system.system.FSU.referenceInfo = ("kim.456@gmail.com", 20)
+system.FSU.referenceInfo = ("kim.456@gmail.com", 20)
