@@ -16,7 +16,7 @@ class Group(object):
 
 
     def add_member(self, username):
-        user = system.find_user_by_username()
+        user = system.find_user_by_username(username)
         if(user != None):
             self.members.append(user)
         else:
@@ -122,7 +122,8 @@ class Group(object):
                     print("Equal number of votes, No change")
                 elif(counter > 0):
                     print(str(username + " got a warning"))
-                    #warning will increased to user
+                    user = system.find_user_by_username(username)
+                    user.warningCounts += 1
                 else:
                     print(str(username) + " will not have any warnings")
         else:
@@ -178,6 +179,7 @@ class Group(object):
                 print("Meeting time is not convenient to majority")
             else:
                 print("Meeting is set to " + str(time))
+                self.meetings.append(time)
             
 
     #def exit_evaluation(self):
