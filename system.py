@@ -13,6 +13,7 @@ class system:
     # SYSTEM CLASS VARIABLES
 
     current_user = None
+    current_user_groups = []
     FSU = None              # founding super user
     DSU = None              # democratic super user
     OU_count = 0
@@ -23,9 +24,11 @@ class system:
     blacklist = []
     group_count = 0
     group_list = []
+    closed_group_list = []
     taboo_list = ["shit", "fuck"]
     registered_visitor_list = []
     complaints = []
+    complaints_group = []
     compliments = []
     appeals = []
     #added variables for voting
@@ -184,7 +187,8 @@ class system:
 
     # 6 put OU/VIP into blacklist (and removes them form OU/VIP list)
     # INPUT: OU/VIP username
-    def blacklist_user(self, username):
+    @staticmethod
+    def blacklist_user(username):
         user = system.find_user_by_username()
         if user == None:
             print("error: METHOD: # 9: blacklist_user: no user found")
@@ -217,7 +221,8 @@ class system:
 
     # 7 vaidates login
     # INPUT: OU/VIP username and password. OUTPUT: index ELSE None. PROCESS: records current user
-    def login(self, username, password):
+    @staticmethod
+    def login(username, password):
         for user in system.OU_list:
             if user.username == username and user.password == password:
                 system.current_user = user
@@ -230,7 +235,8 @@ class system:
 
     # 8 returns maximum of  3 user and groups
     # OUTPUT: 2-D array
-    def top_3(self):
+    @staticmethod
+    def top_3():
         arr_top_3 = [None] * 2
         J = 0
         for i in range(3):
@@ -251,15 +257,17 @@ class system:
 
     # 9 check group by group name
     # INPUT: group name. OUTPUT: group object
-    def find_group(self, group_name):
+    @staticmethod
+    def find_group(group_id):
         for i in range(system.group_count):
-            if system.group_list[i].name == group_name:
+            if system.group_list[i].groupID == group_id:
                 return system.group_list[i]
         return None
 
     # 10 update group rankings
     # INPUT: group name PROCESS: sort
-    def update_group_rankings(self, group_name):
+    @staticmethod
+    def update_group_rankings(group_name):
         group = system.find_group(group_name)
         index = None
         try:
@@ -323,4 +331,141 @@ class system:
                 return True
         return False
 
+    # 15 kick user
+    # INPUT: OU/VIP username OUTPUT: True if successful, ELSE False
+    @staticmethod
+    def kick(username):
+        target_user = system.find_user_by_username(username)
+        if target_user == None:
+            print("error: METHOD: kick: username not found in OU, VIP list")
+            return False
+        # remove from all groups
+        for group in system.group_list:
+            for member_username in group.members:
+                if member_username == target_user.username:
+                    group.members.remove(member_username)
+        # take out form OU or VIP list and to kicked_list
+        if isinstance(target_user, OU):
+            system.kicked_list.append(target_user)
+            system.kicked_count += 1
+            system.OU_list.remove(target_user)
+            system.OU_list.count -= 1
+            print("user successfully moved form OU to kick")
+            return True
+        elif isinstance(target_user, VIP):
+            system.kicked_list.append(target_user)
+            system.kicked_count += 1
+            system.VIP_list.remove(target_user)
+            system.VIP_list.count -= 1
+            print("user successfully moved form VIP to kick")
+            return True
+
+    # 16 assign target VIP to evaluate a target group
+    # INPUT: target VIP username, target group id
+    @staticmethod
+    def assignVIP(username, group_id):
+        target_VIP = system.find_user_by_username(username)
+        if target_VIP == None:
+            print("error: METHOD: assignVIP: no VIP with input username found")
+            return False
+        target_group = system.find_group(group_id)
+        if target_group == None:
+            print("error: METHOD: assignVIP: no group with input group id")
+            return False
+        if isinstance(target_VIP, VIP):
+            target_VIP.exEvals.append(target_group.groupID)
+            print("VIP successfully assigned to group")
+            return True
+        else:
+            print("error: METHOD: assignVIP: assigned user must be VIP")
+            return False
+
+    # 17 shutdown group and kick out all members
+    # INPUT: group_id
+    @staticmethod
+    def shutdown_and_kick_out(group_id):
+        target_group = system.find_group(group_id)
+        if target_group == None:
+            print("error: METHOD: shutdown_and_kick_out: no group with input group id found")
+            return False
+        for member_username in target_group.members:
+            target_member = system.find_user_by_username(member_username)
+            if target_member == None:
+                print("error: METHOD: shutdown_group_and_kick_out: no member found in list")
+                return False
+            system.kick(member_username)
+        for complained_group in system.complaints_group:
+            if target_group.groupID == complained_group[1]:
+                system.complaints_group.remove(complained_group)
+        system.group_list.remove(target_group)
+        system.closed_group_list.append(target_group)
+        return True
+
+    # 18 shutdown group and reduce score for each
+    @staticmethod
+    def shutdown_and_reduce_score(group_id, amount):
+        target_group = system.find_group(group_id)
+        if target_group == None:
+            print("error: METHOD: shutdown_and_kick_out: no group with input group id found")
+            return False
+        for member_username in target_group.members:
+            target_member = system.find_user_by_username(member_username)
+            if target_member == None:
+                print("error: METHOD: shutdown_group_and_kick_out: no member found in list")
+                return False
+            system.update_user_score(member_username, amount)
+        for complained_group in system.complaints_group:
+            if target_group.groupID == complained_group[1]:
+                system.complaints_group.remove(complained_group)
+        system.group_list.remove(target_group)
+        system.closed_group_list.append(target_group)
+        return True
+
+    # 19 assign score to evaluated group
+    @staticmethod
+    def score_group(group_id, score):
+        target_group = system.find_group(group_id)
+        if target_group == None:
+            print("error: METHOD: score_group: no group with input group id found")
+            return False
+        for member_username in target_group.members:
+            target_member = system.find_user_by_username(member_username)
+            if target_member == None:
+                print("error: METHOD: shutdown_group_and_kick_out: no member found in list")
+                return False
+            system.update_user_score(member_username, score)
+        target_group.reputation = score
+
+    # 20 compliment target user
+    @staticmethod
+    def compliment(target_username, message):
+        target_user = system.find_user_by_username(target_username)
+        if target_user == None:
+            print("error: METHOD: copliment: no user with username found")
+            return False
+        system.complaints.append((target_username, message))
+        target_user.complimentsCount += 1
+
+    # 21 complaint target user
+    @staticmethod
+    def complain_user(target_username, message):
+        target_user = system.find_user_by_username(target_username)
+        if target_user == None:
+            print("error: METHOD: # 21: complain_user: no user with input username found")
+        system.complaints.append((target_username, message))
+        target_user.complaintsCount += 1
+
+    # 22 complaint target group
+    @staticmethod
+    def complain_group(target_group_id, message):
+        target_group = system.find_group(target_group_id)
+        if target_group == None:
+            print("error: METHOD: #22: complain_group: no group with in group id found")
+            return False
+        system.complaints_group.append((target_group_id, message))
+
+    # invite group members
+    @staticmethod
+    def invite(invited_username, gropu_id):
+        return
 
