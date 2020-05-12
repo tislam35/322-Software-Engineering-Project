@@ -68,8 +68,7 @@ class Group(object):
                 else:
                     remove_member(member)
                     print(str(member) + " has been kicked")
-                    #score change for kicked user needs to be added
-                    #check for negative score and blacklist
+                    system.update_user_score(username, amount)
         else:
             print("Member Not Found")
             
@@ -97,8 +96,7 @@ class Group(object):
                     print(str(username + " complemented"))
                 else:
                     print(str(username) + " not complemented")
-                    #score change will be added
-                    #check for VIP promotion
+                    system.update_user_score(username, amount)
         else:
             print("Member Not Found")
     
