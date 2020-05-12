@@ -16,7 +16,7 @@ class Group(object):
 
 
     def add_member(self, username):
-        user = system.find_user_by_username(username)
+        user = system.find_user_by_username()
         if(user != None):
             self.members.append(user)
         else:
