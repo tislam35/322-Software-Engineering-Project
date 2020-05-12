@@ -10,8 +10,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class Ui_complaint(object):
+
+    def complaintSent(self):
+        #do stuff with data here
+        self.oldWindow.close()
+
     def setupUi(self, Dialog):
+        self.oldWindow = Dialog
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
         self.label = QtWidgets.QLabel(Dialog)
@@ -47,6 +53,9 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+        #code
+        self.pushButton_15.clicked.connect(self.complaintSent)
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Send Compaint"))
@@ -59,7 +68,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_complaint()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())

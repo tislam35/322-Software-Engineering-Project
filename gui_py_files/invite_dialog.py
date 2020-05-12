@@ -11,7 +11,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_inviteDialog(object):
+
+    def inviteClicked(self):
+        #your code here
+        self.oldWindow.close()
+
     def setupUi(self, inviteDialog):
+        self.oldWindow = inviteDialog
         inviteDialog.setObjectName("inviteDialog")
         inviteDialog.resize(400, 300)
         self.lineEdit_3 = QtWidgets.QLineEdit(inviteDialog)
@@ -40,6 +46,8 @@ class Ui_inviteDialog(object):
 
         self.retranslateUi(inviteDialog)
         QtCore.QMetaObject.connectSlotsByName(inviteDialog)
+
+        self.pushButton_2.clicked.connect(self.inviteClicked)
 
     def retranslateUi(self, inviteDialog):
         _translate = QtCore.QCoreApplication.translate

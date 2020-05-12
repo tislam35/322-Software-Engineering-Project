@@ -10,14 +10,17 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 # import form TeamMe GUI class
-from TeamMe.gui_py_files.Register import *
-from TeamMe.gui_py_files.Login import *
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from Register import *
+from Login import *
 
 class Ui_topRatedProfileMain(object):
 
     # the commented code causes problems after opening a third window
     def registerClicked(self):
         print("METHOD: registerClicked")
+        topRatedProfileMain.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_RegisterMain()
         self.ui.setupUi(self.window)
@@ -27,12 +30,11 @@ class Ui_topRatedProfileMain(object):
 
     def loginClicked(self):
         print("MEHTOD: loginClicked")
+        topRatedProfileMain.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self.window)
-        topRatedProfileMain.hide()
         self.window.show()
-        print("END: loginClicked")
         return
 
     def setupUi(self, topRatedProfileMain):

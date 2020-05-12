@@ -10,8 +10,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class Ui_meetup(object):
+
+    def meetingTimeChosen(self):
+        #code here
+        self.oldWindow.close()
+
     def setupUi(self, Dialog):
+        self.oldWindow = Dialog
         Dialog.setObjectName("Dialog")
         Dialog.resize(348, 321)
         self.label = QtWidgets.QLabel(Dialog)
@@ -64,6 +70,9 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+        #code
+        self.pushButton_15.clicked.connect(self.meetingTimeChosen)
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Meet Up Poll Dialog"))
@@ -78,7 +87,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_meetup()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())

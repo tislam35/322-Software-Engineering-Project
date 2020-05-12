@@ -10,8 +10,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 #importing all related gui files
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from assign_VIP_dialog import *
 from send_compliment_dialog import *
 from send_complaint_dialog import *
