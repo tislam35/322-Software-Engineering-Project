@@ -119,7 +119,7 @@ class system:
                 system.VIP_count += 1
                 del system.OU_list[index]
                 system.OU_count -= 1
-                system.update_user_ranking(system.VIP_list[system.VIP_count])
+                system.update_user_ranking(system.VIP_list[system.VIP_count - 1])
             return
         elif isinstance(user, VIP):
             index = None
@@ -151,27 +151,12 @@ class system:
     @staticmethod
     def update_user_ranking(user):
         index = None
-        if isinstance(user, users.OU):
-            try:
-                index = system.OU_list.index(user)
-            except:
-                print("error 01: METHOD: # 5 update_user_ranking: no user found")
-            if index != 0 and system.OU_list[index].score > system.OU_list[index - 1].score:
-                i = index
-                while system.OU_list[i].score > system.OU_list[i - 1].score and i != 0:
-                    system.OU_list[i], system.OU_list[i - 1] = system.OU_list[i - 1], system.OU_list[i]
-                    i -= 1
-            if index != system.OU_count - 1 and system.OU_list[index].score < system.OU_list[index + 1].score:
-                i = index
-                while system.OU_list[i].score < system.OU_list[i + 1].score and i != system.OU_count - 1:
-                    system.OU_list[i], system.OU_list[i + 1] = system.OU_list[i + 1], system.OU_list[i]
-                    i += 1
-            return
-        elif isinstance(user, VIP):
+        if isinstance(user, VIP):
             try:
                 index = system.OU_list.index(user)
             except:
                 print("error 02: METHOD: # 5 update_user_ranking: no user found")
+                return False
             if system.VIP_list[index].score > system.VIP_list[index - 1].score and index != 0:
                 i = index
                 while system.VIP_list[i].score > system.VIP_list[i - 1].score and i != 0:
@@ -183,28 +168,36 @@ class system:
                     system.VIP_list[i], system.VIP_list[i + 1] = system.VIP_list[i + 1], system.VIP_list[i]
                     i += 1
                 return
+        elif isinstance(user, users.OU):
+            try:
+                index = system.OU_list.index(user)
+            except:
+                print("error 01: METHOD: # 5 update_user_ranking: no user found")
+                return False
+            # for i in range(system.OU_count):
+            #     if user.username == system.OU_list[i].username:
+            #         index = i
+            if index != 0 and system.OU_list[index].score > system.OU_list[index - 1].score:
+                i = index
+                while system.OU_list[i].score > system.OU_list[i - 1].score and i != 0:
+                    system.OU_list[i], system.OU_list[i - 1] = system.OU_list[i - 1], system.OU_list[i]
+                    i -= 1
+            if index != system.OU_count - 1 and system.OU_list[index].score < system.OU_list[index + 1].score:
+                i = index
+                while system.OU_list[i].score < system.OU_list[i + 1].score and i != system.OU_count - 1:
+                    system.OU_list[i], system.OU_list[i + 1] = system.OU_list[i + 1], system.OU_list[i]
+                    i += 1
+            return
         print("error 03: METHOD: # 5 update_user_rankings: user not OU or VIP")
 
     # 6 put OU/VIP into blacklist (and removes them form OU/VIP list)
     # INPUT: OU/VIP username
     @staticmethod
     def blacklist_user(username):
-        user = system.find_user_by_username()
+        user = system.find_user_by_username(username)
         if user == None:
             print("error: METHOD: # 9: blacklist_user: no user found")
-        if isinstance(user, OU):
-            index = None
-            try:
-                index = system.OU_list.index(user)
-            except:
-                print("error 02: METHOD: # 4 update_user_status: no user found")
-                return
-            system.blacklist.append(user)
-            system.blacklist_count += 1
-            del system.OU_list[index]
-            system.OU_count -= 1
-            return
-        elif isinstance(user, VIP):
+        if isinstance(user, VIP):
             index = None
             try:
                 index = system.VIP_list.index(user)
@@ -215,6 +208,18 @@ class system:
             system.blacklist_count += 1
             del system.VIP_list[index]
             system.VIP_count -= 1
+            return
+        elif isinstance(user, OU):
+            index = None
+            try:
+                index = system.OU_list.index(user)
+            except:
+                print("error 02: METHOD: # 4 update_user_status: no user found")
+                return
+            system.blacklist.append(user)
+            system.blacklist_count += 1
+            del system.OU_list[index]
+            system.OU_count -= 1
             return
         print("error 04: METHOD: #9 blacklist_user: end of fucntion")
 
@@ -352,9 +357,9 @@ class system:
     # 14 SU approved visitor
     @staticmethod
     def approve(r_visitor_email):
-        for registered_visitor in system.registered_visitor_list:
-            if r_visitor_email == registered_visitor:
-                system.add_visitor_to_OU(registered_visitor.email)
+        for reg_visitor in system.registered_visitor_list:
+            if r_visitor_email == reg_visitor.email:
+                system.add_visitor_to_OU(reg_visitor.email)
                 return True
         return False
 
@@ -372,19 +377,19 @@ class system:
                 if member_username == target_user.username:
                     group.members.remove(member_username)
         # take out form OU or VIP list and to kicked_list
-        if isinstance(target_user, OU):
-            system.kicked_list.append(target_user)
-            system.kicked_count += 1
-            system.OU_list.remove(target_user)
-            system.OU_list.count -= 1
-            print("user successfully moved form OU to kick")
-            return True
-        elif isinstance(target_user, VIP):
+        if isinstance(target_user, VIP):
             system.kicked_list.append(target_user)
             system.kicked_count += 1
             system.VIP_list.remove(target_user)
             system.VIP_list.count -= 1
             print("user successfully moved form VIP to kick")
+            return True
+        elif isinstance(target_user, OU):
+            system.kicked_list.append(target_user)
+            system.kicked_count += 1
+            system.OU_list.remove(target_user)
+            system.OU_list.count -= 1
+            print("user successfully moved form OU to kick")
             return True
 
     # 16 assign target VIP to evaluate a target group
