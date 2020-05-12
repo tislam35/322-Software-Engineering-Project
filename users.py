@@ -1,4 +1,4 @@
-from system import system
+from system import *
 #for password generating
 import random
 import string
@@ -7,7 +7,7 @@ import string
 #try except not yet added
 
 class OU(object):
-    
+
     def __init__(self, username, password, first_name, last_name, email, phoneNumber, interests):
         self.username = username
         self.password = password
@@ -17,8 +17,7 @@ class OU(object):
         self.phoneNumber = phoneNumber
         self.interests = interests
         self.score = 0
-        self.affiliatedGroups = []
-	self.languages = ""
+        self.languages = ""
         self.warningsCount = 0
         #adding to WB and BB will be done in invites gui
         self.whiteBox = []
@@ -32,11 +31,13 @@ class OU(object):
         #setting automessage will be done in the ui file
         self.autoMsg = ""
         self.first_login = True
+        self.referenceInfo = None
+        self.first_time_logging_in = False
 
 	#gets called on compliment button click
     @staticmethod
     def compliment(username, message):
-        targetUser = system.find_user_by_username(username)
+        targetUser = system.find_user_by_username()
         targetUser.complimentsCount += 1
         if targetUser.complimentsCount > 2:
             system.promote(targetUser)
@@ -47,7 +48,7 @@ class OU(object):
     #gets called on complaint button click
     @staticmethod
     def complaint(username, message):
-        targetUser = system.find_user_by_username(username)
+        targetUser = system.find_user_by_username()
         system.complaints.append([targetUser, message])
 
     #ou version of initial score
@@ -56,7 +57,7 @@ class OU(object):
     def initScore(username, score):
         if(score > 10 or score < 0):
             return -1
-        targetUser = system.find_user_by_username(username)
+        targetUser = system.find_user_by_username()
         targetUser.score = score
         return 0
 
@@ -111,7 +112,7 @@ class VIP(OU):
     def initScore(username, score):
         if(score > 20 or score < 0):
             return -1
-        targetUser = system.find_user_by_username(username)
+        targetUser = system.find_user_by_username()
         targetUser.score = score
         return 0
 
@@ -144,9 +145,9 @@ class VIP(OU):
             if system.voted_DSU[i] > max:
                 max = system.voted_DSU[i]
                 newSU = i
-        return system.find_user_by_username(newSU)
+        return system.find_user_by_username()
 
-    
+
 
 class SU(VIP):
 
@@ -158,7 +159,7 @@ class SU(VIP):
     #takes groupname and vip username from text fields
     @staticmethod
     def assignVIP(groupname, vipUsername):
-        targetUser = system.find_user_by_username(vipUsername)
+        targetUser = system.find_user_by_username()
         targetGroup = system.find_group(groupname)
         targetUser.exEvals.append(targetGroup)
 
@@ -166,7 +167,7 @@ class SU(VIP):
     #make sure we close all windows and go back to starting home page UI
     @staticmethod
     def kick(username):
-        targetUser = system.find_user_by_username(username)
+        targetUser = system.find_user_by_username()
         system.kicked_list.append(targetUser)
         system.kicked_count += 1
         system.current_user = None
@@ -187,11 +188,11 @@ class SU(VIP):
         name = None
         for i in len(system.OU_list):
             name = newUser.first_name + newUser.last_name + i
-            if system.find_user_by_username(name) is None:
+            if system.find_user_by_username() is None:
                 break
         #create new password
         pswrd = "".join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
-        #create new OU 
+        #create new OU
         newOU = OU(name, pswrd, newUser.first_name, newUser.last_name, newUser.email, newUser.phoneNumber, newUser.interests)
         #add this user to reference user list of scores to be initialized
         newUser.referenceUser.initialScoresNeeded.append(newOU)

@@ -1,10 +1,10 @@
 # SYSTEM MODULE
 
 # import statments
+import users
 from users import *
 
 # SYSTEM CLASS
-from users import OU, VIP
 from registered_visitor import *
 
 
@@ -15,73 +15,81 @@ class system:
     current_user = None
     FSU = None              # founding super user
     DSU = None              # democratic super user
-    OU_count = None
+    OU_count = 0
     OU_list = []
-    VIP_count = None
+    VIP_count = 0
     VIP_list = []
-    blacklist_count = None
+    blacklist_count = 0
     blacklist = []
-    group_count = None
+    group_count = 0
     group_list = []
     taboo_list = []
     registered_visitor_list = []
-    rejected_once_visitor_list = []
     complaints = []
     compliments = []
     #added variables for voting
     DSU_vote_count = 0
     voted_DSU = {}
     #added a kicked list
-    kicked_count = None
+    kicked_count = 0
     kicked_list = []
 
     # SYSTEM CLASS METHODS
 
     # 1 find OU by username
     # INPUT: OU/VIP username. OUTPUT: OU object ELSE None
-    def find_user_by_username(self, username):
+    @staticmethod
+    def find_user_by_username(username):
         for user in system.OU_list:
             if user.username == username:
                 return user
         for user in system.VIP_list:
-            if user.username == user:
+            if user.username == username:
                 return user
         return None                                     # EXCEPTIONAL CASE: not found
 
     # 2 adds approved visitor to OU list
     # INPUT: registered_visitor object
-    def add_visitor_to_OU(self, username):
-        visitor = None
+    @staticmethod
+    def add_visitor_to_OU(email):
         for registered_visitor in system.registered_visitor_list:
-            if registered_visitor.username == username:
+            if registered_visitor.email == email:
                 visitor = registered_visitor
-                break
-        if visitor == None:
-            for rejected_once_visitor in system.rejected_once_visitor_list:
-                if rejected_once_visitor.username == username:
-                    visitor = rejected_once_visitor
-                    break
-        if visitor == None:
-            print("error: METHOD: # 2 add_visitor_to_OU: visitor not found")
-            return
-        new_OU = OU(visitor.username, visitor.password, visitor.first_name, visitor.last_name, visitor.email, visitor.phone_number, visitor.interests, visitor.score)
-        system.OU_list.append(new_OU)
-        system.OU_count += 1
-        system.update_user_ranking(system.OU_list[system.OU_count - 1])
+                # get the reference score form OU
+                # create OU object and insert into OU_list
+                username = str(visitor.first_name) + str(visitor.last_name) + str(1)
+                password = str(visitor.first_name) + str(visitor.last_name)
+                print("given username: " + str(username))
+                print("given password: " + str(password))
+                new_OU = users.OU(username, password, visitor.first_name, visitor.last_name,
+                                  visitor.email, visitor.phone_number, visitor.interests)
+                new_OU.score = visitor.score
+                new_OU.first_time_logging_in = True
+                system.OU_list.append(new_OU)
+                system.OU_count += 1
+                system.update_user_ranking(system.OU_list[system.OU_count - 1])
+                # delete registered visitor from list
+                system.registered_visitor_list.remove(registered_visitor)
+                return True
+        print("error: METHOD: # 2 add_visitor_to_OU: visitor not found")
+        return False
+
 
     # 3 changes the the reputation score of OU
     # INPUT: OU/VIP username. PROCESS: update rankings after
-    def update_user_score(self, username, amount):
+    @staticmethod
+    def update_user_score(username, amount):
         user = system.find_user_by_username(username)
         if user == None:
             print("error: METHOD: # 3 update_OU_score: no user found")
             return
         user.score += amount
-        system.update_user_status(user)
+        system.update_user_status(username)
 
     # 4 update user status
     # INPUT: OU/VIP object
-    def update_user_status(self, username):
+    @staticmethod
+    def update_user_status(username):
         user = system.find_user_by_username(username)
         if user == None:
             print("error 01: METHOD: # 4 update_user_status: no user found")
@@ -100,8 +108,9 @@ class system:
                 system.OU_count -= 1
                 return
             if user.score > 30:
-                new_VIP = VIP(user.username, user.password, user.first_name, user.last_Name, user.email,
-                              user.phoneNumber, user.interests, user.score)
+                new_VIP = VIP(user.username, user.password, user.first_name, user.last_name, user.email,
+                              user.phoneNumber, user.interests)
+                new_VIP.score = user.score
                 system.VIP_list.append(new_VIP)
                 system.VIP_count += 1
                 del system.OU_list[index]
@@ -121,8 +130,9 @@ class system:
                 system.VIP_count -= 1
                 return
             if user.score < 25:
-                new_OU = OU(user.username, user.password, user.first_name, user.last_Name, user.email,
-                              user.phoneNumber, user.interests, user.score)
+                new_OU = OU(user.username, user.password, user.first_name, user.last_name, user.email,
+                                  user.phoneNumber, user.interests)
+                new_OU = user.score
                 system.OU_list.append(new_OU)
                 system.OU_count += 1
                 del system.VIP_list[index]
@@ -134,19 +144,20 @@ class system:
 
     # 5 sorts OU list or VIP list
     # INPUT: OU/VIP object
-    def update_user_ranking(self, user):
+    @staticmethod
+    def update_user_ranking(user):
         index = None
-        if isinstance(user, OU):
+        if isinstance(user, users.OU):
             try:
                 index = system.OU_list.index(user)
             except:
                 print("error 01: METHOD: # 5 update_user_ranking: no user found")
-            if system.OU_list[index].score > system.OU_list[index - 1].score and index != 0:
+            if index != 0 and system.OU_list[index].score > system.OU_list[index - 1].score:
                 i = index
                 while system.OU_list[i].score > system.OU_list[i - 1].score and i != 0:
                     system.OU_list[i], system.OU_list[i - 1] = system.OU_list[i - 1], system.OU_list[i]
                     i -= 1
-            if system.OU_list[index].score < system.OU_list[index + 1].score and index != system.OU_count - 1:
+            if index != system.OU_count - 1 and system.OU_list[index].score < system.OU_list[index + 1].score:
                 i = index
                 while system.OU_list[i].score < system.OU_list[i + 1].score and i != system.OU_count - 1:
                     system.OU_list[i], system.OU_list[i + 1] = system.OU_list[i + 1], system.OU_list[i]
@@ -173,7 +184,7 @@ class system:
     # 6 put OU/VIP into blacklist (and removes them form OU/VIP list)
     # INPUT: OU/VIP username
     def blacklist_user(self, username):
-        user = system.find_user_by_username(username)
+        user = system.find_user_by_username()
         if user == None:
             print("error: METHOD: # 9: blacklist_user: no user found")
         if isinstance(user, OU):
@@ -258,13 +269,23 @@ class system:
 
     # 11 register registered visitor
     # INPUT: registertion info PROCESS: check and then add info to register_visitor OUTPUT: True if successful ELSE False if same email found
-    def register(self, first_name, last_name, email, phone_number, interests, reference_email):
-        all_recored_users = system.OU_list + system.VIP_list + system.blacklist + system.registered_visitor_list + system.rejected_once_visitor_list
+    @staticmethod
+    def register(first_name, last_name, email, phone_number, interests, reference_username):
+        all_recored_users = system.OU_list + system.VIP_list + system.blacklist + system.kicked_list + system.registered_visitor_list
         for user in all_recored_users:
             if email == user.email:
                 print("error: METHOD: # 11: email already in system")
                 return False
-        new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests, reference_email)
-        system.registered_visitor_list.append(new_registered_visitor)
-        print("visitor registered as registered visitor")
-        return True
+        valid_user = system.OU_list + system.VIP_list
+        for user in valid_user:
+            if user.username == reference_username:
+                if user.referenceInfo[0] == email:
+                    new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
+                                                                user.referenceInfo[1])
+                    system.registered_visitor_list.append(new_registered_visitor)
+                    print("visitor registered as registered visitor")
+                    return True
+                print("your reference did not reference you")
+                return False
+        print("refernce username was not valid")
+        return False
