@@ -31,14 +31,16 @@ class Ui_Dialog(object):
 
         # open and close windows
         self.oldWindow.close()
+        self.firstWindow.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_userHomeMain()
         self.ui.setupUi(self.window)
         self.window.show()
         return
 
-    def setupUi(self, Dialog):
+    def setupUi(self, Dialog, firstWindow):
         self.oldWindow = Dialog
+        self.firstWindow = firstWindow
         Dialog.setObjectName("Dialog")
         Dialog.resize(421, 300)
         self.welcomeLabel = QtWidgets.QLabel(Dialog)
