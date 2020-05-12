@@ -7,12 +7,24 @@
 # WARNING! All changes made in this file will be lost!
 
 
-
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from system import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+from PyQt5.QtWidgets import QMessageBox
 
 class Ui_Dialog(object):
+
+    def appeal_clicked(self):
+        appeal_email=str(self.lineEdit_2.text())
+        message=str(self.textEdit.toPlainText())
+
+        system.appeals.append((appeal_email,message))
+
+        msg = QMessageBox()
+        msg.setWindowTitle("Appeal Sent")
+        msg.setText("Your registration registration appeal has been sent.")
+        x=msg.exec_()
 
 
     def setupUi(self, Dialog):
@@ -63,7 +75,9 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-
+        #your code
+        #connect pushbutton with action
+        self.pushButton_3.clicked.connect(self.appeal_clicked)
 
 
     def retranslateUi(self, Dialog):
@@ -74,6 +88,10 @@ class Ui_Dialog(object):
         self.label_3.setText(_translate("Dialog", "You can choose to appeal."))
         self.label_4.setText(_translate("Dialog", "Registration with the email is denied. "))
         self.pushButton_3.setText(_translate("Dialog", "Appeal"))
+
+        #your code
+        #connect pushbutton with action
+        self.pushButton_3.clicked.connect(self.appeal_clicked)
 
 
 if __name__ == "__main__":

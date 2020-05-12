@@ -14,13 +14,14 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from Register import *
 from Login import *
+from more_group_profiles import *
+from more_user_profiles import *
 
 class Ui_topRatedProfileMain(object):
 
     # the commented code causes problems after opening a third window
     def registerClicked(self):
         print("METHOD: registerClicked")
-        topRatedProfileMain.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_RegisterMain()
         self.ui.setupUi(self.window)
@@ -30,12 +31,23 @@ class Ui_topRatedProfileMain(object):
 
     def loginClicked(self):
         print("MEHTOD: loginClicked")
-        topRatedProfileMain.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog()
-        self.ui.setupUi(self.window)
+        self.ui.setupUi(self.window, topRatedProfileMain)
         self.window.show()
         return
+
+    def seeMoreGroups(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_moreGroups()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def seeMoreUsers(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_moreUsers()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
     def setupUi(self, topRatedProfileMain):
         topRatedProfileMain.setObjectName("topRatedProfileMain")
@@ -337,6 +349,8 @@ class Ui_topRatedProfileMain(object):
 
         self.buttonRegister.clicked.connect(self.registerClicked)
         self.buttonLogin.clicked.connect(self.loginClicked)
+        self.pushButton.clicked.connect(self.seeMoreGroups)
+        self.pushButton_2.clicked.connect(self.seeMoreUsers)
 
     def retranslateUi(self, topRatedProfileMain):
         _translate = QtCore.QCoreApplication.translate
