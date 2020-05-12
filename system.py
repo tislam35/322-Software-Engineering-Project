@@ -284,6 +284,7 @@ class system:
                     new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
                                                                 user.referenceInfo[1])
                     system.registered_visitor_list.append(new_registered_visitor)
+                    user.referenceInfo = None
                     print("visitor registered as registered visitor")
                     return True
                 print("your reference did not reference you")
