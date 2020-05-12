@@ -23,10 +23,11 @@ class system:
     blacklist = []
     group_count = 0
     group_list = []
-    taboo_list = []
+    taboo_list = ["shit", "fuck"]
     registered_visitor_list = []
     complaints = []
     compliments = []
+    appeals = []
     #added variables for voting
     DSU_vote_count = 0
     voted_DSU = {}
@@ -289,3 +290,36 @@ class system:
                 return False
         print("refernce username was not valid")
         return False
+
+    # 12 reject a registered visitor
+    @staticmethod
+    def reject_registered_visitor(r_visitor):
+        if r_visitor.rejected == False:
+            r_visitor.rejected = True
+        else:
+            r_visitor.rejected_twice = True
+            system.registered_visitor_list.remove(r_visitor)
+            system.blacklist.append(r_visitor)
+            system.blacklist_count += 1
+
+    # 13 visitor appeal if rejected
+    # INPUT: reject visitor's email that s/he registered with and the appeal message
+    @staticmethod
+    def appeal(r_visitor_email, message):
+        for registered_visitor in system.registered_visitor_list:
+            if r_visitor_email == registered_visitor.email:
+                registered_visitor.appealed = True
+                system.appeals.append((registered_visitor.email, message))
+                return True
+        return False                            # EXCEPTIONAL CASE: no email found in list
+
+    # 14 SU approved visitor
+    @staticmethod
+    def approve(r_visitor_email):
+        for registered_visitor in system.registered_visitor_list:
+            if r_visitor_email == registered_visitor:
+                system.add_visitor_to_OU(registered_visitor.email)
+                return True
+        return False
+
+
