@@ -464,8 +464,43 @@ class system:
             return False
         system.complaints_group.append((target_group_id, message))
 
-    # invite group members
+    # 23 invite group members
     @staticmethod
-    def invite(invited_username, gropu_id):
-        return
+    def invite(invited_username, group_id):
+        target_user = system.find_user_by_username(invited_username)
+        if target_user == None:
+            print("error: METHOD: #23: invite: no users with input user name found")
+            return False
+        target_group = system.find_group(group_id)
+        if target_group == None:
+            print("error: METHOD: #23:invite: no group with input groud id")
+            return False
+        for white_box_username in target_user.whiteBox:
+            if system.current_user.username == white_box_username:
+                target_group.members.append(target_user.username)
+                print("current_user in invited's whitebox. Invited add to group")
+                return True
+        for black_box_username in target_user.blackBox:
+            if system.current_user.username == black_box_username:
+                print("current_user in invited's blackbox. Invited not sent.")
+                print(target_user.autoMsg)
+                return True
+        target_user.invites.append((group_id, system.current_user.username))
+        print("invite send to" + str(target_user.username))
+        return True
+
+    # 24 reject invite
+    @staticmethod
+    def reject_invite(group_id):
+        target_group = system.find_group(group_id)
+        if target_group ==  None:
+            print("error: METHOD: reject_invite: group with input group id not found")
+        for current_user_invite in system.current_user.invites:
+            if target_group.groupID == current_user_invite[0]:
+                system.current_user.invites.remove(current_user_invite)
+                print("reject invite form group with id " + str(target_group.groupID))
+                return True
+
+
+
 
