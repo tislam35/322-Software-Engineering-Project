@@ -155,48 +155,29 @@ class Group(object):
                     print("Group is closing")
                     exit_evaluation
                     
-    def meeting_poll(self, meet0, meet1, meet2):
-        print("Vote to choose from 3 meetings time options:")
-        print("1: " + str(meet0))
-        print("2: " + str(meet1))
-        print("3: " + str(meet2))
-
-        meeting_options = []
-        not_voted = []
-
+    def meeting_poll(self, time):
+        print("Vote for a meeting at " + str(time))
+        print("y/n?")
+        counter = 0
+        neutral =[]
         for member in self.members:
-            choice = input("1/2/3: ")
-
-            if(choice == 1):
-                meeting_options[0] += 1
-            elif(choice == 2):
-                meeting_options[1] += 1
-            elif(choice == 3):
-                meeting_options[2] += 1
+            vote = input()
+            if(vote == 'y'):
+                counter += 1
+            elif(vote == 'n'):
+                counter -= 1
             else:
-                not_voted.append(member)          
-        
-        if(not_voted == False):
+                neutral.append(member)
 
-            if(meeting_options[0] > meeting_options[1] and meeting_options[0] > meeting_options[2]):
-                print("Best fitting time to meet: " + str(meet0))
-                print("Number of votes: ", meeting_options[0])    
-
-            elif(meeting_options[1] > meeting_options[0] and meeting_options[1] > meeting_options[2]):
-                print("Best fitting time to meet: " + str(meet1))
-                print("Number of votes: ", meeting_options[1])
-            
-            elif(meeting_options[2] > meeting_options[0] and meeting_options[2] > meeting_options[1]):
-                print("Best fitting time to meet: " + str(meet2))
-                print("Number of votes: ", meeting_options[2])
-            
-            else:
-                print("There is no best fitting meeting time.")
-                print("There are equal votes: ", meeting_options)
-        
-        else:
-            print("Not all group members voted.")
-            print("Didn't vote: ", not_voted)
+            if(neutral == True):
+                return "Vote is cancelled, not everyone voted."   
+            else:     
+                if(counter == 0):
+                    print("Equal number of votes, meeting not set.")
+                elif(counter < 0):
+                    print("Meeting time is not convenient to majority")
+                else:
+                    print("Meeting is set to " + str(time))
             
 
     #def exit_evaluation(self):
