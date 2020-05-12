@@ -32,11 +32,8 @@ class Group(object):
     def group_size(self):
         return len(self.members) - 1
 
-    def increase_reputation(self, amount):
+    def update_reputation(self, amount):
         self.reputation += amount
-
-    def decrease_reputation(self, amount):
-        self.reputation -= amount
 
     def set_visibiliety(self, val):
         if((val != True) or (val != False)):
@@ -44,7 +41,7 @@ class Group(object):
         else:
             self.visable = val
     
-    def vote_kick(self, username, amount):
+    def vote_kick(self, username):
         if(username in self.members):
             print("Vote to kick: " + str(username)) 
             print("y/n?")                           
@@ -69,7 +66,7 @@ class Group(object):
                 else:
                     remove_member(member)
                     print(str(member) + " has been kicked")
-                    system.update_user_score(username, amount)
+                    system.update_user_score(username, -10)
         else:
             print("Member Not Found")
             
@@ -125,6 +122,8 @@ class Group(object):
                     print(str(username + " got a warning"))
                     user = system.find_user_by_username(username)
                     user.warningCounts += 1
+                    if(user.warningCounts >= 3):
+                        remove_member(username)
                 else:
                     print(str(username) + " will not have any warnings")
         else:
