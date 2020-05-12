@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from system import *
@@ -6,6 +7,8 @@ from system import *
 import random
 import string
 
+=======
+>>>>>>> d38fe2702d5d76b49491a6c8f7410434bc86c8f8
 #methods are static for testing, change if required
 #try except not yet added
 

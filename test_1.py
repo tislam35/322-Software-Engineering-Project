@@ -30,16 +30,20 @@ entered_reference_username = "FSU"
 
 
 
-isSuccess = system.system.register(entered_first_name, entered_last_name,
+isSuccessRegister = system.system.register(entered_first_name, entered_last_name,
                                    entered_email, entered_phone_number,
                                    entered_interests, entered_reference_username)
 print("7.8. " + str(system.system.registered_visitor_list))
 print("7.9. " + str(system.system.OU_list))
-print("8. " + str(isSuccess))
+print("8. " + str(isSuccessRegister))
 system.system.add_visitor_to_OU(entered_email)
 print("8.1. " + str(system.system.registered_visitor_list))
 print("8.2. " + str(system.system.OU_list))
+pprint(vars(system.system.OU_list[1]))
 
+
+isSuccessLogin = system.system.login("KimZhang1", "KimZhang")
+print("9: " + str(isSuccessLogin))
 
 
 

@@ -10,10 +10,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
-# set the system path to TeamMe folder so library imports are more generic
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+# import from TeamMe classes
 from system import *
+<<<<<<< HEAD
 from gui_py_files.check_registration_status_dialog import *
 
 
@@ -52,6 +51,11 @@ class Ui_RegisterMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+=======
+
+class Ui_RegisterMain(object):
+
+>>>>>>> d38fe2702d5d76b49491a6c8f7410434bc86c8f8
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")
         RegisterMain.resize(364, 558)
@@ -94,7 +98,6 @@ class Ui_RegisterMain(object):
         self.lineEdit_9.setObjectName("lineEdit_9")
         self.gridLayout_3.addWidget(self.lineEdit_9, 1, 0, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout_3, 1, 0, 1, 1)
-
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(self.layoutWidget)
@@ -143,10 +146,6 @@ class Ui_RegisterMain(object):
         self.pushButton.setDefault(True)
         self.pushButton.setObjectName("pushButton")
         self.gridLayout_5.addWidget(self.pushButton, 2, 0, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(20, 20, 304, 28))
-        self.pushButton_2.setDefault(True)
-        self.pushButton_2.setObjectName("pushButton_2")
         RegisterMain.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(RegisterMain)
         self.statusbar.setObjectName("statusbar")
@@ -158,7 +157,6 @@ class Ui_RegisterMain(object):
 
         #connect the push button with conditional pop up windows
         self.pushButton.clicked.connect(self.show_popup)
-        self.pushButton_2.clicked.connect(self.check_status_clicked)
 
     def retranslateUi(self, RegisterMain):
         _translate = QtCore.QCoreApplication.translate
@@ -173,8 +171,13 @@ class Ui_RegisterMain(object):
         self.label_4.setText(_translate("RegisterMain", "-"))
         self.lineEdit.setText(_translate("RegisterMain", "First"))
         self.pushButton.setText(_translate("RegisterMain", "Register"))
-        self.pushButton_2.setText(_translate("RegisterMain", "Check Registration Status"))
 
+    def show_popup(self):
+        msg = QMessageBox()
+
+        msg.setWindowTitle("Register Failed")
+        msg.setText("Register Failed, please check your input again.")
+        x=msg.exec_()
 
 
 if __name__ == "__main__":
