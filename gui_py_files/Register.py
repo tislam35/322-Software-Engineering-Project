@@ -13,13 +13,15 @@ from PyQt5.QtWidgets import QMessageBox
 # set the system path to TeamMe folder so library imports are more generic
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
-import system
+from system import *
+print(system)
 
 class Ui_RegisterMain(object):
 
     def show_popup(self):
 
         msg = QMessageBox()
+
         firstName=str(self.lineEdit.text())
         lastName=str(self.lineEdit_2.text())
         email=str(self.lineEdit_3.text())
@@ -27,8 +29,7 @@ class Ui_RegisterMain(object):
         interests=str(self.lineEdit_9.text())
         reference=str(self.lineEdit_8.text())
 
-        
-        
+
         #use function from TeamMe.system library
         #register(first_name, last_name, email, phone_number, interests, reference_username)
         if (system.register(firstName,lastName,email,phone,interests,reference)==False):
@@ -41,6 +42,9 @@ class Ui_RegisterMain(object):
 
         x=msg.exec_()
 
+
+    def check_status_clicked(self):
+        pass
 
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")
@@ -148,6 +152,7 @@ class Ui_RegisterMain(object):
 
         #connect the push button with conditional pop up windows
         self.pushButton.clicked.connect(self.show_popup)
+        self.pushButton_2.clicked.connect(self.check_status_clicked)
 
     def retranslateUi(self, RegisterMain):
         _translate = QtCore.QCoreApplication.translate
