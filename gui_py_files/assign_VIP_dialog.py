@@ -11,7 +11,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Dialog(object):
+
+    def scoreEntered(self):
+        #your code here
+        self.oldWindow.close()
+
     def setupUi(self, Dialog):
+        self.oldWindow = Dialog
         Dialog.setObjectName("Dialog")
         Dialog.resize(360, 244)
         self.textBrowser_13 = QtWidgets.QTextBrowser(Dialog)
@@ -49,6 +55,8 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        self.pushButton_22.clicked.connect(self.scoreEntered)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
