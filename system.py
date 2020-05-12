@@ -14,7 +14,7 @@ class system:
 
     current_user = None
     current_user_groups = []
-    FSU = None              # founding super user
+    FSU = None
     DSU = None              # democratic super user
     OU_count = 0
     OU_list = []
@@ -284,12 +284,33 @@ class system:
     # INPUT: registertion info PROCESS: check and then add info to register_visitor OUTPUT: True if successful ELSE False if same email found
     @staticmethod
     def register(first_name, last_name, email, phone_number, interests, reference_username):
+
         all_recored_users = system.OU_list + system.VIP_list + system.blacklist + system.kicked_list + system.registered_visitor_list
         for user in all_recored_users:
             if email == user.email:
                 print("error: METHOD: # 11: email already in system")
                 return False
         valid_user = system.OU_list + system.VIP_list
+        if system.FSU.username == reference_username:
+            if system.FSU.referenceInfo[0] == email:
+                new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
+                                                            system.FSU.referenceInfo[1])
+                system.registered_visitor_list.append(new_registered_visitor)
+                system.FSU.referenceInfo = None
+                print("visitor registered as registered visitor by FSU reference")
+                return True
+            print("your FSU reference did not reference you")
+            return False
+        if system.DSU != None and system.DSU.username == reference_username:
+            if system.DSU.referenceInfo[0] == email:
+                new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
+                                                            system.DSU.referenceInfo[1])
+                system.registered_visitor_list.append(new_registered_visitor)
+                system.DSU.referenceInfo = None
+                print("visitor registered as registered visitor by DSU reference")
+                return True
+            print("your DSU reference did not reference you")
+            return False
         for user in valid_user:
             if user.username == reference_username:
                 if user.referenceInfo[0] == email:
@@ -301,7 +322,7 @@ class system:
                     return True
                 print("your reference did not reference you")
                 return False
-        print("refernce username was not valid")
+        print("reference username was not valid")
         return False
 
     # 12 reject a registered visitor
@@ -506,5 +527,8 @@ class system:
                 return True
 
 
+# initial user: FSU
 
-
+system.FSU = users.SU("FSU", "pass123", "Group", "S", "FSU@gmail.com", "718-123-567", "coding, teamwork")
+system.FSU.score = 100
+system.FSU.referenceInfo = ("kim.456@gmail.com", 20)

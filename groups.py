@@ -11,9 +11,15 @@ class Group(object):
         self.groupName = groupName
         self.members = []
         self.meetings = []
-        self.visable = True
-        self.voteCount = 0
+        # member_stat = (memberUsername, missed meeting count, warming count, praise count, commit count)
+        self.member_stat = []
+        self.meet_poll = None
+        self.warm_poll = None
+        self.praise_poll = None
+        self.remove_member_poll = None
+        self.close_group_votes = 0
         self.reputation = 0
+        self.assigned_vip = ""
 
 
     def add_member(self, username):
@@ -32,19 +38,19 @@ class Group(object):
     def group_size(self):
         return len(self.members) - 1
 
-    def increase_reputation(self, amount):
+    def update_reputation(self, amount):
         self.reputation += amount
-
-    def decrease_reputation(self, amount):
-        self.reputation -= amount
 
     def set_visibiliety(self, val):
         if((val != True) or (val != False)):
             return "Invalid Parameter"
         else:
             self.visable = val
+            
+    def assign_vip(self,vip):
+        self.assigned_vip = vip
     
-    def vote_kick(self, username, amount):
+    def vote_kick(self, username):
         if(username in self.members):
             print("Vote to kick: " + str(username)) 
             print("y/n?")                           
@@ -69,7 +75,7 @@ class Group(object):
                 else:
                     remove_member(member)
                     print(str(member) + " has been kicked")
-                    system.update_user_score(username, amount)
+                    system.update_user_score(username, -10)
         else:
             print("Member Not Found")
             
@@ -125,6 +131,8 @@ class Group(object):
                     print(str(username + " got a warning"))
                     user = system.find_user_by_username(username)
                     user.warningCounts += 1
+                    if(user.warningCounts >= 3):
+                        remove_member(username)
                 else:
                     print(str(username) + " will not have any warnings")
         else:
