@@ -134,7 +134,9 @@ class Group(object):
         counter = 0
         neutral =[]
         for member in self.members:
+            
             vote = input()
+            
             if(vote == 'y'):
                 counter += 1
             elif(vote == 'n'):
@@ -142,16 +144,16 @@ class Group(object):
             else:
                 neutral.append(member)
 
-            if(neutral == True):
-                return "Vote is cancelled, not everyone voted."   
-            else:     
-                if(counter == 0):
-                    print("Equal number of votes, Group is not closing.")
-                elif(counter < 0):
-                    print("Group stays open")
-                else:
-                    print("Group is closing")
-                    exit_evaluation
+        if(neutral == True):
+             return "Vote is cancelled, not everyone voted."   
+        else:     
+             if(counter == 0):
+                print("Equal number of votes, Group is not closing.")
+             elif(counter < 0):
+                print("Group stays open")
+             else:
+                print("Group is closing")
+                exit_evaluation
                     
     def meeting_poll(self, time):
         print("Vote for a meeting at " + str(time))
@@ -167,15 +169,15 @@ class Group(object):
             else:
                 neutral.append(member)
 
-            if(neutral == True):
-                return "Vote is cancelled, not everyone voted."   
-            else:     
-                if(counter == 0):
-                    print("Equal number of votes, meeting not set.")
-                elif(counter < 0):
-                    print("Meeting time is not convenient to majority")
-                else:
-                    print("Meeting is set to " + str(time))
+        if(neutral == True):
+            return "Vote is cancelled, not everyone voted."   
+        else:     
+            if(counter == 0):
+                print("Equal number of votes, meeting not set.")
+            elif(counter < 0):
+                print("Meeting time is not convenient to majority")
+            else:
+                print("Meeting is set to " + str(time))
             
 
     #def exit_evaluation(self):
