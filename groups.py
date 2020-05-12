@@ -40,12 +40,6 @@ class Group(object):
 
     def update_reputation(self, amount):
         self.reputation += amount
-
-    def set_visibiliety(self, val):
-        if((val != True) or (val != False)):
-            return "Invalid Parameter"
-        else:
-            self.visable = val
             
     def assign_vip(self,vip):
         self.assigned_vip = vip
