@@ -228,14 +228,16 @@ class system:
             print("logintest2")
             if user.username == username and user.password == password:
                 system.current_user = user
-                return system.OU_list.index(user)
+                # return system.OU_list.index(user)
+                return True
         for user in system.VIP_list:
             print("logintest3")
             if user.username == username and user.password == password:
                 system.current_user = user
-                return system.VIP_list.index(user)
+                # return system.VIP_list.index(user)
+                return True
         print("logintest4")
-        return None                                               # EXCEPTIONAL CASE
+        return False                                               # EXCEPTIONAL CASE
 
     # 8 returns maximum of  3 user and groups
     # OUTPUT: 2-D array
