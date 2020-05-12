@@ -248,22 +248,29 @@ class system:
     # OUTPUT: 2-D array
     @staticmethod
     def top_3():
-        arr_top_3 = [None] * 2
-        J = 0
-        for i in range(3):
-            try:
-                arr_top_3[0].append(system.VIP_list[i])
-            except:
-                try:
-                    arr_top_3[0].append(system.OU_list[i - J])
-                except:
-                    print("Less then 3 top probiles (OU)")
-                print("Less then 3 top profiles(VIP)")
-            try:
-                arr_top_3[1].append(system.group_list[i])
-            except:
-                print("Less then 3 top gropus")
-            J += 1
+        arr_top_3 = []
+        top_3_users = []
+        top_3_groups = []
+        count = 1
+        for visitor in system.VIP_list:
+            if count == 3:
+                break
+            top_3_users.append(visitor)
+            count += 1
+        for ordinary in system.OU_list:
+            if count == 3:
+                break
+            top_3_users.append(ordinary)
+            count += 1
+        arr_top_3.append(top_3_users)
+
+        count = 0
+        for sys_group in system.group_list:
+            if count == 3:
+                break
+            top_3_groups.append(sys_group)
+            count += 1
+        arr_top_3.append(top_3_groups)
         return arr_top_3
 
     # 9 check group by group name
@@ -371,20 +378,27 @@ class system:
         if target_user == None:
             print("error: METHOD: kick: username not found in OU, VIP list")
             return False
+        # print("test1")
         # remove from all groups
         for group in system.group_list:
             for member_username in group.members:
                 if member_username == target_user.username:
                     group.members.remove(member_username)
         # take out form OU or VIP list and to kicked_list
+        # print("test2")
         if isinstance(target_user, VIP):
+            # print("test3")
             system.kicked_list.append(target_user)
+            # print("test3.1")
             system.kicked_count += 1
+            # print("test3.2")
             system.VIP_list.remove(target_user)
-            system.VIP_list.count -= 1
-            print("user successfully moved form VIP to kick")
+            # print("test.3.4")
+            system.VIP_count -= 1
+            # print("user successfully moved form VIP to kick")
             return True
         elif isinstance(target_user, OU):
+            print("test4")
             system.kicked_list.append(target_user)
             system.kicked_count += 1
             system.OU_list.remove(target_user)
