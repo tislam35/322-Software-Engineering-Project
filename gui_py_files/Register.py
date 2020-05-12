@@ -8,9 +8,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtWidgets import QMessageBox
+from TeamMe import system
 
 class Ui_RegisterMain(object):
+
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")
         RegisterMain.resize(364, 558)
@@ -109,6 +111,10 @@ class Ui_RegisterMain(object):
         self.retranslateUi(RegisterMain)
         QtCore.QMetaObject.connectSlotsByName(RegisterMain)
 
+
+        #connect the push button with conditional pop up windows
+        self.pushButton.clicked.connect(self.show_popup)
+
     def retranslateUi(self, RegisterMain):
         _translate = QtCore.QCoreApplication.translate
         RegisterMain.setWindowTitle(_translate("RegisterMain", "Register"))
@@ -122,6 +128,13 @@ class Ui_RegisterMain(object):
         self.label_4.setText(_translate("RegisterMain", "-"))
         self.lineEdit.setText(_translate("RegisterMain", "First"))
         self.pushButton.setText(_translate("RegisterMain", "Register"))
+
+    def show_popup(self):
+        msg = QMessageBox()
+
+        msg.setWindowTitle("Register Failed")
+        msg.setText("Register Failed, please check your input again.")
+        x=msg.exec_()
 
 
 if __name__ == "__main__":
