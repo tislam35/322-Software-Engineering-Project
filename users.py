@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from system import *
+=======
 # from system import *
+>>>>>>> 56711ee26eb6c970d0ea24e45f26b1463e26759d
 #for password generating
 import random
 import string
