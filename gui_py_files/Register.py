@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
 # import from TeamMe classes
-from TeamMe.system import *
+from system import *
 
 class Ui_RegisterMain(object):
 
