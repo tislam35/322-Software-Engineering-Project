@@ -10,10 +10,37 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
-# import from TeamMe classes
-from TeamMe.system import *
+# set the system path to TeamMe folder so library imports are more generic
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+import system
 
 class Ui_RegisterMain(object):
+
+    def show_popup(self):
+
+        msg = QMessageBox()
+        firstName=str(self.lineEdit.text())
+        lastName=str(self.lineEdit_2.text())
+        email=str(self.lineEdit_3.text())
+        phone=str(self.lineEdit_4.text()+self.lineEdit_5.text())
+        interests=str(self.lineEdit_9.text())
+        reference=str(self.lineEdit_8.text())
+
+        
+        
+        #use function from TeamMe.system library
+        #register(first_name, last_name, email, phone_number, interests, reference_username)
+        if (system.register(firstName,lastName,email,phone,interests,reference)==False):
+            msg.setWindowTitle("Register Failed")
+            msg.setText("Register Failed, please check your input again.")
+        
+        else:
+            msg.setWindowTitle("Registeration Request Pending")
+            msg.setText("Your information has been collected and your registration is pending to be approved./n Log in later to check if you are approved.")
+
+        x=msg.exec_()
+
 
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")
@@ -57,6 +84,7 @@ class Ui_RegisterMain(object):
         self.lineEdit_9.setObjectName("lineEdit_9")
         self.gridLayout_3.addWidget(self.lineEdit_9, 1, 0, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout_3, 1, 0, 1, 1)
+
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(self.layoutWidget)
@@ -105,6 +133,10 @@ class Ui_RegisterMain(object):
         self.pushButton.setDefault(True)
         self.pushButton.setObjectName("pushButton")
         self.gridLayout_5.addWidget(self.pushButton, 2, 0, 1, 1)
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(20, 20, 304, 28))
+        self.pushButton_2.setDefault(True)
+        self.pushButton_2.setObjectName("pushButton_2")
         RegisterMain.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(RegisterMain)
         self.statusbar.setObjectName("statusbar")
@@ -130,13 +162,8 @@ class Ui_RegisterMain(object):
         self.label_4.setText(_translate("RegisterMain", "-"))
         self.lineEdit.setText(_translate("RegisterMain", "First"))
         self.pushButton.setText(_translate("RegisterMain", "Register"))
+        self.pushButton_2.setText(_translate("RegisterMain", "Check Registration Status"))
 
-    def show_popup(self):
-        msg = QMessageBox()
-
-        msg.setWindowTitle("Register Failed")
-        msg.setText("Register Failed, please check your input again.")
-        x=msg.exec_()
 
 
 if __name__ == "__main__":

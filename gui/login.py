@@ -14,6 +14,8 @@ import time
 from gui.user_home_page import *
 
 # import from TeamMe classes
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from system import *
 
 class Ui_Dialog(object):
