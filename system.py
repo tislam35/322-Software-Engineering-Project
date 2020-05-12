@@ -3,6 +3,7 @@
 # import statments
 import users
 from users import *
+from groups import *
 
 # SYSTEM CLASS
 from registered_visitor import *
@@ -546,6 +547,14 @@ class system:
                 system.current_user.invites.remove(current_user_invite)
                 print("reject invite form group with id " + str(target_group.groupID))
                 return True
+
+    # 25 create group
+    @staticmethod
+    def create_group (group_name, initial_username):
+        new_group = Group(group_name)
+        new_group.members.append(initial_username)
+        system.group_list.append(new_group)
+
 
 
 # initial user: FSU
