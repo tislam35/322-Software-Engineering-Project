@@ -8,9 +8,58 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from system import *
+from users import *
+
+from gui_py_files.registration_appeal_dialog import *
 
 class Ui_Dialog(object):
+
+        #your code
+    def check_status_clicked(self):
+        #collect the email from user input first
+        email_to_check=str(self.lineEdit_6.text())
+        type_user=""
+
+        #if the object with the email is an OU, then status = approved
+        for object in system.OU_list:
+            if object.email==email_to_check:
+                type_user=="OU"
+                msg = QMessageBox()
+                msg.setWindowTitle("Approved")
+                msg.setText("You have been approved to be an OU.")
+
+        #else if the object with the email is a registered visitor, then status = pending
+        for object in system.registered_visitor_list:
+            if object.email==email_to_check:
+                type_user=="registered_visitor"
+                msg = QMessageBox()
+                msg.setWindowTitle("Pending")
+                msg.setText("Your registration is pending.")
+
+        #else if the object is in blacklist, then status = denied
+        for object in system.blacklist:
+            if object.email==email_to_check:
+                type_user=="blacklist"
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_Dialog()
+                self.ui.setupUi(self.window)
+                self.window.show()    
+
+        #else if object is not in any of those lists, then status = email not found
+        if type_user !="OU" and type_user!="registered_visitor" and type_user!="blacklist":
+                msg = QMessageBox()
+                msg.setWindowTitle("Email not found")
+                msg.setText("Your registration email is not found.")  
+
+        x=msg.exec_()
+
+
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(253, 153)
@@ -31,6 +80,10 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        #your code
+        #connect pushbutton with action
+        self.pushButton_3.clicked.connect(self.check_status_clicked)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate

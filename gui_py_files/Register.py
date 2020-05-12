@@ -14,10 +14,12 @@ from PyQt5.QtWidgets import QMessageBox
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from system import *
-print(system)
+from gui_py_files.check_registration_status_dialog import *
+
 
 class Ui_RegisterMain(object):
 
+    #after user cliecked register, a pop up window shows 
     def show_popup(self):
 
         msg = QMessageBox()
@@ -43,8 +45,12 @@ class Ui_RegisterMain(object):
         x=msg.exec_()
 
 
+    #after users click check registration status, this window will show 
     def check_status_clicked(self):
-        pass
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")

@@ -7,10 +7,14 @@
 # WARNING! All changes made in this file will be lost!
 
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 class Ui_Dialog(object):
+
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(384, 299)
@@ -58,6 +62,9 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+
+
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
