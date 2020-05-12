@@ -46,8 +46,8 @@ class Group(object):
     
     def vote_kick(self, username, amount):
         if(username in self.members):
-            print("Vote to kick: " + str(username)) #or setting the text in the gui
-            print("y/n?")                           #gui button for yes/no? for each user
+            print("Vote to kick: " + str(username)) 
+            print("y/n?")                           
             counter = 0
             neutral = []
             for member in self.members:
