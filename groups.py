@@ -32,9 +32,15 @@ class Group(object):
 
     def increase_reputation(self, amount):
         self.reputation += amount
-
+        
     def decrease_reputation(self, amount):
         self.reputation -= amount
+    
+    def set_visibiliety(self, val):
+        if((val != True) or (val != False)):
+            return "Invalid Parameter"
+        else:
+            self.visable = val
        
     def vote_kick(self, username, amount):
         if(username in self.members):
