@@ -1,4 +1,5 @@
 import system
+import users
 
 class Group(object):
 
@@ -21,7 +22,7 @@ class Group(object):
 
 
     def add_member(self, username):
-        user = system.find_user_by_username()
+        user = system.find_user_by_username(username)
         if(user != None):
             self.members.append(user)
         else:
@@ -36,11 +37,8 @@ class Group(object):
     def group_size(self):
         return len(self.members) - 1
 
-    def increase_reputation(self, amount):
+    def update_reputation(self, amount):
         self.reputation += amount
-
-    def decrease_reputation(self, amount):
-        self.reputation -= amount
 
     def set_visibiliety(self, val):
         if((val != True) or (val != False)):
@@ -48,10 +46,10 @@ class Group(object):
         else:
             self.visable = val
     
-    def vote_kick(self, username, amount):
+    def vote_kick(self, username):
         if(username in self.members):
-            print("Vote to kick: " + str(username)) #or setting the text in the gui
-            print("y/n?")                           #gui button for yes/no? for each user
+            print("Vote to kick: " + str(username)) 
+            print("y/n?")                           
             counter = 0
             neutral = []
             for member in self.members:
@@ -73,8 +71,7 @@ class Group(object):
                 else:
                     remove_member(member)
                     print(str(member) + " has been kicked")
-                    #score change for kicked user needs to be added
-                    #check for negative score and blacklist
+                    system.update_user_score(username, -10)
         else:
             print("Member Not Found")
             
@@ -102,8 +99,7 @@ class Group(object):
                     print(str(username + " complemented"))
                 else:
                     print(str(username) + " not complemented")
-                    #score change will be added
-                    #check for VIP promotion
+                    system.update_user_score(username, amount)
         else:
             print("Member Not Found")
     
@@ -129,7 +125,10 @@ class Group(object):
                     print("Equal number of votes, No change")
                 elif(counter > 0):
                     print(str(username + " got a warning"))
-                    #warning will increased to user
+                    user = system.find_user_by_username(username)
+                    user.warningCounts += 1
+                    if(user.warningCounts >= 3):
+                        remove_member(username)
                 else:
                     print(str(username) + " will not have any warnings")
         else:
@@ -137,6 +136,33 @@ class Group(object):
 
     def vote_close(self):
         print("Vote to close the group")
+        print("y/n?")
+        counter = 0
+        neutral =[]
+        for member in self.members:
+            
+            vote = input()
+            
+            if(vote == 'y'):
+                counter += 1
+            elif(vote == 'n'):
+                counter -= 1
+            else:
+                neutral.append(member)
+
+        if(neutral == True):
+             return "Vote is cancelled, not everyone voted."   
+        else:     
+             if(counter == 0):
+                print("Equal number of votes, Group is not closing.")
+             elif(counter < 0):
+                print("Group stays open")
+             else:
+                print("Group is closing")
+                exit_evaluation
+                    
+    def meeting_poll(self, time):
+        print("Vote for a meeting at " + str(time))
         print("y/n?")
         counter = 0
         neutral =[]
@@ -149,59 +175,16 @@ class Group(object):
             else:
                 neutral.append(member)
 
-            if(neutral == True):
-                return "Vote is cancelled, not everyone voted."   
-            else:     
-                if(counter == 0):
-                    print("Equal number of votes, Group is not closing.")
-                elif(counter < 0):
-                    print("Group stays open")
-                else:
-                    print("Group is closing")
-                    exit_evaluation
-                    
-    def meeting_poll(self, meet0, meet1, meet2):
-        print("Vote to choose from 3 meetings time options:")
-        print("1: " + str(meet0))
-        print("2: " + str(meet1))
-        print("3: " + str(meet2))
-
-        meeting_options = []
-        not_voted = []
-
-        for member in self.members:
-            choice = input("1/2/3: ")
-
-            if(choice == 1):
-                meeting_options[0] += 1
-            elif(choice == 2):
-                meeting_options[1] += 1
-            elif(choice == 3):
-                meeting_options[2] += 1
+        if(neutral == True):
+            return "Vote is cancelled, not everyone voted."   
+        else:     
+            if(counter == 0):
+                print("Equal number of votes, meeting not set.")
+            elif(counter < 0):
+                print("Meeting time is not convenient to majority")
             else:
-                not_voted.append(member)          
-        
-        if(not_voted == False):
-
-            if(meeting_options[0] > meeting_options[1] and meeting_options[0] > meeting_options[2]):
-                print("Best fitting time to meet: " + str(meet0))
-                print("Number of votes: ", meeting_options[0])    
-
-            elif(meeting_options[1] > meeting_options[0] and meeting_options[1] > meeting_options[2]):
-                print("Best fitting time to meet: " + str(meet1))
-                print("Number of votes: ", meeting_options[1])
-            
-            elif(meeting_options[2] > meeting_options[0] and meeting_options[2] > meeting_options[1]):
-                print("Best fitting time to meet: " + str(meet2))
-                print("Number of votes: ", meeting_options[2])
-            
-            else:
-                print("There is no best fitting meeting time.")
-                print("There are equal votes: ", meeting_options)
-        
-        else:
-            print("Not all group members voted.")
-            print("Didn't vote: ", not_voted)
+                print("Meeting is set to " + str(time))
+                self.meetings.append(time)
             
 
     #def exit_evaluation(self):
