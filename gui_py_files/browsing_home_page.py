@@ -20,7 +20,6 @@ class Ui_topRatedProfileMain(object):
     # the commented code causes problems after opening a third window
     def registerClicked(self):
         print("METHOD: registerClicked")
-        topRatedProfileMain.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_RegisterMain()
         self.ui.setupUi(self.window)
@@ -30,10 +29,9 @@ class Ui_topRatedProfileMain(object):
 
     def loginClicked(self):
         print("MEHTOD: loginClicked")
-        topRatedProfileMain.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog()
-        self.ui.setupUi(self.window)
+        self.ui.setupUi(self.window, topRatedProfileMain)
         self.window.show()
         return
 
