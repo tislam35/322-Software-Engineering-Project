@@ -32,14 +32,16 @@ class Ui_Dialog(object):
                 msg = QMessageBox()
                 msg.setWindowTitle("Approved")
                 msg.setText("You have been approved to be an OU.")
+                x=msg.exec_()
 
         #else if the object with the email is a registered visitor, then status = pending
-        for object in system.registered_visitor_list:
-            if object.email==email_to_check:
+        for tuple in system.registered_visitor_list:
+            if tuple[0]==email_to_check:
                 type_user=="registered_visitor"
                 msg = QMessageBox()
                 msg.setWindowTitle("Pending")
                 msg.setText("Your registration is pending.")
+                x=msg.exec_()
 
         #else if the object is in blacklist, then status = denied
         for object in system.blacklist:
@@ -54,9 +56,10 @@ class Ui_Dialog(object):
         if type_user !="OU" and type_user!="registered_visitor" and type_user!="blacklist":
                 msg = QMessageBox()
                 msg.setWindowTitle("Email not found")
-                msg.setText("Your registration email is not found.")  
+                msg.setText("Your registration email is not found.")
+                x=msg.exec_()
 
-        x=msg.exec_()
+        
 
 
 

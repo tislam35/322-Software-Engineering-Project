@@ -12,7 +12,6 @@ from PyQt5.QtWidgets import QMessageBox
 
 # import from TeamMe classes
 from system import *
-<<<<<<< HEAD
 from gui_py_files.check_registration_status_dialog import *
 
 
@@ -51,11 +50,9 @@ class Ui_RegisterMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-=======
 
 class Ui_RegisterMain(object):
 
->>>>>>> d38fe2702d5d76b49491a6c8f7410434bc86c8f8
     def setupUi(self, RegisterMain):
         RegisterMain.setObjectName("RegisterMain")
         RegisterMain.resize(364, 558)
