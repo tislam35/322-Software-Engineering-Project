@@ -202,7 +202,7 @@ class Group(object):
     #def exit_evaluation(self):
 
     def close_group(self):
-        set_visibiliety(True)
+        set_visibiliety(False)
         exit_evaluation()
         self.members.clear()
 
