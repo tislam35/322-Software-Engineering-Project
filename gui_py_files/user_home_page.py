@@ -9,9 +9,79 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+#importing all related gui files
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from assign_VIP_dialog import *
+from send_compliment_dialog import *
+from send_complaint_dialog import *
+from meet_up_poll_dialog import *
+from more_group_profiles import *
+from more_user_profiles import *
+from kick_out_member_poll_dialog import *
+from group_closing_poll import *
+from invite_dialog import *
 
 class Ui_userHomeMain(object):
+    #assigning a vip for group eval
+    def VipAssigned(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def complimentClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_compliment()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def complaintClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_complaint()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def meetingPoll(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_meetup()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def seeMoreGroups(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_moreGroups()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def seeMoreUsers(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_moreUsers()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def kickAMember(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_kickMember()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def closeGroup(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_closingGroup()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def invited(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_inviteDialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, userHomeMain):
+        #changes
+        self.oldWindow = userHomeMain
+
         userHomeMain.setObjectName("userHomeMain")
         userHomeMain.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(userHomeMain)
@@ -945,6 +1015,19 @@ class Ui_userHomeMain(object):
         self.retranslateUi(userHomeMain)
         self.tabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(userHomeMain)
+
+        #changes
+        self.pushButton_22.clicked.connect(self.VipAssigned)
+        self.pushButton_23.clicked.connect(self.VipAssigned)
+        self.pushButton_20.clicked.connect(self.complimentClicked)
+        self.pushButton_19.clicked.connect(self.complaintClicked)
+        self.pushButton_17.clicked.connect(self.meetingPoll)
+        self.pushButton_44.clicked.connect(self.seeMoreGroups)
+        self.pushButton_43.clicked.connect(self.seeMoreUsers)
+        self.pushButton_21.clicked.connect(self.kickAMember)
+        self.pushButton_18.clicked.connect(self.closeGroup)
+        self.pushButton_16.clicked.connect(self.invited)
+
 
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
