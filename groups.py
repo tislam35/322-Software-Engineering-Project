@@ -19,6 +19,7 @@ class Group(object):
         self.remove_member_poll = None
         self.close_group_votes = 0
         self.reputation = 0
+        self.assigned_vip = ""
 
 
     def add_member(self, username):
@@ -45,6 +46,9 @@ class Group(object):
             return "Invalid Parameter"
         else:
             self.visable = val
+            
+    def assign_vip(self,vip):
+        self.assigned_vip = vip
     
     def vote_kick(self, username):
         if(username in self.members):
