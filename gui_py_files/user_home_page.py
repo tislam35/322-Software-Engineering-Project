@@ -260,6 +260,12 @@ class Ui_userHomeMain(object):
         font.setPointSize(12)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
+
+        self.pushButton_5 = QtWidgets.QPushButton(self.homeTab)
+        self.pushButton_5.setGeometry(QtCore.QRect(660, 10, 93, 28))
+        self.pushButton_5.setObjectName("pushButton_5")
+
+        
         self.tabWidget.addTab(self.homeTab, "")
         self.browserTab = QtWidgets.QWidget()
         self.browserTab.setObjectName("browserTab")
@@ -995,6 +1001,10 @@ class Ui_userHomeMain(object):
         self.plainTextEdit_3.setPlainText(system.current_user.languages)
         self.label_7.setText(_translate("userHomeMain", "Groups Affiliation"))
         self.label_9.setText(_translate("userHomeMain", "Programming Languages"))
+
+        self.pushButton_5.setText(_translate("userHomeMain", "Log out"))
+
+
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.homeTab), _translate("userHomeMain", "Home"))
         self.topUserLabel.setText(_translate("userHomeMain", "Top 3 User Profiles"))
         self.label.setText(_translate("userHomeMain", "Top 3 Group Profiles"))
