@@ -21,7 +21,7 @@ from group_closing_poll import *
 from invite_dialog import *
 from reference_dialog import *
 
-from system import *
+from TeamMe.system import system
 
 class Ui_userHomeMain(object):
      #a function to hide tabs based on user type
@@ -160,9 +160,9 @@ class Ui_userHomeMain(object):
             self.checkBox_31.click()
 
     def profileEdited(self):
-        system.current_user.intro = self.plainTextEdit.toPlainText
-        system.current_user.languages = self.plainTextEdit_3.toPlainText
-        system.current_user.affiliatedGroups = self.plainTextEdit_2.toPlainText
+        system.current_user.intro = self.plainTextEdit.toPlainText()
+        system.current_user.languages = self.plainTextEdit_3.toPlainText()
+        system.current_user.affiliatedGroups = self.plainTextEdit_2.toPlainText()
 
 
     def setupUi(self, userHomeMain):
@@ -1110,15 +1110,15 @@ class Ui_userHomeMain(object):
         self.pushButton_3.setText(_translate("userHomeMain", "Edit"))
         self.label_12.setText(_translate("userHomeMain", "John Smith"))
         self.label_6.setText(_translate("userHomeMain", "Reputation"))
-        self.label_26.setText(_translate("userHomeMain", "system.current_user.score"))
-        self.label_8.setText(_translate("userHomeMain", "system.current_user.email"))
-        self.label_10.setText(_translate("userHomeMain", "system.current_user.interests"))
+        self.label_26.setText(_translate("userHomeMain", str(system.current_user.score)))
+        self.label_8.setText(_translate("userHomeMain", system.current_user.email))
+        self.label_10.setText(_translate("userHomeMain", system.current_user.interests))
         self.label_4.setText(_translate("userHomeMain", "Interests: "))
         self.label_2.setText(_translate("userHomeMain", "About Me"))
         self.label_3.setText(_translate("userHomeMain", "Email:"))
-        self.plainTextEdit.setPlainText(_translate("userHomeMain", "system.current_user.intro"))
-        self.plainTextEdit_2.setPlainText(_translate("userHomeMain", "system.current_user.affiliatedGroups"))
-        self.plainTextEdit_3.setPlainText(_translate("userHomeMain", "system.current_user.languages"))
+        self.plainTextEdit.setPlainText(system.current_user.intro)
+        self.plainTextEdit_2.setPlainText(system.current_user.affiliatedGroups)
+        self.plainTextEdit_3.setPlainText(system.current_user.languages)
         self.label_7.setText(_translate("userHomeMain", "Groups Affiliation"))
         self.label_9.setText(_translate("userHomeMain", "Programming Languages"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.homeTab), _translate("userHomeMain", "Home"))
