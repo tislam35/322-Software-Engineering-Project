@@ -493,7 +493,7 @@ class system:
         if target_user == None:
             print("error: METHOD: copliment: no user with username found")
             return False
-        system.complaints.append((target_username, message))
+        system.compliments.append((target_username, message))
         target_user.complimentsCount += 1
         return True
 
@@ -503,6 +503,7 @@ class system:
         target_user = system.find_user_by_username(target_username)
         if target_user == None:
             print("error: METHOD: # 21: complain_user: no user with input username found")
+            return False
         system.complaints.append((target_username, message))
         target_user.complaintsCount += 1
         return True
@@ -564,10 +565,10 @@ class system:
         system.group_list.append(new_group)
 
     # 26 add member
-    @staticmethod
-    def add_member(group_id, new_member_username):
-        for groups in system.group_list:
-            if groups.groupID
+    # @staticmethod
+    # def add_member(group_id, new_member_username):
+    #     for groups in system.group_list:
+    #         if groups.groupID
 
 
 
@@ -665,7 +666,7 @@ class system:
                             for member_s in group.member_stat:
                                 if member_s[1] == username:
                                     member_s[1][1] += 1
-                                if member_s[1][1] == 3
+                                if member_s[1][1] == 3:
                                     group.members.remove(username)
                                     system.update_user_score(username, 5)
                             group.praise_poll.remove(members)
