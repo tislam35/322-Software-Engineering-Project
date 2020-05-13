@@ -42,18 +42,7 @@ from group_page import *
 
 
 class Ui_userHomeMain(object):
- #a function to hide tabs based on user type
-    def hideTab(self):
-        #If current user is an OU, need to hide tab 4 and 5 (admin tabs)
-        if isinstance(system.current_user,OU):
-            self.tabWidget.removeTab(4)
-            self.tabWidget.removeTab(5)
-        #if current user is a vip, need to hide tab 4(SU)
-        elif isinstance(system.current_user,VIP):
-            self.tabWidget.removeTab(4)
-        #if current user is a SU, need to hide tab 5(VIP)
-        elif isinstance(system.current_user,SU):
-            self.tabWidget.removeTab(5)
+
 
     def referClicked(self):
         self.window = QtWidgets.QMainWindow()
@@ -988,6 +977,27 @@ class Ui_userHomeMain(object):
         self.pushButton_58.clicked.connect(self.deductScoresClicked)
         self.pushButton_94.clicked.connect(self.voteForSUClicked)
 
+        #tab 4 -> SU
+        #tab 5 -> VIP
+
+        # print("type: "+type(system.current_user).__name__)
+        # If current user is an OU, need to hide tab 4 and 5 (admin tabs)
+        if type(system.current_user).__name__=="OU":
+           self.tabWidget.setTabEnabled(4,False)
+           self.tabWidget.setTabEnabled(5,False)
+           
+        elif type(system.current_user).__name__=="VIP":
+            # self.save = self.tabWidget.widget( 4 )
+            # self.tabWidget.removeTab(4)
+            self.tabWidget.setTabEnabled(4,False)
+
+        else:
+        # #     self.setTabEnabled(4,False)
+            self.tabWidget.setTabEnabled(5,False)
+            # self.save = self.tabWidget.widget( 4 )
+            # self.tabWidget.removeTab(5)
+
+
         #our code
         top_3 = system.top_3()
         count1 = len(top_3[0])
@@ -1238,6 +1248,5 @@ if __name__ == "__main__":
     userHomeMain = QtWidgets.QMainWindow()
     ui = Ui_userHomeMain()
     ui.setupUi(userHomeMain)
-    ui.hideTab()
     userHomeMain.show()
     sys.exit(app.exec_())
