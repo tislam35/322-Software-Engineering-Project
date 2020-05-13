@@ -25,7 +25,7 @@
       <x>10</x>
       <y>10</y>
       <width>771</width>
-      <height>561</height>
+      <height>571</height>
      </rect>
     </property>
     <property name="font">
@@ -34,7 +34,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="homeTab">
      <attribute name="title">
@@ -545,7 +545,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>20</y>
+        <y>10</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -563,7 +563,7 @@
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>20</y>
+        <y>10</y>
         <width>181</width>
         <height>41</height>
        </rect>
@@ -574,103 +574,16 @@
        </font>
       </property>
       <property name="text">
-       <string>Other messages</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>110</y>
-        <width>111</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Invitation A</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>220</y>
-        <width>141</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Invitation B</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>330</y>
-        <width>151</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Invitation C</string>
+       <string>Meet Up Poll</string>
       </property>
      </widget>
      <widget class="QTextBrowser" name="textBrowser">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>140</y>
+        <x>30</x>
+        <y>100</y>
         <width>341</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <property name="html">
-       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Invitation message: &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Details include potential projects, other group members, etc.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="textBrowser_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>250</y>
-        <width>341</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <property name="html">
-       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Invitation message: &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Details include potential projects, other group members, etc.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="textBrowser_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>360</y>
-        <width>341</width>
-        <height>71</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -691,8 +604,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>450</y>
+        <x>30</x>
+        <y>230</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -712,8 +625,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>481</y>
+        <x>130</x>
+        <y>230</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -734,62 +647,20 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>60</y>
+        <y>50</y>
         <width>341</width>
         <height>16</height>
        </rect>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>100</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Deselect All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>70</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Select All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
       </property>
      </widget>
      <widget class="Line" name="line_2">
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>60</y>
+        <y>50</y>
         <width>341</width>
         <height>16</height>
        </rect>
@@ -798,49 +669,13 @@ p, li { white-space: pre-wrap; }
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_4">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>250</y>
-        <width>341</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <property name="html">
-       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Member to be kicked out and reason(s).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_4">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>220</y>
-        <width>151</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Kick Out Member Poll</string>
-      </property>
-     </widget>
      <widget class="QTextBrowser" name="textBrowser_5">
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>140</y>
+        <y>100</y>
         <width>341</width>
-        <height>71</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -858,66 +693,11 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_5">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>110</y>
-        <width>181</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Meeting Poll A</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>70</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Select All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_8">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>100</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Deselect All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_10">
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>449</y>
+        <y>230</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -937,8 +717,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="pushButton_9">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>480</y>
+        <x>500</x>
+        <y>230</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -976,6 +756,251 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="default">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_52">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>70</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Invitation 1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_54">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>70</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Meet up Poll  1</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_11">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>310</y>
+        <width>341</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_55">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>330</y>
+        <width>211</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kick out member username</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_11">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>490</y>
+        <width>93</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Reject</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>270</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Kick out Member Poll</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>360</y>
+        <width>341</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Reasons to kick out this member&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_23">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>490</y>
+        <width>93</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string> Accept</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_12">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>310</y>
+        <width>341</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_8">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>360</y>
+        <width>341</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Group Closing reasons&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>270</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Group Closing Poll</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_25">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>490</y>
+        <width>93</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string> Accept</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_28">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>490</y>
+        <width>93</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Reject</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_56">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>330</y>
+        <width>211</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Group Closing Poll</string>
       </property>
      </widget>
     </widget>
@@ -1136,24 +1161,6 @@ p, li { white-space: pre-wrap; }
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_15">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>300</y>
-        <width>233</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
@@ -1222,48 +1229,6 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="text">
        <string>Group Closing Poll</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_19">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>140</y>
-        <width>341</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Write Complaint</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_20">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>180</y>
-        <width>341</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Write Compliment</string>
       </property>
       <property name="default">
        <bool>true</bool>
@@ -1347,6 +1312,95 @@ p, li { white-space: pre-wrap; }
        <string>3:00pm - 4:30pm, April 24, 2020.</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>330</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Group Exit Evaluation</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_13">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>370</y>
+        <width>341</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_29">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>390</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start Evaluation</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_20">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>180</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Write Compliment</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_19">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>140</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Write Complaint</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="adminSUTab">
      <attribute name="title">
@@ -1356,7 +1410,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
+        <y>40</y>
         <width>341</width>
         <height>16</height>
        </rect>
@@ -1383,32 +1437,11 @@ p, li { white-space: pre-wrap; }
        <string>Account Approval</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_11">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>60</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Select All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_12">
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>260</y>
+        <y>160</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -1425,32 +1458,11 @@ p, li { white-space: pre-wrap; }
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_13">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>60</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Deselect All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_14">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>259</y>
+        <y>159</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -1467,148 +1479,11 @@ p, li { white-space: pre-wrap; }
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>341</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>318</width>
-         <height>159</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_7">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>30</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_6">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>90</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Account B: applicant name</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_8">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Account A: applicant name</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_9">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>110</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_8">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>250</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_9">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>230</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Account C: applicant name</string>
-        </property>
-       </widget>
-      </widget>
-     </widget>
      <widget class="Line" name="line_7">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>50</y>
+        <x>10</x>
+        <y>230</y>
         <width>341</width>
         <height>16</height>
        </rect>
@@ -1620,8 +1495,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="label_20">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>10</y>
+        <x>10</x>
+        <y>200</y>
         <width>301</width>
         <height>41</height>
        </rect>
@@ -1632,14 +1507,180 @@ p, li { white-space: pre-wrap; }
        </font>
       </property>
       <property name="text">
-       <string>Compliments &amp; Complaints</string>
+       <string>Compliments</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>321</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;referral email and referral score&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>249</y>
+        <width>321</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Compliment username and details&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_85">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>241</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Account email: Account name</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_13">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>330</y>
+        <width>93</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Reject</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_24">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>329</y>
+        <width>93</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string> Accept</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_13">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>90</y>
+        <width>351</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Exit Reasons&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>60</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Group name 1</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_8">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>40</y>
+        <width>341</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
      <widget class="QLabel" name="label_21">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>300</y>
+        <x>390</x>
+        <y>10</y>
         <width>341</width>
         <height>41</height>
        </rect>
@@ -1653,11 +1694,35 @@ p, li { white-space: pre-wrap; }
        <string>Assign VIPs to Group Evaluations</string>
       </property>
      </widget>
-     <widget class="Line" name="line_8">
+     <widget class="QPushButton" name="pushButton_22">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>330</y>
+        <x>390</x>
+        <y>160</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Assign</string>
+      </property>
+      <property name="autoDefault">
+       <bool>true</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_31">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>270</y>
         <width>341</width>
         <height>16</height>
        </rect>
@@ -1666,334 +1731,30 @@ p, li { white-space: pre-wrap; }
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_2">
+     <widget class="QLabel" name="label_73">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>70</y>
-        <width>341</width>
-        <height>161</height>
+        <x>390</x>
+        <y>230</y>
+        <width>301</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
+      <property name="text">
+       <string>Punishment Actions</string>
       </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>318</width>
-         <height>159</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_10">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>30</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Compliment details&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_7">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>80</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Complaint: Username</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_10">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Compliment: Username</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_11">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>100</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Complaint details&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_12">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>250</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_11">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>230</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Account C: applicant name</string>
-        </property>
-       </widget>
-      </widget>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_3">
+     <widget class="QPushButton" name="pushButton_85">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>350</y>
-        <width>341</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>318</width>
-         <height>159</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_13">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;group exit evaluations from group members&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_14">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>130</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;group exit evaluations from group members&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_15">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>250</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_14">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>230</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Account C: applicant name</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_23">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group name 1</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_24">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>100</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group name 2</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_22">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>10</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Assign</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_23">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Assign</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="pushButton_24">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>239</y>
-        <width>93</width>
+        <x>390</x>
+        <y>320</y>
+        <width>241</width>
         <height>25</height>
        </rect>
       </property>
@@ -2003,17 +1764,38 @@ p, li { white-space: pre-wrap; }
        </font>
       </property>
       <property name="text">
-       <string> Accept</string>
+       <string>Deduct Scores for Group Member</string>
       </property>
       <property name="default">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_25">
+     <widget class="QPushButton" name="pushButton_86">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>270</y>
+        <x>390</x>
+        <y>290</y>
+        <width>241</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Shut Down Group</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_87">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>500</y>
         <width>93</width>
         <height>25</height>
        </rect>
@@ -2030,11 +1812,39 @@ p, li { white-space: pre-wrap; }
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="Line" name="line_34">
+     <widget class="QTextBrowser" name="textBrowser_26">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>330</y>
+        <y>420</y>
+        <width>321</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Complaints username and details&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_54">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>400</y>
         <width>341</width>
         <height>16</height>
        </rect>
@@ -2043,12 +1853,12 @@ p, li { white-space: pre-wrap; }
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_83">
+     <widget class="QLabel" name="label_86">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>300</y>
-        <width>281</width>
+        <y>370</y>
+        <width>301</width>
         <height>41</height>
        </rect>
       </property>
@@ -2058,372 +1868,35 @@ p, li { white-space: pre-wrap; }
        </font>
       </property>
       <property name="text">
-       <string>Group Member Complaints</string>
+       <string>Complaints</string>
       </property>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_15">
+     <widget class="QPushButton" name="pushButton_88">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>350</y>
-        <width>341</width>
-        <height>161</height>
+        <y>499</y>
+        <width>93</width>
+        <height>25</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
       </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
+      <property name="text">
+       <string> Accept</string>
       </property>
-      <property name="widgetResizable">
+      <property name="default">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_15">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>318</width>
-         <height>159</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_62">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Group name and complaint details&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_63">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>130</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Group name and complaint details&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_64">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>250</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_48">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>230</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Account C: applicant name</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_84">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group member name</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_85">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>100</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group member name</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_95">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>10</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Kick Out</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_96">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Kick Out</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Admin (VIP)*</string>
      </attribute>
-     <widget class="QScrollArea" name="scrollArea_4">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>121</y>
-        <width>341</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>318</width>
-         <height>309</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_16">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;group exit evaluations from group members&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_15">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>90</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group name 2</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_16">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group name 1</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_17">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>110</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;group exit evaluations from group members&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_18">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>180</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;group exit evaluations from group members&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_17">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>160</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group name 3</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_35">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>260</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;group exit evaluations from group members&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="checkBox_31">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>240</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Group name 4</string>
-        </property>
-       </widget>
-      </widget>
-     </widget>
      <widget class="Line" name="line_9">
       <property name="geometry">
        <rect>
@@ -2455,53 +1928,11 @@ p, li { white-space: pre-wrap; }
        <string>Group Evaluations</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_56">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>90</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Deselect All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_57">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>60</y>
-        <width>93</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Select All</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_55">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>450</y>
+        <y>200</y>
         <width>93</width>
         <height>31</height>
        </rect>
@@ -2549,278 +1980,96 @@ p, li { white-space: pre-wrap; }
        <string>User Score Change</string>
       </property>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_9">
+     <widget class="QTextBrowser" name="textBrowser_16">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>80</y>
-        <width>341</width>
-        <height>251</height>
+        <x>30</x>
+        <y>110</y>
+        <width>321</width>
+        <height>81</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
       </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;group exit evaluations from group members&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_9">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>318</width>
-         <height>249</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_36">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Score change reasons&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_37">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>130</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Score change reasons&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_38">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>250</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;referral name and referral email&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_50">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>User name 1</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_51">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>100</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>User name 2</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_58">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>10</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Assign</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_59">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Assign</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_39">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>220</y>
-          <width>321</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Score change reasons&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_60">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>190</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Assign</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_52">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>190</y>
-          <width>181</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>User name 3</string>
-        </property>
-       </widget>
-      </widget>
      </widget>
-     <widget class="QLabel" name="label_81">
+     <widget class="QTextBrowser" name="textBrowser_36">
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>370</y>
-        <width>341</width>
-        <height>31</height>
+        <y>110</y>
+        <width>321</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Score change reasons&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_58">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>200</y>
+        <width>93</width>
+        <height>28</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>8</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>Democratic SU Management</string>
+       <string>Assign</string>
+      </property>
+      <property name="autoDefault">
+       <bool>true</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
       </property>
      </widget>
-     <widget class="Line" name="line_33">
+     <widget class="QLabel" name="label_50">
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>400</y>
-        <width>341</width>
-        <height>16</height>
+        <y>80</y>
+        <width>181</width>
+        <height>21</height>
        </rect>
       </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="text">
+       <string>User name 1</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_82">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>420</y>
+        <x>30</x>
+        <y>340</y>
         <width>201</width>
         <height>21</height>
        </rect>
@@ -2832,8 +2081,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="pushButton_94">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>460</y>
+        <x>30</x>
+        <y>380</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -2851,6 +2100,50 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="default">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_81">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>290</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Democratic SU Management</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_33">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>320</y>
+        <width>341</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_51">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Group name 1</string>
       </property>
      </widget>
     </widget>
