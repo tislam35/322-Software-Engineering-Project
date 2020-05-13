@@ -11,11 +11,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 
 # import from TeamMe GUI classes
-from TeamMe.gui_py_files.user_home_page import *
+# from TeamMe.gui_py_files.user_home_page import *
 from gui_py_files.user_home_page import *
 # import from TeamMe classes
-from TeamMe.system import *
-# from system import *
+# from TeamMe.system import *
+from system import *
 class Ui_Dialog(object):
 
     def loginClicked(self):

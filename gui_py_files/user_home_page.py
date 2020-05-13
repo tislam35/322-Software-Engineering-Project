@@ -10,7 +10,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 # importing all related gui files
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 from assign_VIP_dialog import *
 from send_compliment_dialog import *
 from send_complaint_dialog import *
@@ -22,10 +25,14 @@ from group_closing_poll import *
 from invite_dialog import *
 from reference_dialog import *
 
+<<<<<<< Updated upstream
 # import os, sys
 # sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 # from system import *
 from TeamMe.system import *
+=======
+# from TeamMe.system import system
+>>>>>>> Stashed changes
 
 class Ui_userHomeMain(object):
  #a function to hide tabs based on user type

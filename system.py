@@ -6,7 +6,6 @@ from registered_visitor import *
 # SYSTEM MODULE
 
 class system:
-
     # SYSTEM CLASS VARIABLES
 
     current_user = None
@@ -26,15 +25,16 @@ class system:
     group_list = []
     unevaluated_group = []
     closed_group_list = []
-    taboo_list = ["shit", "fuck"]
+    taboo_list = ["shit", "fuck", "ass", "dumbass", "crap"]
     complaints = []
     compliments = []
     complaints_group = []
     appeals = []
-    #added variables for voting
+    # added variables for voting
     DSU_vote_count = 0
     voted_DSU = {}
-    #added a kicked list
+
+    # added a kicked list
 
     # SYSTEM CLASS METHODS
 
@@ -48,7 +48,7 @@ class system:
         for user in system.VIP_list:
             if user.username == username:
                 return user
-        return None                                     # EXCEPTIONAL CASE: not found
+        return None  # EXCEPTIONAL CASE: not found
 
     # 2 adds approved visitor to OU list
     # INPUT: registered_visitor object
@@ -63,8 +63,8 @@ class system:
                 password = str(visitor.first_name) + str(visitor.last_name)
                 print("given username: " + str(username))
                 print("given password: " + str(password))
-                new_OU = users.OU(username, password, visitor.first_name, visitor.last_name,
-                                  visitor.email, visitor.phone_number, visitor.interests)
+                new_OU = OU(username, password, visitor.first_name, visitor.last_name,
+                            visitor.email, visitor.phone_number, visitor.interests)
                 new_OU.score = visitor.score
                 new_OU.first_time_logging_in = True
                 system.OU_list.append(new_OU)
@@ -75,7 +75,6 @@ class system:
                 return True
         print("error: METHOD: # 2 add_visitor_to_OU: visitor not found")
         return False
-
 
     # 3 changes the the reputation score of OU
     # INPUT: OU/VIP username. PROCESS: update rankings after
@@ -133,7 +132,7 @@ class system:
                 return
             if user.score < 25:
                 new_OU = OU(user.username, user.password, user.first_name, user.last_name, user.email,
-                                  user.phoneNumber, user.interests)
+                            user.phoneNumber, user.interests)
                 new_OU = user.score
                 system.OU_list.append(new_OU)
                 system.OU_count += 1
@@ -142,7 +141,6 @@ class system:
                 system.update_user_ranking(system.OU_list[system.OU_count])
             return
         print("error 04: METHOD: # 4 update_user_status: no user found")
-
 
     # 5 sorts OU list or VIP list
     # INPUT: OU/VIP object
@@ -166,7 +164,7 @@ class system:
                     system.VIP_list[i], system.VIP_list[i + 1] = system.VIP_list[i + 1], system.VIP_list[i]
                     i += 1
                 return
-        elif isinstance(user, users.OU):
+        elif isinstance(user, OU):
             try:
                 index = system.OU_list.index(user)
             except:
@@ -226,7 +224,6 @@ class system:
             return
         print("error 04: METHOD: #9 blacklist_user: end of fucntion")
 
-
     # 7 vaidates login
     # INPUT: OU/VIP username and password. OUTPUT: index ELSE None. PROCESS: records current user
     @staticmethod
@@ -239,18 +236,18 @@ class system:
         for user in system.OU_list:
             if user.username == username and user.password == password:
                 system.current_user = user
-                if user.group != None:
-                    system.current_user_group = user.group
+                if user.group is not None:
+                    system.current_user_group_id = user.group
                 # return system.OU_list.index(user)
                 return True
         for user in system.VIP_list:
             if user.username == username and user.password == password:
                 system.current_user = user
-                if user.group != None:
-                    system.current_user_group = user.group
+                if user.group is not None:
+                    system.current_user_group_id = user.group
                 # return system.VIP_list.index(user)
                 return True
-        return False                                               # EXCEPTIONAL CASE
+        return False  # EXCEPTIONAL CASE
 
     # 8 returns maximum of  3 user and groups
     # OUTPUT: 2-D array
@@ -259,7 +256,7 @@ class system:
         arr_top_3 = []
         top_3_users = []
         top_3_groups = []
-        count = 1
+        count = 0
         for visitor in system.VIP_list:
             if count == 3:
                 break
@@ -285,7 +282,9 @@ class system:
     # INPUT: group name. OUTPUT: group object
     @staticmethod
     def find_group(group_id):
-        for i in range(system.group_count):
+        for i in range(len(system.group_list)):
+            print(system.group_list[i].groupID)
+            print(group_id)
             if system.group_list[i].groupID == group_id:
                 return system.group_list[i]
         return None
@@ -300,7 +299,7 @@ class system:
             index = system.group_list.index(group)
         except:
             print("error: METHOD: #10: update_group_rankings: group not found")
-        system.group_list.sort(key=lambda x: x.score, reverse = True)
+        system.group_list.sort(key=lambda x: x.score, reverse=True)
 
     # 11 register registered visitor
     # INPUT: registertion info PROCESS: check and then add info to register_visitor OUTPUT: True if successful ELSE False if same email found
@@ -318,7 +317,7 @@ class system:
                 new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
                                                             system.FSU.referenceInfo[1])
                 system.registered_visitor_list.append(new_registered_visitor)
-                system.FSU.referenceInfo = None
+                system.FSU.referenceInfo = []
                 print("visitor registered as registered visitor by FSU reference")
                 return True
             print("your FSU reference did not reference you")
@@ -328,7 +327,7 @@ class system:
                 new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
                                                             system.DSU.referenceInfo[1])
                 system.registered_visitor_list.append(new_registered_visitor)
-                system.DSU.referenceInfo = None
+                system.DSU.referenceInfo = []
                 print("visitor registered as registered visitor by DSU reference")
                 return True
             print("your DSU reference did not reference you")
@@ -339,7 +338,7 @@ class system:
                     new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
                                                                 user.referenceInfo[1])
                     system.registered_visitor_list.append(new_registered_visitor)
-                    user.referenceInfo = None
+                    user.referenceInfo = []
                     print("visitor registered as registered visitor")
                     return True
                 print("your reference did not reference you")
@@ -367,7 +366,7 @@ class system:
                 registered_visitor.appealed = True
                 system.appeals.append((registered_visitor.email, message))
                 return True
-        return False                            # EXCEPTIONAL CASE: no email found in list
+        return False  # EXCEPTIONAL CASE: no email found in list
 
     # 14 SU approved visitor
     @staticmethod
@@ -460,12 +459,12 @@ class system:
     @staticmethod
     def shutdown_and_reduce_score(group_id, amount):
         target_group = system.find_group(group_id)
-        if target_group == None:
+        if target_group is None:
             print("error: METHOD: shutdown_and_kick_out: no group with input group id found")
             return False
         for member_username in target_group.members:
             target_member = system.find_user_by_username(member_username)
-            if target_member == None:
+            if target_member is None:
                 print("error: METHOD: shutdown_group_and_kick_out: no member found in list")
                 return False
             system.update_user_score(member_username, amount)
@@ -485,7 +484,7 @@ class system:
             return False
         for member_username in target_group.members:
             target_member = system.find_user_by_username(member_username)
-            if target_member == None:
+            if target_member is None:
                 print("error: METHOD: shutdown_group_and_kick_out: no member found in list")
                 return False
             system.update_user_score(member_username, score)
@@ -525,36 +524,51 @@ class system:
     # 23 invite group members
     @staticmethod
     def invite(invited_username, group_id):
+        print(invited_username)
+        print(group_id)
+        print(system.current_user_group_id)
+        print(100)
         target_user = system.find_user_by_username(invited_username)
-        if target_user == None:
-            print("error: METHOD: #23: invite: no users with input user name found")
+        if target_user is None:
+            print("error 01: METHOD: #23: invite: no users with input user name found")
             return False
-        if target_user.group != None:
+        print(200)
+        if target_user.group is not None:
             print("user is already in group")
             return False
+        print(300)
         target_group = system.find_group(group_id)
-        if target_group == None:
-            print("error: METHOD: #23:invite: no group with input groud id")
+        print(300.1)
+        if target_group is None:
+            print("error 02: METHOD: #23:invite: no group with input groud id")
             return False
+        print(300)
+        print(target_user.whiteBox)
+        print(305)
         for white_box_username in target_user.whiteBox:
+            print(310)
             if system.current_user.username == white_box_username:
                 target_group.members.append(target_user.username)
                 print("current_user in invited's whitebox. Invited add to group")
                 return True
+        print(400)
         for black_box_username in target_user.blackBox:
+            print(410)
             if system.current_user.username == black_box_username:
                 print("current_user in invited's blackbox. Invited not sent.")
                 print(target_user.autoMsg)
                 return True
+        print(500)
         target_user.invites.append((group_id, system.current_user.username))
         print("invite send to" + str(target_user.username))
+        print(600)
         return True
 
     # 24 reject invite
     @staticmethod
     def reject_invite(group_id):
         target_group = system.find_group(group_id)
-        if target_group ==  None:
+        if target_group == None:
             print("error: METHOD: reject_invite: group with input group id not found")
         for current_user_invite in system.current_user.invites:
             if target_group.groupID == current_user_invite[0]:
@@ -567,6 +581,7 @@ class system:
     def create_group(group_name, initial_username):
         new_group = Group(group_name)
         new_group.members.append(initial_username)
+        system.find_user_by_username(initial_username).group = new_group.groupID
         new_group.member_stat.append((initial_username, 0, 0, 0))
         system.group_list.append(new_group)
 
@@ -574,7 +589,7 @@ class system:
     @staticmethod
     def add_member(group_id, new_member_username):
         user = system.find_user_by_username(new_member_username)
-        if user == None:
+        if user is None:
             print("error: METHOD: #26: add_member: user with input user id not found")
             return False
         if user.group != None:
@@ -595,7 +610,7 @@ class system:
             print("error: METHOD: #27 : remove_member_poll: current user not in a group")
             return False
         group = system.find_group(system.current_user_group_id)
-        if group.remove_member_poll_member != None:
+        if group.remove_member_poll_member is not None:
             if system.current_user.username in group.remove_member_poll_for or system.current_user.username in group.remove_member_poll_against:
                 print("error: METHOD: #30: already voted")
                 return False
@@ -667,7 +682,6 @@ class system:
             group.meet_poll = []
             group.meet_poll_voters = []
 
-
     # 30 vote to praise
     @staticmethod
     def vote_to_praise(bool):
@@ -710,7 +724,6 @@ class system:
         # else:
         #     print("no group member with input username found")
         #     return False
-
 
     # 31 vote to warn
     @staticmethod
@@ -790,10 +803,104 @@ class system:
                 system.group_list.remove(group)
                 system.group_list += 1
 
+    # 34 add reference
+    @staticmethod
+    def add_reference(visitor_email, visitor_score):
+        v_score = 0
+        try:
+            v_score = int(visitor_score)
+        except:
+            return False
+        print(4)
+        print(v_score)
+        all_users = system.OU_list + system.VIP_list + system.blacklist + system.kicked_list
+        for this_user in all_users:
+            if this_user.email == visitor_email:
+                return False
+        print(5)
+        if isinstance(system.current_user, VIP):
+            print(8)
+            if v_score < 0 or v_score > 20:
+                return False
+            print(9)
+            if len(system.current_user.referenceInfo) == 0:
+                system.current_user.referenceInfo.append(visitor_email)
+                system.current_user.referenceInfo.append(v_score)
+            else:
+                system.current_user.referenceInfo[0] = visitor_email
+                system.current_user.referenceInfo[1] = v_score
+            print(10)
+            return True
+        elif isinstance(system.current_user, OU):
+            if v_score < 0 or v_score > 10:
+                return False
+            system.current_user.referenceInfo[0] = visitor_email
+            system.current_user.referenceInfo[1] = v_score
+            return True
+        return False
 
 
 # initial user: FSU
 
-system.FSU = users.SU("FSU", "pass123", "Group", "S", "FSU@gmail.com", "718-123-567", "coding, teamwork")
+system.FSU = SU("FSU", "pass123", "Group", "S", "FSU@gmail.com", "718-123-567", "coding, teamwork")
 system.FSU.score = 100
-system.FSU.referenceInfo = ("kim.456@gmail.com", 20)
+system.FSU.intro = "Hello, I am the FSU. I founded this software system so that people can collaborate on do-good prjects. I always love to learn. In fact, learning is my favorite thing to do. I also like to build start-ups."
+system.FSU.languages = "Java\nPython\nJavascript\nSQL\nTypeScript\nKotlin"
+system.FSU.affiliatedGroups = "Association for Computing Machinery (ACM)\nIEEE Computer Society\nComputing Reaseach Association\nIACSIT\nCCNY Alumni Association"
+system.FSU.referenceInfo = ["kim.456@gmail.com", 20]
+
+entered_first_name = "Kim"
+entered_last_name = "Zhang"
+entered_email = "kim.456@gmail.com"
+entered_phone_number = "718-234-6543"
+entered_interests = "chess, basketball"
+entered_reference_username = "FSU"
+
+system.register(entered_first_name, entered_last_name,
+                entered_email, entered_phone_number,
+                entered_interests, entered_reference_username)
+system.approve("kim.456@gmail.com")
+
+system.FSU.referenceInfo = ["henry263@gmail.com", 10]
+
+entered_first_name = "Henry"
+entered_last_name = "Cruz"
+entered_email = "henry263@gmail.com"
+entered_phone_number = "718-234-6543"
+entered_interests = "chess, basketball"
+entered_reference_username = "FSU"
+
+system.register(entered_first_name, entered_last_name,
+                entered_email, entered_phone_number,
+                entered_interests, entered_reference_username)
+system.approve("henry263@gmail.com")
+
+system.FSU.referenceInfo = ["lisa000@college.edu", 15]
+
+entered_first_name = "Lisa"
+entered_last_name = "Hamilton"
+entered_email = "lisa000@college.edu"
+entered_phone_number = "718-851-6233"
+entered_interests = "rowing, basketball, computing"
+entered_reference_username = "FSU"
+
+system.register(entered_first_name, entered_last_name,
+                entered_email, entered_phone_number,
+                entered_interests, entered_reference_username)
+system.approve("lisa000@college.edu")
+
+system.create_group("Happy Helpers", "LisaHamilton1")
+
+system.create_group("New_York_Developers_Harold_Square", "HenryCruz1")
+
+for group in system.group_list:
+    print("gruop id")
+    print(group.groupID)
+
+for groups in system.group_list:
+    print(str(groups.groupID) + " " + str(groups.groupName))
+
+print(123)
+print(system.find_user_by_username("LisaHamilton1").group)
+print(system.find_user_by_username("HenryCruz1").group)
+print(123)
