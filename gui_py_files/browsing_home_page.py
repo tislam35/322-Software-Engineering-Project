@@ -10,7 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 # import form TeamMe GUI class
 import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from Register import *
 from Login import *
 from more_group_profiles import *
@@ -368,26 +368,38 @@ class Ui_topRatedProfileMain(object):
         i1 = 0
         i2 = 0
         if i2 != count2:
-            info = str(top_3[1][0].groupName) + "\n" + "Score: " + str(top_3[1][0].reputation)
+            info = str(top_3[1][0].groupName) + "\nGroup Id: " + str(top_3[1][0].groupID) + "\nScore: " + str(
+                top_3[1][0].reputation)
             self.group1_textBrowser.setText(info)
             i2 += 1
             if i2 != count2:
-                info = str(top_3[1][1].groupName) + "\n" + "Score: " + str(top_3[1][1].reputation)
+                info = str(top_3[1][1].groupName) + "\nGroup Id: " + str(top_3[1][1].groupID) + "\nScore: " + str(
+                    top_3[1][1].reputation)
                 self.group2_textBrowser.setText(info)
                 i2 += 1
                 if i2 != count2:
-                    info = str(top_3[1][2].groupName) + "\n" + "Score: " + str(top_3[1][2].reputation)
+                    info = str(top_3[1][2].groupName) + "\nGroup Id: " + str(top_3[1][2].groupID) + "\nScore: " + str(
+                        top_3[1][2].reputation)
                     self.group3_textBrowser.setText(info)
         if i1 != count1:
-            info = str(top_3[0][0].username) + "\nemail: " + str(top_3[0][0].reputation) + "\nScore: " + str(top_3[0][0].score)
+            print(i1)
+            print(count1)
+            info = str(top_3[0][0].username) + "\nemail: " + str(top_3[0][0].email) + "\nPhone-number: " + str(
+                top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][0].score)
             self.user1_textBrowser.setText(info)
             i1 += 1
             if i1 != count1:
-                info = str(top_3[0][1].username) + "\nemail: " + str(top_3[0][1].reputation) + "\nScore: " + str(top_3[0][1].score)
+                print(i1)
+                print(count1)
+                info = str(top_3[0][1].username) + "\nemail: " + str(top_3[0][1].email) + "\nPhone-number: " + str(
+                    top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][1].score)
                 self.user2_textBrowser.setText(info)
                 i1 += 1
                 if i1 != count1:
-                    info = str(top_3[0][2].username) + "\nemail: " + str(top_3[0][2].reputation) + "\nScore: " + str(top_3[0][2].score)
+                    print(i1)
+                    print(count1)
+                    info = str(top_3[0][2].username) + "\nemail: " + str(top_3[0][2].email) + "\nPhone-number: " + str(
+                        top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][2].score)
                     self.user3_textBrowser.setText(info)
 
         self.buttonRegister.clicked.connect(self.registerClicked)
@@ -435,58 +447,58 @@ class Ui_topRatedProfileMain(object):
         self.gb1 = None
         self.gb2 = None
         self.gb3 = None
-        topList = system.top_3()
-        topUsers = topList[0]
-        topGroups = topList[1]
-        count = 0
-        for i in topGroups:
-            gname = i.groupName
-            gmemb = i.members
-            gscor = i.reputation
-            gmembNames = []
-            for j in gmemb:
-                gmembNames.append(j.username)
-            names = ", ".join(gmembNames)
-            if count == 0:
-                self.gb1 = i
-                self.group1_button.setEnabled(True)
-                self.group1_button.setText(gname)
-                self.group1_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
-                count += 1
-            elif count == 1:
-                self.gb2 = i
-                self.group2_button.setEnabled(True)
-                self.group2_button.setText(gname)
-                self.group2_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
-                count += 1
-            elif count == 2:
-                self.gb3 = i
-                self.group3_button.setEnabled(True)
-                self.group3_button.setText(gname)
-                self.group3_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
-                count += 1
-        count = 0
-        for i in topUsers:
-            uname = i.username
-            uscor = i.score
-            if count == 0:
-                self.ub1 = i
-                self.user1_button.setEnabled(True)
-                self.user1_button.setText(uname)
-                self.user1_textBrowser.setText("SCORE: " + str(uscor))
-                count += 1
-            elif count == 1:
-                self.ub2 = i
-                self.user2_button.setEnabled(True)
-                self.user2_button.setText(uname)
-                self.user2_textBrowser.setText("SCORE: " + str(uscor))
-                count += 1
-            elif count == 2:
-                self.ub3 = i
-                self.user3_button.setEnabled(True)
-                self.user3_button.setText(uname)
-                self.user3_textBrowser.setText("SCORE: " + str(uscor))
-                count += 1
+        # topList = system.top_3()
+        # topUsers = topList[0]
+        # topGroups = topList[1]
+        # count = 0
+        # for i in topGroups:
+        #     gname = i.groupName
+        #     gmemb = i.members
+        #     gscor = i.reputation
+        #     gmembNames = []
+        #     for j in gmemb:
+        #         gmembNames.append(j.username)
+        #     names = ", ".join(gmembNames)
+        #     if count == 0:
+        #         self.gb1 = i
+        #         self.group1_button.setEnabled(True)
+        #         self.group1_button.setText(gname)
+        #         self.group1_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
+        #         count += 1
+        #     elif count == 1:
+        #         self.gb2 = i
+        #         self.group2_button.setEnabled(True)
+        #         self.group2_button.setText(gname)
+        #         self.group2_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
+        #         count += 1
+        #     elif count == 2:
+        #         self.gb3 = i
+        #         self.group3_button.setEnabled(True)
+        #         self.group3_button.setText(gname)
+        #         self.group3_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
+        #         count += 1
+        # count = 0
+        # for i in topUsers:
+        #     uname = i.username
+        #     uscor = i.score
+        #     if count == 0:
+        #         self.ub1 = i
+        #         self.user1_button.setEnabled(True)
+        #         self.user1_button.setText(uname)
+        #         self.user1_textBrowser.setText("SCORE: " + str(uscor))
+        #         count += 1
+        #     elif count == 1:
+        #         self.ub2 = i
+        #         self.user2_button.setEnabled(True)
+        #         self.user2_button.setText(uname)
+        #         self.user2_textBrowser.setText("SCORE: " + str(uscor))
+        #         count += 1
+        #     elif count == 2:
+        #         self.ub3 = i
+        #         self.user3_button.setEnabled(True)
+        #         self.user3_button.setText(uname)
+        #         self.user3_textBrowser.setText("SCORE: " + str(uscor))
+        #         count += 1
 
 if __name__ == "__main__":
     import sys
