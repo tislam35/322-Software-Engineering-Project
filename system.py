@@ -1,43 +1,40 @@
-# SYSTEM MODULE
-
-# import statments
-import users
 from users import *
 from groups import *
-
-# SYSTEM CLASS
 from registered_visitor import *
 
+
+# SYSTEM MODULE
 
 class system:
 
     # SYSTEM CLASS VARIABLES
 
     current_user = None
-    current_user_groups = []
+    current_user_group_id = None
     FSU = None
-    DSU = None              # democratic super user
+    DSU = None
+    registered_visitor_list = []
     OU_count = 0
     OU_list = []
     VIP_count = 0
     VIP_list = []
+    kicked_count = 0
+    kicked_list = []
     blacklist_count = 0
     blacklist = []
     group_count = 0
     group_list = []
+    unevaluated_group = []
     closed_group_list = []
     taboo_list = ["shit", "fuck"]
-    registered_visitor_list = []
     complaints = []
-    complaints_group = []
     compliments = []
+    complaints_group = []
     appeals = []
     #added variables for voting
     DSU_vote_count = 0
     voted_DSU = {}
     #added a kicked list
-    kicked_count = 0
-    kicked_list = []
 
     # SYSTEM CLASS METHODS
 
@@ -198,6 +195,11 @@ class system:
         user = system.find_user_by_username(username)
         if user == None:
             print("error: METHOD: # 9: blacklist_user: no user found")
+        for group in system.group_list:
+            for member in group.members:
+                if member.username == username:
+                    group.members.remove(username)
+                    break
         if isinstance(user, VIP):
             index = None
             try:
@@ -229,20 +231,20 @@ class system:
     # INPUT: OU/VIP username and password. OUTPUT: index ELSE None. PROCESS: records current user
     @staticmethod
     def login(username, password):
-        print("logintest1")
         for user in system.OU_list:
-            print("logintest2")
             if user.username == username and user.password == password:
                 system.current_user = user
+                if user.group != None:
+                    system.current_user_group = user.group
                 # return system.OU_list.index(user)
                 return True
         for user in system.VIP_list:
-            print("logintest3")
             if user.username == username and user.password == password:
                 system.current_user = user
+                if user.group != None:
+                    system.current_user_group = user.group
                 # return system.VIP_list.index(user)
                 return True
-        print("logintest4")
         return False                                               # EXCEPTIONAL CASE
 
     # 8 returns maximum of  3 user and groups
@@ -286,8 +288,8 @@ class system:
     # 10 update group rankings
     # INPUT: group name PROCESS: sort
     @staticmethod
-    def update_group_rankings(group_name):
-        group = system.find_group(group_name)
+    def update_group_rankings(group_id):
+        group = system.find_group(group_id)
         index = None
         try:
             index = system.group_list.index(group)
@@ -385,6 +387,7 @@ class system:
             for member_username in group.members:
                 if member_username == target_user.username:
                     group.members.remove(member_username)
+                    break
         # take out form OU or VIP list and to kicked_list
         # print("test2")
         if isinstance(target_user, VIP):
@@ -442,10 +445,10 @@ class system:
                 return False
             system.kick(member_username)
         for complained_group in system.complaints_group:
-            if target_group.groupID == complained_group[1]:
+            if target_group.groupID == complained_group.groupID:
                 system.complaints_group.remove(complained_group)
-        system.group_list.remove(target_group)
         system.closed_group_list.append(target_group)
+        system.group_list.remove(target_group)
         return True
 
     # 18 shutdown group and reduce score for each
@@ -464,8 +467,8 @@ class system:
         for complained_group in system.complaints_group:
             if target_group.groupID == complained_group[1]:
                 system.complaints_group.remove(complained_group)
-        system.group_list.remove(target_group)
         system.closed_group_list.append(target_group)
+        system.group_list.remove(target_group)
         return True
 
     # 19 assign score to evaluated group
@@ -492,6 +495,7 @@ class system:
             return False
         system.complaints.append((target_username, message))
         target_user.complimentsCount += 1
+        return True
 
     # 21 complaint target user
     @staticmethod
@@ -501,6 +505,7 @@ class system:
             print("error: METHOD: # 21: complain_user: no user with input username found")
         system.complaints.append((target_username, message))
         target_user.complaintsCount += 1
+        return True
 
     # 22 complaint target group
     @staticmethod
@@ -517,6 +522,9 @@ class system:
         target_user = system.find_user_by_username(invited_username)
         if target_user == None:
             print("error: METHOD: #23: invite: no users with input user name found")
+            return False
+        if target_user.group != None:
+            print("user is already in group")
             return False
         target_group = system.find_group(group_id)
         if target_group == None:
@@ -550,10 +558,150 @@ class system:
 
     # 25 create group
     @staticmethod
-    def create_group (group_name, initial_username):
+    def create_group(group_name, initial_username):
         new_group = Group(group_name)
         new_group.members.append(initial_username)
         system.group_list.append(new_group)
+
+    # 26 add member
+    @staticmethod
+    def add_member(group_id, new_member_username):
+        for groups in system.group_list:
+            if groups.groupID
+
+
+
+    # 27 remove member
+    @staticmethod
+    def remove_member_poll(username):
+        group = system.find_group(system.current_user_group_id)
+        if username in group.members:
+            for member in group.remove_member_poll:
+                if member[1] == member[2]:
+                    print("already vote this member")
+                    return False
+            group.remove_member_poll.append((username, system.current_user.username))
+            count = 1
+            for member in group.remove_member_poll:
+                if member[1] == username:
+                    count += 1
+            if count == len(group.members):
+                group.members.remove(username)
+                system.update_user_score(username, -10)
+        else:
+            print("no group member with input username found")
+            return False
+
+    # 28 vote to meeting time
+    def meeting_time_polI(time):
+        group = system.find_group(system.current_user_group_id)
+        if system.current_user.username in group.meet_poll_voters:
+            print("alrady voted")
+            return False
+        is_there = False
+        for time_info in group.meet_poll:
+            if time_info[1] == time:
+                is_there = True
+                time_info[2] += 1
+                print("vote successful")
+                group.meet_poll_voters.append(system.current_user.username)
+        if is_there == False:
+            group.meet_poll.append(time, 1)
+            group.meet_poll_voters.append(system.current_user.username)
+
+        if len(group.meet_poll_voters) == len(group.members):
+            time = None
+            count = 0
+            same = False
+            for time_info in group.meet_poll:
+                if time_info[2] == count:
+                    same = True
+                    break
+                if time_info[2] > count:
+                    time = time_info[1]
+                    same = False
+            if same == False:
+                group.meet_time = time
+                print("time with most votes were chosen")
+            else:
+                group.meet_time = None
+                print("top votes are the same")
+            group.meet_poll = []
+            group.meet_poll_voters = []
+
+
+    # 30 vote to praise
+    @staticmethod
+    def vote_to_praise(username):
+        group = system.find_group(system.current_user_group_id)
+        if username in group.members:
+            for members in group.praise_poll:
+                if members[1] == username:
+                    if system.current_user not in members[2]:
+                        members[2].append(system.current_user.username)
+                        if len(members[2]) == len(group.members) - 1:
+                            for member_s in group.member_stat:
+                                if member_s[1] == username:
+                                    member_s[1][2] += 1
+                            group.praise_poll.remove(members)
+                        print("successful vote for praise")
+                        return
+            group.praise_pool.append(username,system.current_user.username)
+        else:
+            print("no group member with input username found")
+            return False
+
+
+    # 31 vote to warn
+    @staticmethod
+    def vote_to_warm(username):
+        group = system.find_group(system.current_user_group_id)
+        if username in group.members:
+            for members in group.warn_poll:
+                if members[1] == username:
+                    if system.current_user not in members[2]:
+                        members[2].append(system.current_user.username)
+                        if len(members[2]) == len(group.members) - 1:
+                            for member_s in group.member_stat:
+                                if member_s[1] == username:
+                                    member_s[1][1] += 1
+                                if member_s[1][1] == 3
+                                    group.members.remove(username)
+                                    system.update_user_score(username, 5)
+                            group.praise_poll.remove(members)
+                        print("successful vote for praise")
+                        return
+            group.praise_pool.append(username,system.current_user.username)
+        else:
+            print("no group member with input username found")
+            return False
+
+    # 32 vote to close
+    def vote_close_group():
+        if system.current_user == None:
+            print("no current user")
+        for group in system.group_list:
+            if group.groupID == system.current_user_group_id:
+                if system.current_user.username in group.close_group_members_vote:
+                    print("already voted to close group")
+                    return False
+                else:
+                    group.close_group_votes += 1
+                    group.close_group_members_vote.append(system.current_user.username)
+                    if len(group.close_group_members_vote) == len(group.members):
+                        system.close_group()
+                    print("vote submitted")
+                    system.close_group()
+                    return True
+
+    # 33 close group
+    @staticmethod
+    def close_group():
+        for group in system.group_list:
+            if group.groupID == system.current_user_group_id:
+                system.unevaluated_group.append(group)
+                system.group_list.remove(group)
+                system.group_list += 1
 
 
 
