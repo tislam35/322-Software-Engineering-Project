@@ -8,12 +8,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from TeamMe.system import*
 
 class Ui_closingGroup(object):
 
     def votedToClose(self):
-        #your code here
+        #your code 
+        #the attribute under this group - started_close_group 
+        #will become true
+        system.start_close_group()
         self.oldWindow.close()
 
     def setupUi(self, Dialog):

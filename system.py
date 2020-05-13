@@ -775,6 +775,14 @@ class system:
         #     print("no group member with input username found")
         #     return False
 
+    @staticmethod
+    def start_close_group():
+        for group in system.group_list:
+            if group.groupID == system.current_user_group_id:
+                group.started_close_group=True
+                group.close_group_votes=1
+
+
     # 32 vote to close
     @staticmethod
     def vote_close_group():

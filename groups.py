@@ -11,12 +11,14 @@ class Group(object):
         self.groupName = groupName
         self.members = []
         self.meetings = []
+        self.meeting_polls=[]
         # member_stat = (memberUsername, missed meeting count, warning count, praise count, commit count)
         self.member_stat = []
         self.meet_poll = None
         self.warn_poll = None
         self.praise_poll = None
         self.remove_member_poll = None
+        self.started_close_group=False
         self.close_group_votes = 0
         self.reputation = 0
         self.assigned_vip = ""
@@ -159,9 +161,11 @@ class Group(object):
                 print("Group is closing")
                 #self.exit_evaluation
                     
-    def meeting_poll(self, time):
-        print("Vote for a meeting at " + str(time))
-        print("y/n?")
+
+
+    def response_meeting_poll(self.time):
+        # print("Vote for a meeting at " + str(time))
+        # print("y/n?")
         counter = 0
         neutral =[]
         for member in self.members:
