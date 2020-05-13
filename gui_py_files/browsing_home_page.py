@@ -18,6 +18,7 @@ from more_user_profiles import *
 from group_page import *
 from Profile import *
 from system import *
+import sys, traceback
 
 class Ui_topRatedProfileMain(object):
      # the commented code causes problems after opening a third window
@@ -31,12 +32,15 @@ class Ui_topRatedProfileMain(object):
         return
 
     def loginClicked(self):
-        print("MEHTOD: loginClicked")
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self.window, topRatedProfileMain)
-        self.window.show()
-        return
+        try:
+            print("MEHTOD: loginClicked")
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_login()
+            self.ui.setupUi(self.window, self.oldWindow)
+            self.window.show()
+            return
+        except:
+            traceback.print_exc()
 
     def seeMoreGroups(self):
         self.window = QtWidgets.QMainWindow()
@@ -87,6 +91,7 @@ class Ui_topRatedProfileMain(object):
         self.window.show()
 
     def setupUi(self, topRatedProfileMain):
+        self.oldWindow = topRatedProfileMain
         topRatedProfileMain.setObjectName("topRatedProfileMain")
         topRatedProfileMain.resize(795, 584)
         topRatedProfileMain.setAutoFillBackground(False)
