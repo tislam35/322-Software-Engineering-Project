@@ -17,6 +17,7 @@ from more_group_profiles import *
 from more_user_profiles import *
 from group_page import *
 from Profile import *
+# from system import *
 
 class Ui_topRatedProfileMain(object):
      # the commented code causes problems after opening a third window
@@ -360,6 +361,34 @@ class Ui_topRatedProfileMain(object):
         QtCore.QMetaObject.connectSlotsByName(topRatedProfileMain)
 
         # our code
+
+        top_3 = system.top_3()
+        count1 = len(top_3[0])
+        count2 = len(top_3[1])
+        i1 = 0
+        i2 = 0
+        if i2 != count2:
+            info = str(top_3[1][0].groupName) + "\n" + "Score: " + str(top_3[1][0].reputation)
+            self.group1_textBrowser.setText(info)
+            i2 += 1
+            if i2 != count2:
+                info = str(top_3[1][1].groupName) + "\n" + "Score: " + str(top_3[1][1].reputation)
+                self.group2_textBrowser.setText(info)
+                i2 += 1
+                if i2 != count2:
+                    info = str(top_3[1][2].groupName) + "\n" + "Score: " + str(top_3[1][2].reputation)
+                    self.group3_textBrowser.setText(info)
+        if i1 != count1:
+            info = str(top_3[0][0].username) + "\nemail: " + str(top_3[0][0].reputation) + "\nScore: " + str(top_3[0][0].score)
+            self.user1_textBrowser.setText(info)
+            i1 += 1
+            if i1 != count1:
+                info = str(top_3[0][1].username) + "\nemail: " + str(top_3[0][1].reputation) + "\nScore: " + str(top_3[0][1].score)
+                self.user2_textBrowser.setText(info)
+                i1 += 1
+                if i1 != count1:
+                    info = str(top_3[0][2].username) + "\nemail: " + str(top_3[0][2].reputation) + "\nScore: " + str(top_3[0][2].score)
+                    self.user3_textBrowser.setText(info)
 
         self.buttonRegister.clicked.connect(self.registerClicked)
         self.buttonLogin.clicked.connect(self.loginClicked)
