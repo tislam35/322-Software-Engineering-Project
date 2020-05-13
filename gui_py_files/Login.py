@@ -16,7 +16,7 @@ from gui_py_files.user_home_page import *
 # import from TeamMe classes
 # from TeamMe.system import *
 from system import *
-class Ui_Dialog(object):
+class Ui_login(object):
 
     def loginClicked(self):
         print("METHOD: loginClicked")
@@ -37,7 +37,7 @@ class Ui_Dialog(object):
             self.firstWindow.close()
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_userHomeMain()
-            self.ui.setupUi(self.window)
+            self.ui.setupUi(self.window, self.firstWindow)
             self.window.show()
 
     def setupUi(self, Dialog, firstWindow):
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_login()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
