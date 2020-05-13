@@ -163,30 +163,30 @@ class Group(object):
                     
 
 
-    def response_meeting_poll(self.time):
-        # print("Vote for a meeting at " + str(time))
-        # print("y/n?")
-        counter = 0
-        neutral =[]
-        for member in self.members:
-            vote = input()
-            if(vote == 'y'):
-                counter += 1
-            elif(vote == 'n'):
-                counter -= 1
-            else:
-                neutral.append(member)
+    # def response_meeting_poll(self.time):
+    #     # print("Vote for a meeting at " + str(time))
+    #     # print("y/n?")
+    #     counter = 0
+    #     neutral =[]
+    #     for member in self.members:
+    #         vote = input()
+    #         if(vote == 'y'):
+    #             counter += 1
+    #         elif(vote == 'n'):
+    #             counter -= 1
+    #         else:
+    #             neutral.append(member)
 
-        if(neutral == True):
-            return "Vote is cancelled, not everyone voted."   
-        else:     
-            if(counter == 0):
-                print("Equal number of votes, meeting not set.")
-            elif(counter < 0):
-                print("Meeting time is not convenient to majority")
-            else:
-                print("Meeting is set to " + str(time))
-                self.meetings.append(time)
+    #     if(neutral == True):
+    #         return "Vote is cancelled, not everyone voted."   
+    #     else:     
+    #         if(counter == 0):
+    #             print("Equal number of votes, meeting not set.")
+    #         elif(counter < 0):
+    #             print("Meeting time is not convenient to majority")
+    #         else:
+    #             print("Meeting is set to " + str(time))
+    #             self.meetings.append(time)
             
 
     #def exit_evaluation(self):

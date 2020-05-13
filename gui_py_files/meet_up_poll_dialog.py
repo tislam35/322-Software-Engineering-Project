@@ -14,6 +14,11 @@ class Ui_meetup(object):
 
     def meetingTimeChosen(self):
         #code here
+        Qdatetime=self.dateTimeEdit.dateTime()
+        time=Qdatetime.toString(self.dateTimeEdit.displayFormat())
+
+        
+
         pass
 
     def setupUi(self, Dialog):

@@ -8,6 +8,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+# import os, sys
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+# from system import *
+
 from TeamMe.system import*
 
 class Ui_closingGroup(object):
