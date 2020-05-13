@@ -371,36 +371,48 @@ class Ui_topRatedProfileMain(object):
             info = str(top_3[1][0].groupName) + "\nGroup Id: " + str(top_3[1][0].groupID) + "\nScore: " + str(
                 top_3[1][0].reputation)
             self.group1_textBrowser.setText(info)
+            self.group1_button.setEnabled(True)
+            self.gb1 = top_3[1][0]
             i2 += 1
             if i2 != count2:
                 info = str(top_3[1][1].groupName) + "\nGroup Id: " + str(top_3[1][1].groupID) + "\nScore: " + str(
                     top_3[1][1].reputation)
                 self.group2_textBrowser.setText(info)
+                self.group2_button.setEnabled(True)
+                self.gb2 = top_3[1][1]
                 i2 += 1
                 if i2 != count2:
                     info = str(top_3[1][2].groupName) + "\nGroup Id: " + str(top_3[1][2].groupID) + "\nScore: " + str(
                         top_3[1][2].reputation)
                     self.group3_textBrowser.setText(info)
+                    self.group3_button.setEnabled(True)
+                    self.gb3 = top_3[1][2]
         if i1 != count1:
             print(i1)
             print(count1)
             info = str(top_3[0][0].username) + "\nemail: " + str(top_3[0][0].email) + "\nPhone-number: " + str(
                 top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][0].score)
             self.user1_textBrowser.setText(info)
+            self.user1_button.setEnabled(True)
+            self.ub1 = top_3[0][0]
             i1 += 1
             if i1 != count1:
                 print(i1)
                 print(count1)
                 info = str(top_3[0][1].username) + "\nemail: " + str(top_3[0][1].email) + "\nPhone-number: " + str(
-                    top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][1].score)
+                    top_3[0][1].phoneNumber) + "\nScore: " + str(top_3[0][1].score)
                 self.user2_textBrowser.setText(info)
+                self.user2_button.setEnabled(True)
+                self.ub2 = top_3[0][1]
                 i1 += 1
                 if i1 != count1:
                     print(i1)
                     print(count1)
                     info = str(top_3[0][2].username) + "\nemail: " + str(top_3[0][2].email) + "\nPhone-number: " + str(
-                        top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][2].score)
+                        top_3[0][2].phoneNumber) + "\nScore: " + str(top_3[0][2].score)
                     self.user3_textBrowser.setText(info)
+                    self.user3_button.setEnabled(True)
+                    self.ub3 = top_3[0][2]
 
         self.buttonRegister.clicked.connect(self.registerClicked)
         self.buttonLogin.clicked.connect(self.loginClicked)

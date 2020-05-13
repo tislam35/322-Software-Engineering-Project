@@ -23,6 +23,8 @@ from kick_out_member_poll_dialog import *
 from group_closing_poll import *
 from invite_dialog import *
 from reference_dialog import *
+from Profile import *
+from group_page import *
 
 
 # import os, sys
@@ -108,66 +110,47 @@ class Ui_userHomeMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-    def selectAllInv(self):
-        if self.checkBox.isChecked() != True:
-            self.checkBox.click()
-        if self.checkBox_2.isChecked() != True:
-            self.checkBox_2.click()
-        if self.checkBox_3.isChecked() != True:
-            self.checkBox_3.click()
 
-    def deselectAllInv(self):
-        if self.checkBox.isChecked() == True:
-            self.checkBox.click()
-        if self.checkBox_2.isChecked() == True:
-            self.checkBox_2.click()
-        if self.checkBox_3.isChecked() == True:
-            self.checkBox_3.click()
-
-    def selectAllMsg(self):
-        if self.checkBox_4.isChecked() != True:
-            self.checkBox_4.click()
-        if self.checkBox_5.isChecked() != True:
-            self.checkBox_5.click()
-
-    def deselectAllMsg(self):
-        if self.checkBox_4.isChecked() == True:
-            self.checkBox_4.click()
-        if self.checkBox_5.isChecked() == True:
-            self.checkBox_5.click()
-
-    def selectAllAcc(self):
-        if self.checkBox_6.isChecked() != True:
-            self.checkBox_6.click()
-        if self.checkBox_8.isChecked() != True:
-            self.checkBox_8.click()
+    def group1Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupWindow()
+        self.ui.setupUi(self.window, self.gb1)
+        self.window.show()
 
 
-    def deselectAllAcc(self):
-        if self.checkBox_6.isChecked() == True:
-            self.checkBox_6.click()
-        if self.checkBox_8.isChecked() == True:
-            self.checkBox_8.click()
+    def group2Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupWindow()
+        self.ui.setupUi(self.window, self.gb2)
+        self.window.show()
 
-    def selectAllEval(self):
-        if self.checkBox_15.isChecked() != True:
-            self.checkBox_15.click()
-        if self.checkBox_16.isChecked() != True:
-            self.checkBox_16.click()
-        if self.checkBox_17.isChecked() != True:
-            self.checkBox_17.click()
-        if self.checkBox_31.isChecked() != True:
-            self.checkBox_31.click()
 
-    def deselectAllEval(self):
-        if self.checkBox_15.isChecked() == True:
-            self.checkBox_15.click()
-        if self.checkBox_16.isChecked() == True:
-            self.checkBox_16.click()
-        if self.checkBox_17.isChecked() == True:
-            self.checkBox_17.click()
-        if self.checkBox_31.isChecked() == True:
-            self.checkBox_31.click()
+    def group3Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupWindow()
+        self.ui.setupUi(self.window, self.gb3)
+        self.window.show()
+
+
+    def user1Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_profileWindow()
+        self.ui.setupUi(self.window, self.ub1)
+        self.window.show()
+
+
+    def user2Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_profileWindow()
+        self.ui.setupUi(self.window, self.ub2)
+        self.window.show()
+
+
+    def user3Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_profileWindow()
+        self.ui.setupUi(self.window, self.ub3)
+        self.window.show()
 
     def profileEdited(self):
         system.current_user.intro = self.plainTextEdit.toPlainText()
@@ -197,7 +180,7 @@ class Ui_userHomeMain(object):
         self.homeTab = QtWidgets.QWidget()
         self.homeTab.setObjectName("homeTab")
         self.pushButton_3 = QtWidgets.QPushButton(self.homeTab)
-        self.pushButton_3.setGeometry(QtCore.QRect(40, 200, 51, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(40, 200, 100, 31))
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_12 = QtWidgets.QLabel(self.homeTab)
         self.label_12.setGeometry(QtCore.QRect(46, 39, 181, 31))
@@ -934,22 +917,81 @@ class Ui_userHomeMain(object):
         self.pushButton_18.clicked.connect(self.closeGroup)
         self.pushButton_16.clicked.connect(self.invited)
         self.pushButton_3.clicked.connect(self.profileEdited)
+        self.group1_button.clicked.connect(self.group1Clicked)
+        self.group2_button.clicked.connect(self.group2Clicked)
+        self.group3_button.clicked.connect(self.group3Clicked)
+        self.user1_button.clicked.connect(self.user1Clicked)
+        self.user2_button.clicked.connect(self.user2Clicked)
+        self.user3_button.clicked.connect(self.user3Clicked)
+
+        #our code
+        top_3 = system.top_3()
+        count1 = len(top_3[0])
+        count2 = len(top_3[1])
+        i1 = 0
+        i2 = 0
+        if i2 != count2:
+            info = str(top_3[1][0].groupName) + "\nGroup Id: " + str(top_3[1][0].groupID) + "\nScore: " + str(
+                top_3[1][0].reputation)
+            self.group1_textBrowser.setText(info)
+            self.group1_button.setEnabled(True)
+            self.gb1 = top_3[1][0]
+            i2 += 1
+            if i2 != count2:
+                info = str(top_3[1][1].groupName) + "\nGroup Id: " + str(top_3[1][1].groupID) + "\nScore: " + str(
+                    top_3[1][1].reputation)
+                self.group2_textBrowser.setText(info)
+                self.group2_button.setEnabled(True)
+                self.gb2 = top_3[1][1]
+                i2 += 1
+                if i2 != count2:
+                    info = str(top_3[1][2].groupName) + "\nGroup Id: " + str(top_3[1][2].groupID) + "\nScore: " + str(
+                        top_3[1][2].reputation)
+                    self.group3_textBrowser.setText(info)
+                    self.group3_button.setEnabled(True)
+                    self.gb3 = top_3[1][2]
+        if i1 != count1:
+            print(i1)
+            print(count1)
+            info = str(top_3[0][0].username) + "\nemail: " + str(top_3[0][0].email) + "\nPhone-number: " + str(
+                top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][0].score)
+            self.user1_textBrowser.setText(info)
+            self.user1_button.setEnabled(True)
+            self.ub1 = top_3[0][0]
+            i1 += 1
+            if i1 != count1:
+                print(i1)
+                print(count1)
+                info = str(top_3[0][1].username) + "\nemail: " + str(top_3[0][1].email) + "\nPhone-number: " + str(
+                    top_3[0][1].phoneNumber) + "\nScore: " + str(top_3[0][1].score)
+                self.user2_textBrowser.setText(info)
+                self.user2_button.setEnabled(True)
+                self.ub2 = top_3[0][1]
+                i1 += 1
+                if i1 != count1:
+                    print(i1)
+                    print(count1)
+                    info = str(top_3[0][2].username) + "\nemail: " + str(top_3[0][2].email) + "\nPhone-number: " + str(
+                        top_3[0][2].phoneNumber) + "\nScore: " + str(top_3[0][2].score)
+                    self.user3_textBrowser.setText(info)
+                    self.user3_button.setEnabled(True)
+                    self.ub3 = top_3[0][2]
 
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
         userHomeMain.setWindowTitle(_translate("userHomeMain", "User Home Page"))
-        self.pushButton_3.setText(_translate("userHomeMain", "Edit"))
-        self.label_12.setText(_translate("userHomeMain", "John Smith"))
+        self.pushButton_3.setText(_translate("userHomeMain", "Save Changes"))
+        self.label_12.setText(_translate("userHomeMain", system.current_user.username))
         self.label_6.setText(_translate("userHomeMain", "Reputation"))
-        self.label_26.setText(_translate("userHomeMain", "25"))
-        self.label_8.setText(_translate("userHomeMain", "johnsmith@email.com"))
-        self.label_10.setText(_translate("userHomeMain", "IT, Computer Graphics"))
+        self.label_26.setText(_translate("userHomeMain", str(system.current_user.score)))
+        self.label_8.setText(_translate("userHomeMain", system.current_user.email))
+        self.label_10.setText(_translate("userHomeMain", system.current_user.interests))
         self.label_4.setText(_translate("userHomeMain", "Interests: "))
-        self.label_2.setText(_translate("userHomeMain", "Projects"))
+        self.label_2.setText(_translate("userHomeMain", "About Me"))
         self.label_3.setText(_translate("userHomeMain", "Email:"))
-        self.plainTextEdit.setPlainText(_translate("userHomeMain", "Edit here"))
-        self.plainTextEdit_2.setPlainText(_translate("userHomeMain", "Edit here"))
-        self.plainTextEdit_3.setPlainText(_translate("userHomeMain", "Edit here"))
+        self.plainTextEdit.setPlainText(system.current_user.intro)
+        self.plainTextEdit_2.setPlainText(system.current_user.affiliatedGroups)
+        self.plainTextEdit_3.setPlainText(system.current_user.languages)
         self.label_7.setText(_translate("userHomeMain", "Groups Affiliation"))
         self.label_9.setText(_translate("userHomeMain", "Programming Languages"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.homeTab), _translate("userHomeMain", "Home"))
@@ -1102,6 +1144,24 @@ class Ui_userHomeMain(object):
         self.label_25.setText(_translate("userHomeMain", "Project Tracker"))
         self.label_53.setText(_translate("userHomeMain", "Project Hierarchy Tree"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("userHomeMain", "Project Management (Creative Feature)"))
+        self.group1_textBrowser.setText("No Group Data Available")
+        self.group2_textBrowser.setText("No Group Data Available")
+        self.group3_textBrowser.setText("No Group Data Available")
+        self.user1_textBrowser.setText("No User Data Available")
+        self.user2_textBrowser.setText("No User Data Available")
+        self.user3_textBrowser.setText("No User Data Available")
+        self.user1_button.setEnabled(False)
+        self.user2_button.setEnabled(False)
+        self.user3_button.setEnabled(False)
+        self.group1_button.setEnabled(False)
+        self.group2_button.setEnabled(False)
+        self.group3_button.setEnabled(False)
+        self.ub1 = None
+        self.ub2 = None
+        self.ub3 = None
+        self.gb1 = None
+        self.gb2 = None
+        self.gb3 = None
 
         self.label_12.setText(system.current_user.username)
         self.label_8.setText(system.current_user.email)
