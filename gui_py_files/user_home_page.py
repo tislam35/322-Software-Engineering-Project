@@ -19,13 +19,12 @@ from more_user_profiles import *
 from kick_out_member_poll_dialog import *
 from group_closing_poll import *
 from invite_dialog import *
+from reference_dialog import *
 
 from system import *
 
-
 class Ui_userHomeMain(object):
-
-    #a function to hide tabs based on user type
+     #a function to hide tabs based on user type
     def hideTab(self):
         #If current user is an OU, need to hide tab 4 and 5 (admin tabs)
         if isinstance(system.current_user,OU):
@@ -37,6 +36,12 @@ class Ui_userHomeMain(object):
         #if current user is a SU, need to hide tab 5(VIP)
         elif isinstance(system.current_user,SU):
             self.tabWidget.removeTab(5)
+
+    def referClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_ReferenceDialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
     #assigning a vip for group eval
     def VipAssigned(self):
@@ -155,14 +160,14 @@ class Ui_userHomeMain(object):
             self.checkBox_31.click()
 
 
+
+
     def setupUi(self, userHomeMain):
 
         #changes
         self.oldWindow = userHomeMain
 
 
-
-        
         userHomeMain.setObjectName("userHomeMain")
         userHomeMain.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(userHomeMain)
@@ -467,6 +472,15 @@ class Ui_userHomeMain(object):
         self.pushButton_9.setFont(font)
         self.pushButton_9.setDefault(True)
         self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButton_27 = QtWidgets.QPushButton(self.inboxTab)
+        self.pushButton_27.setGeometry(QtCore.QRect(650, 10, 93, 25))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_27.setFont(font)
+        self.pushButton_27.setDefault(True)
+        self.pushButton_27.setObjectName("pushButton_27")
         self.tabWidget.addTab(self.inboxTab, "")
         self.groupManagementTab = QtWidgets.QWidget()
         self.groupManagementTab.setObjectName("groupManagementTab")
@@ -1061,11 +1075,11 @@ class Ui_userHomeMain(object):
         userHomeMain.setStatusBar(self.statusbar)
 
         self.retranslateUi(userHomeMain)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(userHomeMain)
 
-
-                #changes
+                        #changes
+        self.pushButton_27.clicked.connect(self.referClicked)
         self.pushButton_22.clicked.connect(self.VipAssigned)
         self.pushButton_23.clicked.connect(self.VipAssigned)
         self.pushButton_20.clicked.connect(self.complimentClicked)
@@ -1084,6 +1098,8 @@ class Ui_userHomeMain(object):
         self.pushButton_13.clicked.connect(self.deselectAllAcc)
         self.pushButton_57.clicked.connect(self.selectAllEval)
         self.pushButton_56.clicked.connect(self.deselectAllEval)
+
+
 
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
@@ -1158,6 +1174,7 @@ class Ui_userHomeMain(object):
         self.pushButton_8.setText(_translate("userHomeMain", "Deselect All"))
         self.pushButton_10.setText(_translate("userHomeMain", " Accept"))
         self.pushButton_9.setText(_translate("userHomeMain", "Reject"))
+        self.pushButton_27.setText(_translate("userHomeMain", "Refer"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.inboxTab), _translate("userHomeMain", "Inbox"))
         self.pushButton_15.setText(_translate("userHomeMain", "Edit Group Page"))
         __sortingEnabled = self.listWidget_6.isSortingEnabled()
