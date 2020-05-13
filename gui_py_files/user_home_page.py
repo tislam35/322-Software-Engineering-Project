@@ -20,8 +20,23 @@ from kick_out_member_poll_dialog import *
 from group_closing_poll import *
 from invite_dialog import *
 
+from system import *
+
 
 class Ui_userHomeMain(object):
+
+    #a function to hide tabs based on user type
+    def hideTab(self):
+        #If current user is an OU, need to hide tab 4 and 5 (admin tabs)
+        if isinstance(system.current_user,OU):
+            self.tabWidget.removeTab(4)
+            self.tabWidget.removeTab(5)
+        #if current user is a vip, need to hide tab 4(SU)
+        elif isinstance(system.current_user,VIP):
+            self.tabWidget.removeTab(4)
+        #if current user is a SU, need to hide tab 5(VIP)
+        elif isinstance(system.current_user,SU):
+            self.tabWidget.removeTab(5)
 
     #assigning a vip for group eval
     def VipAssigned(self):
@@ -144,6 +159,8 @@ class Ui_userHomeMain(object):
 
         #changes
         self.oldWindow = userHomeMain
+
+
 
         
         userHomeMain.setObjectName("userHomeMain")
@@ -1335,5 +1352,6 @@ if __name__ == "__main__":
     userHomeMain = QtWidgets.QMainWindow()
     ui = Ui_userHomeMain()
     ui.setupUi(userHomeMain)
+    ui.hideTab()
     userHomeMain.show()
     sys.exit(app.exec_())

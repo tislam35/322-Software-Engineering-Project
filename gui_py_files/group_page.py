@@ -10,8 +10,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+class Ui_groupWindow(object):
+    def setupUi(self, MainWindow, grpVar):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(673, 571)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -196,7 +196,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_groupWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
