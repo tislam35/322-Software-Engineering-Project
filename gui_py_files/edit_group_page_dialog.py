@@ -9,8 +9,29 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from system import *
+from groups import *
+
 
 class Ui_editGroupDialog(object):
+
+    def confirmEditClicked(self):
+        newGroupName=self.lineEdit.text()
+        newProjects=self.textEdit.toPlainText()
+        newPL=self.textEdit_2.toPlainText()
+
+        for group in group_list:
+            if group.groupID==current_user_group_id:
+                group.projects_box=newProjects
+                group.groupName=newGroupName
+                group.PL_box=newPL
+
+                self.oldWindow.close()    
+
+        return
+
     def setupUi(self, editGroupDialog):
         editGroupDialog.setObjectName("editGroupDialog")
         editGroupDialog.resize(299, 376)

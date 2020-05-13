@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_voteForSUDialog(object):
+    
     def setupUi(self, voteForSUDialog):
         voteForSUDialog.setObjectName("voteForSUDialog")
         voteForSUDialog.resize(296, 181)

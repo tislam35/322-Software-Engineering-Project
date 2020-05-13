@@ -23,6 +23,10 @@ class Group(object):
         self.reputation = 0
         self.assigned_vip = ""
 
+        #below stuffs are stored for edit group page
+        self.PL_box=""
+        self.projects_box=""
+
 
     def add_member(self, username):
         user = system.find_user_by_username(username)
