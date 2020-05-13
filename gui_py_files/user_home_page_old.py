@@ -36,7 +36,7 @@ from group_page import *
 
 
 class Ui_userHomeMain(object):
-    #a function to hide tabs based on user type
+ #a function to hide tabs based on user type
     def hideTab(self):
         #If current user is an OU, need to hide tab 4 and 5 (admin tabs)
         if isinstance(system.current_user,OU):
@@ -163,8 +163,9 @@ class Ui_userHomeMain(object):
         #changes
         self.oldWindow = userHomeMain
 
+
         userHomeMain.setObjectName("userHomeMain")
-        userHomeMain.resize(800, 596)
+        userHomeMain.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(userHomeMain)
         font = QtGui.QFont()
         font.setPointSize(8)
@@ -179,7 +180,7 @@ class Ui_userHomeMain(object):
         self.homeTab = QtWidgets.QWidget()
         self.homeTab.setObjectName("homeTab")
         self.pushButton_3 = QtWidgets.QPushButton(self.homeTab)
-        self.pushButton_3.setGeometry(QtCore.QRect(40, 200, 51, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(40, 200, 100, 31))
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_12 = QtWidgets.QLabel(self.homeTab)
         self.label_12.setGeometry(QtCore.QRect(46, 39, 181, 31))
@@ -254,13 +255,13 @@ class Ui_userHomeMain(object):
         self.label_7.setObjectName("label_7")
         self.label_9 = QtWidgets.QLabel(self.homeTab)
         self.label_9.setGeometry(QtCore.QRect(31, 289, 221, 24))
+        self.pushButton_5 = QtWidgets.QPushButton(self.homeTab)
+        self.pushButton_5.setGeometry(QtCore.QRect(660, 10, 93, 28))
+        self.pushButton_5.setObjectName("pushButton_5")
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
-        self.pushButton_5 = QtWidgets.QPushButton(self.homeTab)
-        self.pushButton_5.setGeometry(QtCore.QRect(660, 10, 93, 28))
-        self.pushButton_5.setObjectName("pushButton_5")
         self.tabWidget.addTab(self.homeTab, "")
         self.browserTab = QtWidgets.QWidget()
         self.browserTab.setObjectName("browserTab")
@@ -903,11 +904,10 @@ class Ui_userHomeMain(object):
         userHomeMain.setStatusBar(self.statusbar)
 
         self.retranslateUi(userHomeMain)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(userHomeMain)
 
-
-                               #changes
+                                #changes
         self.pushButton_27.clicked.connect(self.referClicked)
         self.pushButton_22.clicked.connect(self.VipAssigned)
         self.pushButton_23.clicked.connect(self.VipAssigned)
@@ -980,23 +980,21 @@ class Ui_userHomeMain(object):
                     self.user3_button.setEnabled(True)
                     self.ub3 = top_3[0][2]
 
-
-
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
         userHomeMain.setWindowTitle(_translate("userHomeMain", "User Home Page"))
-        self.pushButton_3.setText(_translate("userHomeMain", "Edit"))
-        self.label_12.setText(_translate("userHomeMain", "John Smith"))
+        self.pushButton_3.setText(_translate("userHomeMain", "Save Changes"))
+        self.label_12.setText(_translate("userHomeMain", system.current_user.username))
         self.label_6.setText(_translate("userHomeMain", "Reputation"))
-        self.label_26.setText(_translate("userHomeMain", "25"))
-        self.label_8.setText(_translate("userHomeMain", "johnsmith@email.com"))
-        self.label_10.setText(_translate("userHomeMain", "IT, Computer Graphics"))
+        self.label_26.setText(_translate("userHomeMain", str(system.current_user.score)))
+        self.label_8.setText(_translate("userHomeMain", system.current_user.email))
+        self.label_10.setText(_translate("userHomeMain", system.current_user.interests))
         self.label_4.setText(_translate("userHomeMain", "Interests: "))
-        self.label_2.setText(_translate("userHomeMain", "Projects"))
+        self.label_2.setText(_translate("userHomeMain", "About Me"))
         self.label_3.setText(_translate("userHomeMain", "Email:"))
-        self.plainTextEdit.setPlainText(_translate("userHomeMain", "Edit here"))
-        self.plainTextEdit_2.setPlainText(_translate("userHomeMain", "Edit here"))
-        self.plainTextEdit_3.setPlainText(_translate("userHomeMain", "Edit here"))
+        self.plainTextEdit.setPlainText(system.current_user.intro)
+        self.plainTextEdit_2.setPlainText(system.current_user.affiliatedGroups)
+        self.plainTextEdit_3.setPlainText(system.current_user.languages)
         self.label_7.setText(_translate("userHomeMain", "Groups Affiliation"))
         self.label_9.setText(_translate("userHomeMain", "Programming Languages"))
         self.pushButton_5.setText(_translate("userHomeMain", "Log out"))
@@ -1150,7 +1148,6 @@ class Ui_userHomeMain(object):
         self.label_25.setText(_translate("userHomeMain", "Project Tracker"))
         self.label_53.setText(_translate("userHomeMain", "Project Hierarchy Tree"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("userHomeMain", "Project Management (Creative Feature)"))
-
         self.group1_textBrowser.setText("No Group Data Available")
         self.group2_textBrowser.setText("No Group Data Available")
         self.group3_textBrowser.setText("No Group Data Available")
@@ -1221,5 +1218,6 @@ if __name__ == "__main__":
     userHomeMain = QtWidgets.QMainWindow()
     ui = Ui_userHomeMain()
     ui.setupUi(userHomeMain)
+    ui.hideTab()
     userHomeMain.show()
     sys.exit(app.exec_())
