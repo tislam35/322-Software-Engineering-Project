@@ -17,7 +17,7 @@ from more_group_profiles import *
 from more_user_profiles import *
 from group_page import *
 from Profile import *
-# from system import *
+from system import *
 
 class Ui_topRatedProfileMain(object):
      # the commented code causes problems after opening a third window
