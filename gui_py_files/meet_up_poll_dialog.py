@@ -16,7 +16,7 @@ class Ui_meetup(object):
         #code here
         pass
 
-     def setupUi(self, Dialog):
+    def setupUi(self, Dialog):
         self.oldWindow = Dialog
         Dialog.setObjectName("Dialog")
         Dialog.resize(348, 321)
