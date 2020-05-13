@@ -1,14 +1,12 @@
-
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+# import os, sys
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
 from system import *
 
 #for password generating
 import random
 import string
 
-#methods are static for testing, change if required
-#try except not yet added
+
 
 class OU(object):
 
