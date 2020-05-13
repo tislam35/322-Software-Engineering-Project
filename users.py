@@ -20,6 +20,8 @@ class OU(object):
         self.interests = interests
         self.score = 0
         self.languages = ""
+        self.intro = ""
+        self.affiliatedGroups = ""
         self.warningsCount = 0
         #adding to WB and BB will be done in invites gui
         self.whiteBox = []
