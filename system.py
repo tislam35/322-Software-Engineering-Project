@@ -561,39 +561,71 @@ class system:
     def create_group(group_name, initial_username):
         new_group = Group(group_name)
         new_group.members.append(initial_username)
+        new_group.member_stat.append((initial_username, 0, 0, 0))
         system.group_list.append(new_group)
 
     # 26 add member
     @staticmethod
     def add_member(group_id, new_member_username):
-        for groups in system.group_list:
-            if groups.groupID
-
-
+        user = system.find_user_by_username(new_member_username)
+        if user == None:
+            print("error: METHOD: #26: add_member: user with input user id not found")
+            return False
+        if user.group != None:
+            print("error: METHOD: #26: add__member: member already part of group")
+        group = system.find_group(group_id)
+        if group == None:
+            print("error: METHOD: #26: add_member: group with group id not found")
+            return False
+        if new_member_username in group.members:
+            print("error: METHOD: #26: add_member: member already part of group")
+            return False
+        group.members.append(new_member_username)
 
     # 27 remove member
     @staticmethod
     def remove_member_poll(username):
-        group = system.find_group(system.current_user_group_id)
-        if username in group.members:
-            for member in group.remove_member_poll:
-                if member[1] == member[2]:
-                    print("already vote this member")
-                    return False
-            group.remove_member_poll.append((username, system.current_user.username))
-            count = 1
-            for member in group.remove_member_poll:
-                if member[1] == username:
-                    count += 1
-            if count == len(group.members):
-                group.members.remove(username)
-                system.update_user_score(username, -10)
-        else:
-            print("no group member with input username found")
+        if system.current_user_group_id == None:
+            print("error: METHOD: #27 : remove_member_poll: current user not in a group")
             return False
+        group = system.find_group(system.current_user_group_id)
+        if group.remove_member_poll_member != None:
+            if system.current_user.username in group.remove_member_poll_for or system.current_user.username in group.remove_member_poll_against:
+                print("error: METHOD: #30: already voted")
+                return False
+            else:
+                if bool == True:
+                    group.remove_member_poll_for.append(system.current_user.username)
+                else:
+                    group.remove_member_poll_against.append(system.current_user.username)
+                print("successful vote")
+                if len(group.remove_member_poll_for) + len(group.member_poll_against) == len(group.members):
+                    if len(group.remove_member_poll_for) > len(group.member_poll_against):
+                        group.members.remove(username)
+                        system.update_user_score(username, -10)
+        else:
+            print("error: METHOD:#27 : remove_member_poll: No member is set to vote on")
+            return False
+        # group = system.find_group(system.current_user_group_id)
+        # if username in group.members:
+        #     for member in group.remove_member_poll:
+        #         if member[1] == member[2]:
+        #             print("already vote this member")
+        #             return False
+        #     group.remove_member_poll.append((username, system.current_user.username))
+        #     count = 1
+        #     for member in group.remove_member_poll:
+        #         if member[1] == username:
+        #             count += 1
+        #     if count == len(group.members):
+        #         group.members.remove(username)
+        #         system.update_user_score(username, -10)
+        # else:
+        #     print("no group member with input username found")
+        #     return False
 
     # 28 vote to meeting time
-    def meeting_time_polI(time):
+    def meeting_time_poll(time):
         group = system.find_group(system.current_user_group_id)
         if system.current_user.username in group.meet_poll_voters:
             print("alrady voted")
@@ -632,51 +664,100 @@ class system:
 
     # 30 vote to praise
     @staticmethod
-    def vote_to_praise(username):
-        group = system.find_group(system.current_user_group_id)
-        if username in group.members:
-            for members in group.praise_poll:
-                if members[1] == username:
-                    if system.current_user not in members[2]:
-                        members[2].append(system.current_user.username)
-                        if len(members[2]) == len(group.members) - 1:
-                            for member_s in group.member_stat:
-                                if member_s[1] == username:
-                                    member_s[1][2] += 1
-                            group.praise_poll.remove(members)
-                        print("successful vote for praise")
-                        return
-            group.praise_pool.append(username,system.current_user.username)
-        else:
-            print("no group member with input username found")
+    def vote_to_praise(bool):
+        if system.current_user_group_id == None:
+            print("error: METHOD: #30 : vote_to_praise: current user not in a group")
             return False
+        group = system.find_group(system.current_user_group_id)
+        if group.praise_poll_member != None:
+            if system.current_user.username in group.praise_poll_for or system.current_user.username in group.praise_poll_against:
+                print("error: METHOD: #30: already voted")
+                return False
+            else:
+                if bool == True:
+                    group.praise_poll_for.append(system.current_user.username)
+                else:
+                    group.praise_poll_for.append(system.current_user.username)
+                print("successful vote")
+                if len(group.praise_poll_for) + len(group.praise_poll_for) == len(group.members):
+                    if len(group.praise_poll_for) > len(group.praise_poll_for.append):
+                        for member_s in group.member_stat:
+                            if member_s[0] == group.praise_poll_member:
+                                member_s[3] += 1
+        else:
+            print("error: METHOD: #30: vote_to_praise: No member is set to vote on")
+            return False
+        # group =" system.find_group(system.current_user_group_id)
+        # if username in group.members:
+        #     for members in group.praise_poll:
+        #         if members[1] == username:
+        #             if system.current_user not in members[2]:
+        #                 members[2].append(system.current_user.username)
+        #                 if len(members[2]) == len(group.members) - 1:
+        #                     for member_s in group.member_stat:
+        #                         if member_s[1] == username:
+        #                             member_s[1][2] += 1
+        #                     group.praise_poll.remove(members)
+        #                 print("successful vote for praise")
+        #                 return
+        #     group.praise_pool.append(username,system.current_user.username)
+        # else:
+        #     print("no group member with input username found")
+        #     return False
 
 
     # 31 vote to warn
     @staticmethod
     def vote_to_warm(username):
+        if system.current_user_group_id == None:
+            print("error: METHOD: #31 : vote_to_warn: current user not in a group")
+            return False
         group = system.find_group(system.current_user_group_id)
-        if username in group.members:
-            for members in group.warn_poll:
-                if members[1] == username:
-                    if system.current_user not in members[2]:
-                        members[2].append(system.current_user.username)
-                        if len(members[2]) == len(group.members) - 1:
-                            for member_s in group.member_stat:
-                                if member_s[1] == username:
-                                    member_s[1][1] += 1
-                                if member_s[1][1] == 3
+        if group.warn_poll_member != None:
+            if system.current_user.username in group.warn_poll_for or system.current_user.username in group.warn_poll_against:
+                print("error: METHOD: #30: already voted")
+                return False
+            else:
+                if bool == True:
+                    group.warn_poll_for.append(system.current_user.username)
+                else:
+                    group.warn_poll_for.append(system.current_user.username)
+                print("successful vote")
+                if len(group.warn_poll_for) + len(group.warn_poll_for) == len(group.members):
+                    if len(group.warn_poll_for) > len(group.warn_poll_for.append):
+                        for member_s in group.member_stat:
+                            if member_s[0] == group.warn_poll_member:
+                                member_s[1] += 1
+                                if member_s[1] == 3:
                                     group.members.remove(username)
                                     system.update_user_score(username, 5)
-                            group.praise_poll.remove(members)
-                        print("successful vote for praise")
-                        return
-            group.praise_pool.append(username,system.current_user.username)
+                return True
         else:
-            print("no group member with input username found")
+            print("error: METHOD: #31: vote_to_worn: No member is set to vote on")
             return False
+        # group = system.find_group(system.current_user_group_id)
+        # if username in group.members:
+        #     for members in group.warn_poll:
+        #         if members[1] == username:
+        #             if system.current_user not in members[2]:
+        #                 members[2].append(system.current_user.username)
+        #                 if len(members[2]) == len(group.members) - 1:
+        #                     for member_s in group.member_stat:
+        #                         if member_s[1] == username:
+        #                             member_s[1][1] += 1
+        #                         if member_s[1][1] == 3
+        #                             group.members.remove(username)
+        #                             system.update_user_score(username, 5)
+        #                     group.praise_poll.remove(members)
+        #                 print("successful vote for praise")
+        #                 return
+        #     group.praise_pool.append(username,system.current_user.username)
+        # else:
+        #     print("no group member with input username found")
+        #     return False
 
     # 32 vote to close
+    @staticmethod
     def vote_close_group():
         if system.current_user == None:
             print("no current user")
