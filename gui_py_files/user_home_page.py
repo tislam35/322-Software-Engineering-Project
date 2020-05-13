@@ -187,7 +187,7 @@ class Ui_userHomeMain(object):
         self.homeTab = QtWidgets.QWidget()
         self.homeTab.setObjectName("homeTab")
         self.pushButton_3 = QtWidgets.QPushButton(self.homeTab)
-        self.pushButton_3.setGeometry(QtCore.QRect(40, 200, 51, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(40, 200, 100, 31))
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_12 = QtWidgets.QLabel(self.homeTab)
         self.label_12.setGeometry(QtCore.QRect(46, 39, 181, 31))
@@ -1107,8 +1107,8 @@ class Ui_userHomeMain(object):
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
         userHomeMain.setWindowTitle(_translate("userHomeMain", "User Home Page"))
-        self.pushButton_3.setText(_translate("userHomeMain", "Edit"))
-        self.label_12.setText(_translate("userHomeMain", "John Smith"))
+        self.pushButton_3.setText(_translate("userHomeMain", "Save Changes"))
+        self.label_12.setText(_translate("userHomeMain", system.current_user.username))
         self.label_6.setText(_translate("userHomeMain", "Reputation"))
         self.label_26.setText(_translate("userHomeMain", str(system.current_user.score)))
         self.label_8.setText(_translate("userHomeMain", system.current_user.email))
