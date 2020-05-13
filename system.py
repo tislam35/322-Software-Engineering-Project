@@ -33,7 +33,12 @@ class system:
     # added variables for voting
     DSU_vote_count = 0
     voted_DSU = {}
-
+    #lists of objects for de/serialization:
+    group_objlist = []
+    ou_objlist = []
+    vip_objlist = []
+    su_objlist = []
+    
     # added a kicked list
 
     # SYSTEM CLASS METHODS
