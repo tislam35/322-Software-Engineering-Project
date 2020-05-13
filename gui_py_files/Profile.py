@@ -10,8 +10,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_profileMain(object):
-    def setupUi(self, profileMain):
+class Ui_profileWindow(object):
+    def setupUi(self, profileMain, usrVar):
         profileMain.setObjectName("profileMain")
         profileMain.resize(644, 534)
         self.centralwidget = QtWidgets.QWidget(profileMain)
@@ -255,7 +255,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     profileMain = QtWidgets.QMainWindow()
-    ui = Ui_profileMain()
+    ui = Ui_profileWindow()
     ui.setupUi(profileMain)
     profileMain.show()
     sys.exit(app.exec_())

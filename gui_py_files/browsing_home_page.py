@@ -15,6 +15,8 @@ from Register import *
 from Login import *
 from more_group_profiles import *
 from more_user_profiles import *
+from group_page import *
+from Profile import *
 
 class Ui_topRatedProfileMain(object):
      # the commented code causes problems after opening a third window
@@ -47,6 +49,41 @@ class Ui_topRatedProfileMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+    def group1Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupWindow()
+        self.ui.setupUi(self.window, self.gb1)
+        self.window.show()
+
+    def group2Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupWindow()
+        self.ui.setupUi(self.window, self.gb2)
+        self.window.show()
+
+    def group3Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupWindow()
+        self.ui.setupUi(self.window, self.gb3)
+        self.window.show()
+
+    def user1Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_profileWindow()
+        self.ui.setupUi(self.window, self.ub1)
+        self.window.show()
+
+    def user2Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_profileWindow()
+        self.ui.setupUi(self.window, self.ub2)
+        self.window.show()
+
+    def user3Clicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_profileWindow()
+        self.ui.setupUi(self.window, self.ub3)
+        self.window.show()
 
     def setupUi(self, topRatedProfileMain):
         topRatedProfileMain.setObjectName("topRatedProfileMain")
@@ -322,12 +359,18 @@ class Ui_topRatedProfileMain(object):
         self.retranslateUi(topRatedProfileMain)
         QtCore.QMetaObject.connectSlotsByName(topRatedProfileMain)
 
-                # our code
+        # our code
 
         self.buttonRegister.clicked.connect(self.registerClicked)
         self.buttonLogin.clicked.connect(self.loginClicked)
         self.pushButton.clicked.connect(self.seeMoreGroups)
         self.pushButton_2.clicked.connect(self.seeMoreUsers)
+        self.group1_button.clicked.connect(self.group1Clicked)
+        self.group2_button.clicked.connect(self.group2Clicked)
+        self.group3_button.clicked.connect(self.group3Clicked)
+        self.user1_button.clicked.connect(self.user1Clicked)
+        self.user2_button.clicked.connect(self.user2Clicked)
+        self.user3_button.clicked.connect(self.user3Clicked)
 
         
     def retranslateUi(self, topRatedProfileMain):
@@ -345,7 +388,76 @@ class Ui_topRatedProfileMain(object):
         self.user3_button.setText(_translate("topRatedProfileMain", "User 3"))
         self.group1_button.setText(_translate("topRatedProfileMain", "Group 1"))
         self.user1_button.setText(_translate("topRatedProfileMain", "User 1"))
-
+        self.group1_textBrowser.setText("No Group Data Available")
+        self.group2_textBrowser.setText("No Group Data Available")
+        self.group3_textBrowser.setText("No Group Data Available")
+        self.user1_textBrowser.setText("No User Data Available")
+        self.user2_textBrowser.setText("No User Data Available")
+        self.user3_textBrowser.setText("No User Data Available")
+        self.user1_button.setEnabled(False)
+        self.user2_button.setEnabled(False)
+        self.user3_button.setEnabled(False)
+        self.group1_button.setEnabled(False)
+        self.group2_button.setEnabled(False)
+        self.group3_button.setEnabled(False)
+        self.ub1 = None
+        self.ub2 = None
+        self.ub3 = None
+        self.gb1 = None
+        self.gb2 = None
+        self.gb3 = None
+        topList = system.top_3()
+        topUsers = topList[0]
+        topGroups = topList[1]
+        count = 0
+        for i in topGroups:
+            gname = i.groupName
+            gmemb = i.members
+            gscor = i.reputation
+            gmembNames = []
+            for j in gmemb:
+                gmembNames.append(j.username)
+            names = ", ".join(gmembNames)
+            if count == 0:
+                self.gb1 = i
+                self.group1_button.setEnabled(True)
+                self.group1_button.setText(gname)
+                self.group1_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
+                count += 1
+            elif count == 1:
+                self.gb2 = i
+                self.group2_button.setEnabled(True)
+                self.group2_button.setText(gname)
+                self.group2_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
+                count += 1
+            elif count == 2:
+                self.gb3 = i
+                self.group3_button.setEnabled(True)
+                self.group3_button.setText(gname)
+                self.group3_textBrowser.setText("MEMBERS: " + names + "\nSCORE: " + str(gscor))
+                count += 1
+        count = 0
+        for i in topUsers:
+            uname = i.username
+            uscor = i.score
+            if count == 0:
+                self.ub1 = i
+                self.user1_button.setEnabled(True)
+                self.user1_button.setText(uname)
+                self.user1_textBrowser.setText("SCORE: " + str(uscor))
+                count += 1
+            elif count == 1:
+                self.ub2 = i
+                self.user2_button.setEnabled(True)
+                self.user2_button.setText(uname)
+                self.user2_textBrowser.setText("SCORE: " + str(uscor))
+                count += 1
+            elif count == 2:
+                self.ub3 = i
+                self.user3_button.setEnabled(True)
+                self.user3_button.setText(uname)
+                self.user3_textBrowser.setText("SCORE: " + str(uscor))
+                count += 1
 
 if __name__ == "__main__":
     import sys
