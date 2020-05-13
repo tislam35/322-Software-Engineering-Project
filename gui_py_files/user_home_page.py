@@ -9,7 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-importing all related gui files
+# importing all related gui files
+
 from assign_VIP_dialog import *
 from send_compliment_dialog import *
 from send_complaint_dialog import *
@@ -21,7 +22,10 @@ from group_closing_poll import *
 from invite_dialog import *
 from reference_dialog import *
 
-from TeamMe.system import system
+# import os, sys
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+# from system import *
+from TeamMe.system import *
 
 class Ui_userHomeMain(object):
  #a function to hide tabs based on user type
@@ -923,14 +927,6 @@ class Ui_userHomeMain(object):
         self.pushButton_21.clicked.connect(self.kickAMember)
         self.pushButton_18.clicked.connect(self.closeGroup)
         self.pushButton_16.clicked.connect(self.invited)
-        self.pushButton_6.clicked.connect(self.selectAllInv)
-        self.pushButton_5.clicked.connect(self.deselectAllInv)
-        self.pushButton_7.clicked.connect(self.selectAllMsg)
-        self.pushButton_8.clicked.connect(self.deselectAllMsg)
-        self.pushButton_11.clicked.connect(self.selectAllAcc)
-        self.pushButton_13.clicked.connect(self.deselectAllAcc)
-        self.pushButton_57.clicked.connect(self.selectAllEval)
-        self.pushButton_56.clicked.connect(self.deselectAllEval)
         self.pushButton_3.clicked.connect(self.profileEdited)
 
     def retranslateUi(self, userHomeMain):

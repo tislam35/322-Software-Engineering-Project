@@ -14,7 +14,7 @@ class Ui_meetup(object):
 
     def meetingTimeChosen(self):
         #code here
-        
+        pass
 
     def setupUi(self, Dialog):
         self.oldWindow = Dialog
