@@ -13,7 +13,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 
-
+from assign_user_score_dialog import *
+from exit_evaluation_dialog import *
+from edit_group_page_dialog import *
+from su_shut_down_group_dialog import *
+from vip_group_evaluation_dialog import *
 from assign_VIP_dialog import *
 from send_compliment_dialog import *
 from send_complaint_dialog import *
@@ -159,6 +163,38 @@ class Ui_userHomeMain(object):
         system.current_user.affiliatedGroups = self.plainTextEdit_2.toPlainText()
 
 
+    def VIPassignScoreClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_groupEvaluationDialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def editGroupPageClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_editGroupDialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def startEvaluationClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_DialogEvaluationExit()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def shutDownGroupClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_shutDownGroupDialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def deductScoresClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_DialogAssignScore()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+
+
     def setupUi(self, userHomeMain):
 
         #changes
@@ -265,7 +301,7 @@ class Ui_userHomeMain(object):
         self.pushButton_5.setGeometry(QtCore.QRect(660, 10, 93, 28))
         self.pushButton_5.setObjectName("pushButton_5")
 
-        
+
         self.tabWidget.addTab(self.homeTab, "")
         self.browserTab = QtWidgets.QWidget()
         self.browserTab.setObjectName("browserTab")
@@ -930,6 +966,14 @@ class Ui_userHomeMain(object):
         self.user1_button.clicked.connect(self.user1Clicked)
         self.user2_button.clicked.connect(self.user2Clicked)
         self.user3_button.clicked.connect(self.user3Clicked)
+
+        #more buttons linking
+        self.pushButton_55.clicked.connect(self.VIPassignScoreClicked)
+        self.pushButton_15.clicked.connect(self.editGroupPageClicked)
+        self.pushButton_29.clicked.connect(self.startEvaluationClicked)
+        self.pushButton_86.clicked.connect(self.shutDownGroupClicked)
+        self.pushButton_85.clicked.connect(self.deductScoresClicked)
+        self.pushButton_58.clicked.connect(self.deductScoresClicked)
 
         #our code
         top_3 = system.top_3()
