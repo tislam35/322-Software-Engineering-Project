@@ -159,7 +159,10 @@ class Ui_userHomeMain(object):
         if self.checkBox_31.isChecked() == True:
             self.checkBox_31.click()
 
-
+    def profileEdited(self):
+        system.current_user.intro = self.plainTextEdit.toPlainText
+        system.current_user.languages = self.plainTextEdit_3.toPlainText
+        system.current_user.affiliatedGroups = self.plainTextEdit_2.toPlainText
 
 
     def setupUi(self, userHomeMain):
@@ -1098,7 +1101,7 @@ class Ui_userHomeMain(object):
         self.pushButton_13.clicked.connect(self.deselectAllAcc)
         self.pushButton_57.clicked.connect(self.selectAllEval)
         self.pushButton_56.clicked.connect(self.deselectAllEval)
-
+        self.pushButton_3.clicked.connect(self.profileEdited)
 
 
     def retranslateUi(self, userHomeMain):
@@ -1107,15 +1110,15 @@ class Ui_userHomeMain(object):
         self.pushButton_3.setText(_translate("userHomeMain", "Edit"))
         self.label_12.setText(_translate("userHomeMain", "John Smith"))
         self.label_6.setText(_translate("userHomeMain", "Reputation"))
-        self.label_26.setText(_translate("userHomeMain", "25"))
-        self.label_8.setText(_translate("userHomeMain", "johnsmith@email.com"))
-        self.label_10.setText(_translate("userHomeMain", "IT, Computer Graphics"))
+        self.label_26.setText(_translate("userHomeMain", "system.current_user.score"))
+        self.label_8.setText(_translate("userHomeMain", "system.current_user.email"))
+        self.label_10.setText(_translate("userHomeMain", "system.current_user.interests"))
         self.label_4.setText(_translate("userHomeMain", "Interests: "))
-        self.label_2.setText(_translate("userHomeMain", "Projects"))
+        self.label_2.setText(_translate("userHomeMain", "About Me"))
         self.label_3.setText(_translate("userHomeMain", "Email:"))
-        self.plainTextEdit.setPlainText(_translate("userHomeMain", "Edit here"))
-        self.plainTextEdit_2.setPlainText(_translate("userHomeMain", "Edit here"))
-        self.plainTextEdit_3.setPlainText(_translate("userHomeMain", "Edit here"))
+        self.plainTextEdit.setPlainText(_translate("userHomeMain", "system.current_user.intro"))
+        self.plainTextEdit_2.setPlainText(_translate("userHomeMain", "system.current_user.affiliatedGroups"))
+        self.plainTextEdit_3.setPlainText(_translate("userHomeMain", "system.current_user.languages"))
         self.label_7.setText(_translate("userHomeMain", "Groups Affiliation"))
         self.label_9.setText(_translate("userHomeMain", "Programming Languages"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.homeTab), _translate("userHomeMain", "Home"))
@@ -1361,6 +1364,7 @@ class Ui_userHomeMain(object):
         self.label_25.setText(_translate("userHomeMain", "Project Tracker"))
         self.label_53.setText(_translate("userHomeMain", "Project Hierarchy Tree"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("userHomeMain", "Project Management (Creative Feature)"))
+
 
 
 if __name__ == "__main__":
