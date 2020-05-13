@@ -1047,6 +1047,27 @@ class Ui_userHomeMain(object):
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(userHomeMain)
 
+
+                #changes
+        self.pushButton_22.clicked.connect(self.VipAssigned)
+        self.pushButton_23.clicked.connect(self.VipAssigned)
+        self.pushButton_20.clicked.connect(self.complimentClicked)
+        self.pushButton_19.clicked.connect(self.complaintClicked)
+        self.pushButton_17.clicked.connect(self.meetingPoll)
+        self.pushButton_2.clicked.connect(self.seeMoreGroups)
+        self.pushButton_26.clicked.connect(self.seeMoreUsers)
+        self.pushButton_21.clicked.connect(self.kickAMember)
+        self.pushButton_18.clicked.connect(self.closeGroup)
+        self.pushButton_16.clicked.connect(self.invited)
+        self.pushButton_6.clicked.connect(self.selectAllInv)
+        self.pushButton_5.clicked.connect(self.deselectAllInv)
+        self.pushButton_7.clicked.connect(self.selectAllMsg)
+        self.pushButton_8.clicked.connect(self.deselectAllMsg)
+        self.pushButton_11.clicked.connect(self.selectAllAcc)
+        self.pushButton_13.clicked.connect(self.deselectAllAcc)
+        self.pushButton_57.clicked.connect(self.selectAllEval)
+        self.pushButton_56.clicked.connect(self.deselectAllEval)
+
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
         userHomeMain.setWindowTitle(_translate("userHomeMain", "User Home Page"))

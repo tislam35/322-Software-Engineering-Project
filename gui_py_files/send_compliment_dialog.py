@@ -8,13 +8,33 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtWidgets import QMessageBox
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from system import *
 
 class Ui_compliment(object):
 
     def complimentSent(self):
-        #do stuff with data here
-        self.oldWindow.close()
+        #collect username and message
+        username_to_compliment=str(self.lineEdit_2.text())
+        message=str(self.textEdit_2.toPlainText())
+
+        #if username is not valid, show a pop up window 
+        if(system.compliment(username_to_compliment,message)==False):
+            msg = QMessageBox()
+            msg.setWindowTitle("Failed")
+            msg.setText("The username is invalid.")
+            x=msg.exec_()
+
+        #if compliment is successcully sent, also show a pop up window 
+        #and at the same time close the original window
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Compliment Sent")
+            msg.setText("Your compliment has been sent.")
+            x=msg.exec_()
+            self.oldWindow.close()    
 
     def setupUi(self, Dialog):
         self.oldWindow = Dialog

@@ -493,7 +493,7 @@ class system:
         if target_user == None:
             print("error: METHOD: copliment: no user with username found")
             return False
-        system.complaints.append((target_username, message))
+        system.compliments.append((target_username, message))
         target_user.complimentsCount += 1
         return True
 
@@ -503,6 +503,7 @@ class system:
         target_user = system.find_user_by_username(target_username)
         if target_user == None:
             print("error: METHOD: # 21: complain_user: no user with input username found")
+            return False
         system.complaints.append((target_username, message))
         target_user.complaintsCount += 1
         return True
@@ -565,6 +566,7 @@ class system:
         system.group_list.append(new_group)
 
     # 26 add member
+<<<<<<< HEAD
     @staticmethod
     def add_member(group_id, new_member_username):
         user = system.find_user_by_username(new_member_username)
@@ -581,6 +583,14 @@ class system:
             print("error: METHOD: #26: add_member: member already part of group")
             return False
         group.members.append(new_member_username)
+=======
+    # @staticmethod
+    # def add_member(group_id, new_member_username):
+    #     for groups in system.group_list:
+    #         if groups.groupID
+
+
+>>>>>>> c9a6e2dcacf0b8f112937854f0ff2143a13b430a
 
     # 27 remove member
     @staticmethod
@@ -713,6 +723,7 @@ class system:
             print("error: METHOD: #31 : vote_to_warn: current user not in a group")
             return False
         group = system.find_group(system.current_user_group_id)
+<<<<<<< HEAD
         if group.warn_poll_member != None:
             if system.current_user.username in group.warn_poll_for or system.current_user.username in group.warn_poll_against:
                 print("error: METHOD: #30: already voted")
@@ -729,6 +740,18 @@ class system:
                             if member_s[0] == group.warn_poll_member:
                                 member_s[1] += 1
                                 if member_s[1] == 3:
+=======
+        if username in group.members:
+            for members in group.warn_poll:
+                if members[1] == username:
+                    if system.current_user not in members[2]:
+                        members[2].append(system.current_user.username)
+                        if len(members[2]) == len(group.members) - 1:
+                            for member_s in group.member_stat:
+                                if member_s[1] == username:
+                                    member_s[1][1] += 1
+                                if member_s[1][1] == 3:
+>>>>>>> c9a6e2dcacf0b8f112937854f0ff2143a13b430a
                                     group.members.remove(username)
                                     system.update_user_score(username, 5)
                 return True
