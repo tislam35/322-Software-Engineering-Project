@@ -8,13 +8,35 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtWidgets import QMessageBox
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
+from system import *
 
 class Ui_inviteDialog(object):
 
     def inviteClicked(self):
         #your code here
-        self.oldWindow.close()
+        #collect username to be invited and message
+        username_to_invite=str(self.lineEdit_3.text())
+        message=str(self.lineEdit_4.text())
+        group_id=system.current_user_group_id
+
+        msg = QMessageBox()
+
+        if(system.invite(username_to_invite,group_id)==True):
+            msg.setWindowTitle("Invitation Sent")
+            msg.setText("Invitation has been sent.")
+            x=msg.exec_()
+
+            self.oldWindow.close()
+
+        else:
+            msg.setWindowTitle("Invite Failed")
+            msg.setText("Invite has failed. Please try again.")
+            x=msg.exec_()
+
+
 
     def setupUi(self, inviteDialog):
         self.oldWindow = inviteDialog
