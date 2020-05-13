@@ -8,9 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from system import *
 # importing all related gui files
-
 
 
 
@@ -1104,6 +1103,50 @@ class Ui_userHomeMain(object):
         self.label_53.setText(_translate("userHomeMain", "Project Hierarchy Tree"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("userHomeMain", "Project Management (Creative Feature)"))
 
+        self.label_12.setText(system.current_user.username)
+        self.label_8.setText(system.current_user.email)
+        self.label_10.setText(system.current_user.interests)
+        self.label_26.setText(str(system.current_user.score))
+        self.plainTextEdit.setPlainText(system.current_user.intro)
+        self.plainTextEdit_3.setPlainText(system.current_user.languages)
+        self.plainTextEdit_2.setPlainText(system.current_user.affiliatedGroups)
+
+        top_3 = system.top_3()
+        count1 = len(top_3[0])
+        count2 = len(top_3[1])
+        i1 = 0
+        i2 = 0
+        if i2 != count2:
+            info = str(top_3[1][0].groupName) + "\n" + "Score: " + str(top_3[1][0].reputation)
+            self.group1_textBrowser.setText(info)
+            i2 += 1
+            if i2 != count2:
+                info = str(top_3[1][1].groupName) + "\n" + "Score: " + str(top_3[1][1].reputation)
+                self.group2_textBrowser.setText(info)
+                i2 += 1
+                if i2 != count2:
+                    info = str(top_3[1][2].groupName) + "\n" + "Score: " + str(top_3[1][2].reputation)
+                    self.group3_textBrowser.setText(info)
+        if i1 != count1:
+            print(i1)
+            print(count1)
+            info = str(top_3[0][0].username) + "\nemail: " + str(top_3[0][0].email) + "\nPhone-number: " + str(
+                top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][0].score)
+            self.user1_textBrowser.setText(info)
+            i1 += 1
+            if i1 != count1:
+                print(i1)
+                print(count1)
+                info = str(top_3[0][1].username) + "\nemail: " + str(top_3[0][1].email) + "\nPhone-number: " + str(
+                    top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][1].score)
+                self.user2_textBrowser.setText(info)
+                i1 += 1
+                if i1 != count1:
+                    print(i1)
+                    print(count1)
+                    info = str(top_3[0][2].username) + "\nemail: " + str(top_3[0][2].email) + "\nPhone-number: " + str(
+                        top_3[0][0].phoneNumber) + "\nScore: " + str(top_3[0][2].score)
+                    self.user3_textBrowser.setText(info)
 
 if __name__ == "__main__":
     import sys
