@@ -17,6 +17,7 @@ from assign_user_score_dialog import *
 from exit_evaluation_dialog import *
 from edit_group_page_dialog import *
 from su_shut_down_group_dialog import *
+from vote_for_su_dialog import *
 from vip_group_evaluation_dialog import *
 from assign_VIP_dialog import *
 from send_compliment_dialog import *
@@ -193,7 +194,11 @@ class Ui_userHomeMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-
+    def voteForSUClicked(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_voteForSUDialog()
+        self.ui.setupUi(self.window)
+        self.window.show()        
 
     def setupUi(self, userHomeMain):
 
@@ -974,6 +979,7 @@ class Ui_userHomeMain(object):
         self.pushButton_86.clicked.connect(self.shutDownGroupClicked)
         self.pushButton_85.clicked.connect(self.deductScoresClicked)
         self.pushButton_58.clicked.connect(self.deductScoresClicked)
+        self.pushButton_94.clicked.connect(self.voteForSUClicked)
 
         #our code
         top_3 = system.top_3()
