@@ -231,6 +231,11 @@ class system:
     # INPUT: OU/VIP username and password. OUTPUT: index ELSE None. PROCESS: records current user
     @staticmethod
     def login(username, password):
+        if username == system.FSU.username and password == system.FSU.password:
+            system.current_user = system.FSU
+            if system.FSU.group is not None:
+                system.current_user_group_id = system.FSU.group
+            return True
         for user in system.OU_list:
             if user.username == username and user.password == password:
                 system.current_user = user

@@ -20,23 +20,25 @@ class Ui_Dialog(object):
 
     def loginClicked(self):
         print("METHOD: loginClicked")
+        msg = QMessageBox()
+
         username = self.lineEdit.text()
         password = self.lineEdit_2.text()
-        index = system.login(username, password)
-        #  NEED TO FIX IMPORTANT: NEED TO VALIDDATE AND DECIDE ACTION FORM THERE
-        if index != None:
-            print(index)
+        print("test1")
+        bool = system.login(username, password)
+        print("test2")
+        if bool == False:
+            msg.setWindowTitle("Login Failed")
+            msg.setText("Login failed, please check your input again.")
+            x = msg.exec_()
         else:
-            print("Error")
-
-        # open and close windows
-        self.oldWindow.close()
-        self.firstWindow.close()
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_userHomeMain()
-        self.ui.setupUi(self.window)
-        self.window.show()
-        return
+            # open and close windows
+            self.oldWindow.close()
+            self.firstWindow.close()
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_userHomeMain()
+            self.ui.setupUi(self.window)
+            self.window.show()
 
     def setupUi(self, Dialog, firstWindow):
         self.oldWindow = Dialog

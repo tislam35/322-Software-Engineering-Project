@@ -19,6 +19,7 @@ class OU(object):
         self.phoneNumber = phoneNumber
         self.interests = interests
         self.score = 0
+        self.group = None
         self.languages = ""
         self.intro = ""
         self.affiliatedGroups = ""
