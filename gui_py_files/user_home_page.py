@@ -116,6 +116,12 @@ class Ui_userHomeMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+    def logout(self):
+        self.oldWindow.close()
+        system.current_user = None
+        system.current_user_group_id = None
+        self.firstWindow.show()
+
 
     def group1Clicked(self):
         self.window = QtWidgets.QMainWindow()
@@ -163,7 +169,6 @@ class Ui_userHomeMain(object):
         system.current_user.languages = self.plainTextEdit_3.toPlainText()
         system.current_user.affiliatedGroups = self.plainTextEdit_2.toPlainText()
 
-
     def VIPassignScoreClicked(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_groupEvaluationDialog()
@@ -200,11 +205,11 @@ class Ui_userHomeMain(object):
         self.ui.setupUi(self.window)
         self.window.show()        
 
-    def setupUi(self, userHomeMain):
+    def setupUi(self, userHomeMain, temp):
 
         #changes
         self.oldWindow = userHomeMain
-
+        self.firstWindow = temp
 
         userHomeMain.setObjectName("userHomeMain")
         userHomeMain.resize(800, 600)
@@ -971,6 +976,8 @@ class Ui_userHomeMain(object):
         self.user1_button.clicked.connect(self.user1Clicked)
         self.user2_button.clicked.connect(self.user2Clicked)
         self.user3_button.clicked.connect(self.user3Clicked)
+        self.pushButton_5.clicked.connect(self.logout)
+
 
         #more buttons linking
         self.pushButton_55.clicked.connect(self.VIPassignScoreClicked)
