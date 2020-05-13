@@ -25,7 +25,7 @@ class system:
     group_list = []
     unevaluated_group = []
     closed_group_list = []
-    taboo_list = ["shit", "fuck", "ass", "dumbass", "crap"]
+    taboo_list = ["shit", "fuck", "ass", "dumbass", "crap", "apple"]
     complaints = []
     compliments = []
     complaints_group = []
