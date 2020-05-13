@@ -76,6 +76,67 @@ class Ui_userHomeMain(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+    def selectAllInv(self):
+        if self.checkBox.isChecked() != True:
+            self.checkBox.click()
+        if self.checkBox_2.isChecked() != True:
+            self.checkBox_2.click()
+        if self.checkBox_3.isChecked() != True:
+            self.checkBox_3.click()
+
+    def deselectAllInv(self):
+        if self.checkBox.isChecked() == True:
+            self.checkBox.click()
+        if self.checkBox_2.isChecked() == True:
+            self.checkBox_2.click()
+        if self.checkBox_3.isChecked() == True:
+            self.checkBox_3.click()
+
+    def selectAllMsg(self):
+        if self.checkBox_4.isChecked() != True:
+            self.checkBox_4.click()
+        if self.checkBox_5.isChecked() != True:
+            self.checkBox_5.click()
+
+    def deselectAllMsg(self):
+        if self.checkBox_4.isChecked() == True:
+            self.checkBox_4.click()
+        if self.checkBox_5.isChecked() == True:
+            self.checkBox_5.click()
+
+    def selectAllAcc(self):
+        if self.checkBox_6.isChecked() != True:
+            self.checkBox_6.click()
+        if self.checkBox_8.isChecked() != True:
+            self.checkBox_8.click()
+
+
+    def deselectAllAcc(self):
+        if self.checkBox_6.isChecked() == True:
+            self.checkBox_6.click()
+        if self.checkBox_8.isChecked() == True:
+            self.checkBox_8.click()
+
+    def selectAllEval(self):
+        if self.checkBox_15.isChecked() != True:
+            self.checkBox_15.click()
+        if self.checkBox_16.isChecked() != True:
+            self.checkBox_16.click()
+        if self.checkBox_17.isChecked() != True:
+            self.checkBox_17.click()
+        if self.checkBox_31.isChecked() != True:
+            self.checkBox_31.click()
+
+    def deselectAllEval(self):
+        if self.checkBox_15.isChecked() == True:
+            self.checkBox_15.click()
+        if self.checkBox_16.isChecked() == True:
+            self.checkBox_16.click()
+        if self.checkBox_17.isChecked() == True:
+            self.checkBox_17.click()
+        if self.checkBox_31.isChecked() == True:
+            self.checkBox_31.click()
+
     def setupUi(self, userHomeMain):
         #changes
         self.oldWindow = userHomeMain
@@ -1025,7 +1086,14 @@ class Ui_userHomeMain(object):
         self.pushButton_21.clicked.connect(self.kickAMember)
         self.pushButton_18.clicked.connect(self.closeGroup)
         self.pushButton_16.clicked.connect(self.invited)
-
+        self.pushButton_6.clicked.connect(self.selectAllInv)
+        self.pushButton_5.clicked.connect(self.deselectAllInv)
+        self.pushButton_7.clicked.connect(self.selectAllMsg)
+        self.pushButton_8.clicked.connect(self.deselectAllMsg)
+        self.pushButton_11.clicked.connect(self.selectAllAcc)
+        self.pushButton_13.clicked.connect(self.deselectAllAcc)
+        self.pushButton_57.clicked.connect(self.selectAllEval)
+        self.pushButton_56.clicked.connect(self.deselectAllEval)
 
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate
