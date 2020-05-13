@@ -11,10 +11,10 @@ class Group(object):
         self.groupName = groupName
         self.members = []
         self.meetings = []
-        # member_stat = (memberUsername, missed meeting count, warming count, praise count, commit count)
+        # member_stat = (memberUsername, missed meeting count, warning count, praise count, commit count)
         self.member_stat = []
         self.meet_poll = None
-        self.warm_poll = None
+        self.warn_poll = None
         self.praise_poll = None
         self.remove_member_poll = None
         self.close_group_votes = 0
@@ -126,7 +126,7 @@ class Group(object):
                     user = system.find_user_by_username(username)
                     user.warningCounts += 1
                     if(user.warningCounts >= 3):
-                        remove_member(username)
+                        self.remove_member(username)
                 else:
                     print(str(username) + " will not have any warnings")
         else:
@@ -157,7 +157,7 @@ class Group(object):
                 print("Group stays open")
              else:
                 print("Group is closing")
-                exit_evaluation
+                #self.exit_evaluation
                     
     def meeting_poll(self, time):
         print("Vote for a meeting at " + str(time))
@@ -187,9 +187,9 @@ class Group(object):
 
     #def exit_evaluation(self):
 
-    def close_group(self):
-        set_visibiliety(False)
-        exit_evaluation()
-        self.members.clear()
+    #def close_group(self):
+    #    self.set_visibiliety(False)
+    #    self.exit_evaluation()
+    #    self.members.clear()
 
     
