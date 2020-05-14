@@ -80,7 +80,7 @@ Note that you can reference, register, and approve new users as you like.
 
 ![](images/Login.png)
 
-<a name="#teammewalkthrough"></a>
+<a name="teammewalkthrough"></a>
 ## TeamMe Application Walkthrough
 
 1. After you start the application. The TeamMe Home Browser will pop up. You can see the top 3 profiles and users. Note, we only have 3 groups in our system, so it only shows the top 2 groups.
