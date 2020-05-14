@@ -140,7 +140,6 @@ Note that you can reference, register, and approve new users as you like.
 ![](images/016.PNG)
 ![](images/017.PNG)
 ![](images/018.PNG)
-![](images/019.PNG)
 
 13. Now let us log back in as FSU (username: FSU, password: pass123) and check out some complaints and compliments. There is already quite a few compliements and complaints. If we accept, the score change is by 5 if complimented or -5 if complainted. Let us keep accepting all compliments and complaints. Our last complait will be for PeteVu1.
 
