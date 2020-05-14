@@ -26,6 +26,13 @@ Python
 
 GUI Implementation
 
+# Major Files
+
+1. system.py : contains all our functions for the bullet points. Functions are labeled throughly.
+2. user.py : class for OU, VIP, US
+3. register_visitor.py : class for visitors how are registered but not OU/VIP/SU
+4. group.py : group class
+
 ## Installation and Implementation
 
 ### Installation
@@ -52,13 +59,6 @@ Password HenryCruz
 
 Username: LisaHamilton1
 Password: LisaHamilton
-
-# Major Files
-
-1. system.py : contains all our functions for the bullet points
-2. user.py : class for OU, VIP, US
-3. register_visitor.py : class for visitors how are registered but not OU/VIP/SU
-4. group.py : group class
 
 ## Some TeamMe GUIs
 
