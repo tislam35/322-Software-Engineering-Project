@@ -40,9 +40,15 @@ Implementation
 
 ### Browsing the Application as Visitor
 
+![](images/Visitor_view.png)
+
 ### Register
 
+![](images/Registration.png)
+
 ### Login
+
+![](images/Registration.png)
 
 ### Create a group
 
