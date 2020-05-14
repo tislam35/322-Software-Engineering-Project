@@ -1,5 +1,7 @@
 # TeamMe
 
+<b>For applcation walkthrough, go to TeamMe Application Walkthrough section of this readme.</b>
+
 ## Overview
 
 TeamMe is a model software system that faniliates active teaming of people with similar interest and skill-set to forge groups for a certain do-good project. For more details, please see the Software Requirements Specification and the Design Report below.
