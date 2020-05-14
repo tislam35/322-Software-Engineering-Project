@@ -62,6 +62,8 @@ Password HenryCruz
 Username: LisaHamilton1
 Password: LisaHamilton
 
+Note that you can reference, register, and approve new users as you like.
+
 ## Some TeamMe GUIs
 
 ### Browsing the Application as Visitor
