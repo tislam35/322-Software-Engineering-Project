@@ -78,6 +78,8 @@ Password: LisaHamilton
 
 1. After you start the application. The TeamMe Home Browser will pop up.
 
+![](images/001.png)
+
 ## Version
 
 V0.51
