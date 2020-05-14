@@ -13,10 +13,10 @@ TeamMe is a model software system that faniliates active teaming of people with 
 
 ## Software Engineers
 
-Tohidul Islam
-Sophie Huang
-Ekramul Sawrid
-Dor Ulman
+Tohidul Islam <br />
+Sophie Huang <br />
+Ekramul Sawrid <br />
+Dor Ulman <br />
 
 ## Language 
 
