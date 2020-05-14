@@ -8,6 +8,8 @@ TeamMe is a model software system that faniliates active teaming of people with 
 
 [***Design Report***](https://github.com/tislam35/TeamMe/blob/master/Group%20S%20Design%20Report.pdf)
 
+[***Memo***](https://github.com/tislam35/TeamMe/blob/master/Memo.pdf)
+
 
 ## Software Engineers
 
