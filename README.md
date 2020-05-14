@@ -1,6 +1,6 @@
 # TeamMe
 
-<strong>For applcation walkthrough, go to <u>TeamMe Application Walkthrough</u> section of this readme.</strong>
+<strong>For applcation walkthrough, go to [TeamMe Application Walkthrough](#teammewalkthrough) section of this readme.</strong>
 
 ## Overview
 
@@ -20,13 +20,15 @@ Sophie Huang <br />
 Ekramul Sawrid <br />
 Dor Ulman <br />
 
-## Language 
+## Language and Technologies
 
 Python
+PyQt5
 
 ## Development Phase
 
-GUI Implementation
+GUI Implementation for Incomplete Features
+Beta Version Testing for Completed Features
 
 # Major Files
 
@@ -78,6 +80,7 @@ Note that you can reference, register, and approve new users as you like.
 
 ![](images/Login.png)
 
+<a name="#teammewalkthrough"></a>
 ## TeamMe Application Walkthrough
 
 1. After you start the application. The TeamMe Home Browser will pop up. You can see the top 3 profiles and users. Note, we only have 3 groups in our system, so it only shows the top 2 groups.
