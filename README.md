@@ -27,7 +27,7 @@ Implementation
 ## Installation and Implementation
 
 ### Installation
-1. In your console or terminal, go the directory you want to store this repository.
+1. In your console or terminal, go to the directory you want to store this repository.
 2. Type `git clone https://github.com/tislam35/TeamMe.git` to clone this repository to that directory.
 3. Make sure to have PyQt5 library installed.
 4. If not, run `pip install PyQt5` in console to install the library.
