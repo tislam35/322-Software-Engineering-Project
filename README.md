@@ -1,6 +1,6 @@
 # TeamMe
 
-<b>For applcation walkthrough, go to TeamMe Application Walkthrough section of this readme.</b>
+<b>For applcation walkthrough, go to <u>TeamMe Application Walkthrough</u> section of this readme.</b>
 
 ## Overview
 
