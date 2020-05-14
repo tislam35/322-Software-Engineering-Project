@@ -30,7 +30,7 @@ Implementation
 1. In your console or terminal, go the directory you want to store this repository.
 2. Type `https://github.com/tislam35/TeamMe.git` to clone this repository to that directory.
 3. Make sure to have PyQt5 library installed.
-4. If not, run `pip install PyQt5` to install the library.
+4. If not, run `pip install PyQt5` in console to install the library.
 
 ### Implementation
 
