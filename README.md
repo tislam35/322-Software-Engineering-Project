@@ -22,12 +22,12 @@ Dor Ulman <br />
 
 ## Language and Technologies
 
-Python
+Python<br />
 PyQt5
 
 ## Development Phase
 
-GUI Implementation for Incomplete Features
+GUI Implementation for Incomplete Features<br />
 Beta Version Testing for Completed Features
 
 # Major Files
@@ -42,14 +42,14 @@ Beta Version Testing for Completed Features
 ### Installation
 1. In your console or terminal, go to the directory you want to store this repository.
 2. Type `git clone https://github.com/tislam35/TeamMe.git` to clone this repository to that directory.
-3. Make sure to have PyQt5 library installed.
+3. Make sure to have PyQt5 library installed and can run Python.
 4. If not, run `pip install PyQt5` in console to install the library.
 
 ### Implementation
 
 1. In your console or terminal, go the TeamMe project directory.
 2. Type `cd gui_py_files`. 
-3. Type `python browsing_home_page.py` to start TeamMe application.
+3. Type `python browsing_home_page.py` to launch TeamMe application.
 
 Note: we have created 3 different users for you to login and test the application. They are:
 1. SU --> Username: FSU, password: pass123
