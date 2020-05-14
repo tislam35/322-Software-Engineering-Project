@@ -10,27 +10,40 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import os, sys
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
-from system import *
 from groups import *
 
 
 class Ui_editGroupDialog(object):
 
     def confirmEditClicked(self):
-        newGroupName=self.lineEdit.text()
-        newProjects=self.textEdit.toPlainText()
-        newPL=self.textEdit_2.toPlainText()
+        newGroupName = self.lineEdit.text()
+        newProjects = self.textEdit.toPlainText()
+        newPL = self.textEdit_2.toPlainText()
 
         for group in group_list:
-            if group.groupID==current_user_group_id:
-                group.projects_box=newProjects
-                group.groupName=newGroupName
-                group.PL_box=newPL
+            if group.groupID == current_user_group_id:
+                group.projects_box = newProjects
+                group.groupName = newGroupName
+                group.PL_box = newPL
 
-                self.oldWindow.close()    
+                self.oldWindow.close()
 
         return
+
+    def editGroup(self):
+        try:
+            if system.system.current_user_group_id is None:
+                group_name = self.lineEdit.text()
+                system.system.create_group(group_name, system.system.current_user.username)
+                print(500)
+            else:
+                group = system.system.find_group(system.system.current_user_group_id)
+                group.groupName = self.lineEdit.text()
+                print(500)
+        except Exception as e:
+            print(e)
 
     def setupUi(self, editGroupDialog):
         editGroupDialog.setObjectName("editGroupDialog")
@@ -73,27 +86,32 @@ class Ui_editGroupDialog(object):
         self.retranslateUi(editGroupDialog)
         QtCore.QMetaObject.connectSlotsByName(editGroupDialog)
 
+        self.pushButton_16.clicked.connect(self.editGroup)
+
     def retranslateUi(self, editGroupDialog):
         _translate = QtCore.QCoreApplication.translate
         editGroupDialog.setWindowTitle(_translate("editGroupDialog", "Edit Group"))
         self.label.setText(_translate("editGroupDialog", "Name of Group"))
         self.label_2.setText(_translate("editGroupDialog", "Programming Languages"))
         self.label_3.setText(_translate("editGroupDialog", "Projects"))
-        self.textEdit.setHtml(_translate("editGroupDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.textEdit_2.setHtml(_translate("editGroupDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.textEdit.setHtml(_translate("editGroupDialog",
+                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                         "p, li { white-space: pre-wrap; }\n"
+                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                         "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.textEdit_2.setHtml(_translate("editGroupDialog",
+                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                           "p, li { white-space: pre-wrap; }\n"
+                                           "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                           "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.pushButton_16.setText(_translate("editGroupDialog", "Confirm"))
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     editGroupDialog = QtWidgets.QDialog()
     ui = Ui_editGroupDialog()

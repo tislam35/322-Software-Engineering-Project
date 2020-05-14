@@ -35,7 +35,7 @@ from group_page import *
 
 # import os, sys
 # sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
-# from system import *
+from system import *
 # from TeamMe.system import *
 
 # from TeamMe.system import system
@@ -192,7 +192,91 @@ class Ui_userHomeMain(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_voteForSUDialog()
         self.ui.setupUi(self.window)
-        self.window.show()        
+        self.window.show()
+
+    def approveCompliment(self):
+        if len(system.compliments) > 0:
+            try:
+                print(system.compliments[0][0])
+                system.update_user_score(str(system.compliments[0][0]), 5)
+                del system.compliments[0]
+            except Exception as e:
+                print(e)
+                print("bad")
+            if len(system.compliments) > 0:
+                self.textBrowser_10.setText(str(system.compliments[0][0])  + "\n" + str(system.compliments[0][1]))
+            else:
+                self.textBrowser_10.setText(" ")
+
+    def rejectComliment(self):
+            if len(system.compliments) > 0:
+                if system.find_user_by_username(system.compliments[0][0]).complimentsCount % 3 == 0:
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Complimented 3 times")
+                    msg.setText("Must Accept Compliment.")
+                    x = msg.exec_()
+                    return
+                try:
+                    print(system.compliments[0][0])
+                    del system.compliments[0]
+                except:
+                    print("bad")
+            if len(system.compliments) > 0:
+                self.textBrowser_10.setText(str(system.compliments[0][0]) + "\n" + str(system.compliments[0][1]))
+            else:
+                self.textBrowser_10.setText(" ")
+
+    def approveComplait(self):
+        if len(system.complaints) > 0:
+            try:
+                print(system.complaints[0][0])
+                system.update_user_score(str(system.complaints[0][0]), -5)
+                del system.complaints[0]
+            except Exception as e:
+                print(e)
+                print("bad")
+        if len(system.complaints) > 0:
+            self.textBrowser_26.setText(str(system.complaints[0][0]) + "\n" +str(system.complaints[0][1]))
+        else:
+            self.textBrowser_26.setText(" ")
+
+    def rejectComplait(self):
+        if len(system.complaints) > 0:
+            try:
+                print(system.complaints[0][0])
+                del system.complaints[0]
+            except:
+                print("bad")
+        if len(system.complaints) > 0:
+            self.textBrowser_26.setText(str(system.complaints[0][0]) + "\n" +str(system.complaints[0][1]))
+        else:
+            self.textBrowser_26.setText(" ")
+
+    def rejectRegisteredVisitor(self):
+        if len(system.registered_visitor_list) > 0:
+            system.reject_registered_visitor(system.registered_visitor_list[0])
+        else:
+            print("bad")
+        if len(system.registered_visitor_list) > 0:
+            self.textBrowser_7.setText(str(system.registered_visitor_list[0].first_name) + " " + str(system.registered_visitor_list[0].last_name)
+                                       + "\nEmail: " + str(system.registered_visitor_list[0].email)
+                                       + "\nPhone-number: " + str(system.registered_visitor_list[0].phone_number))
+        else:
+            self.textBrowser_7.setText(" ")
+        print("rejected visitor")
+
+    def approveRegisteredVisitor(self):
+        if len(system.registered_visitor_list) > 0:
+            system.add_visitor_to_OU(system.registered_visitor_list[0].email)
+        if len(system.registered_visitor_list) > 0:
+            self.textBrowser_7.setText(str(system.registered_visitor_list[0].first_name) + " " + str(system.registered_visitor_list[0].last_name)
+                                       + "\nEmail: " + str(system.registered_visitor_list[0].email) + "\nPhone-number: " + str(system.registered_visitor_list[0].phone_number)
+                                       + "\nScore: " + str(system.registered_visitor_list[0].score))
+        else:
+            self.textBrowser_7.setText(" ")
+            print("bad")
+        print("approved register visitor")
+
 
     def setupUi(self, userHomeMain, temp):
 
@@ -977,6 +1061,14 @@ class Ui_userHomeMain(object):
         self.pushButton_58.clicked.connect(self.deductScoresClicked)
         self.pushButton_94.clicked.connect(self.voteForSUClicked)
 
+        self.pushButton_24.clicked.connect(self.approveCompliment)
+        self.pushButton_13.clicked.connect(self.rejectComliment)
+        self.pushButton_88.clicked.connect(self.approveComplait)
+        self.pushButton_87.clicked.connect(self.rejectComplait)
+
+        self.pushButton_14.clicked.connect(self.approveRegisteredVisitor)
+        self.pushButton_12.clicked.connect(self.rejectRegisteredVisitor)
+
         #tab 4 -> SU
         #tab 5 -> VIP
 
@@ -1050,6 +1142,23 @@ class Ui_userHomeMain(object):
                     self.user3_textBrowser.setText(info)
                     self.user3_button.setEnabled(True)
                     self.ub3 = top_3[0][2]
+
+        if len(system.complaints) > 0:
+            self.textBrowser_26.setText(str(system.complaints[0][0]) + "\n" + str(system.complaints[0][1]))
+        else:
+            print("not")
+
+        if len(system.compliments) > 0:
+            self.textBrowser_10.setText(str(system.compliments[0][0]) + "\n" + str(system.compliments[0][1]))
+        else:
+            print("not")
+
+        if len(system.registered_visitor_list) > 0:
+            self.textBrowser_7.setText(str(system.registered_visitor_list[0].first_name) + " " + str(system.registered_visitor_list[0].last_name)
+                                       + "\nEmail: " + str(system.registered_visitor_list[0].email) + "\nPhone-number: " + str(system.registered_visitor_list[0].phone_number)
+                                       + "\nScore: " + str(system.registered_visitor_list[0].score))
+        else:
+            print("not")
 
     def retranslateUi(self, userHomeMain):
         _translate = QtCore.QCoreApplication.translate

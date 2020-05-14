@@ -25,7 +25,7 @@ class system:
     group_list = []
     unevaluated_group = []
     closed_group_list = []
-    taboo_list = ["shit", "fuck", "ass", "dumbass", "crap", "apple"]
+    taboo_list = ["shit", "fuck", "ass", "dumbass", "crap", "bitch"]
     complaints = []
     compliments = []
     complaints_group = []
@@ -47,6 +47,8 @@ class system:
     # INPUT: OU/VIP username. OUTPUT: OU object ELSE None
     @staticmethod
     def find_user_by_username(username):
+        if username == system.FSU.username:
+            return system.FSU
         for user in system.OU_list:
             if user.username == username:
                 return user
@@ -89,7 +91,9 @@ class system:
         if user == None:
             print("error: METHOD: # 3 update_OU_score: no user found")
             return
+        print("score before: " + str(user.score))
         user.score += amount
+        print("score after: " + str(user.score))
         system.update_user_status(username)
 
     # 4 update user status
@@ -327,7 +331,7 @@ class system:
                 return True
             print("your FSU reference did not reference you")
             return False
-        if system.DSU != None and system.DSU.username == reference_username:
+        if system.DSU is not None and system.DSU.username == reference_username:
             if system.DSU.referenceInfo[0] == email:
                 new_registered_visitor = registered_visitor(first_name, last_name, email, phone_number, interests,
                                                             system.DSU.referenceInfo[1])
@@ -587,6 +591,7 @@ class system:
         new_group = Group(group_name)
         new_group.members.append(initial_username)
         system.find_user_by_username(initial_username).group = new_group.groupID
+        system.current_user_group_id = new_group.groupID
         new_group.member_stat.append((initial_username, 0, 0, 0))
         system.group_list.append(new_group)
 
@@ -822,35 +827,50 @@ class system:
         v_score = 0
         try:
             v_score = int(visitor_score)
-        except:
+        except Exception as e:
+            print(e)
             return False
-        print(4)
         print(v_score)
         all_users = system.OU_list + system.VIP_list + system.blacklist + system.kicked_list
         for this_user in all_users:
             if this_user.email == visitor_email:
                 return False
-        print(5)
-        if isinstance(system.current_user, VIP):
-            print(8)
+        print(system.current_user)
+        if isinstance(system.current_user, VIP) or system.current_user == system.FSU:
             if v_score < 0 or v_score > 20:
                 return False
-            print(9)
             if len(system.current_user.referenceInfo) == 0:
                 system.current_user.referenceInfo.append(visitor_email)
                 system.current_user.referenceInfo.append(v_score)
             else:
                 system.current_user.referenceInfo[0] = visitor_email
                 system.current_user.referenceInfo[1] = v_score
-            print(10)
             return True
-        elif isinstance(system.current_user, OU):
-            if v_score < 0 or v_score > 10:
-                return False
-            system.current_user.referenceInfo[0] = visitor_email
-            system.current_user.referenceInfo[1] = v_score
-            return True
-        return False
+        if v_score < 0 or v_score > 10:
+            return False
+        system.current_user.referenceInfo[0] = visitor_email
+        system.current_user.referenceInfo[1] = v_score
+        return True
+
+    # 35 convert message
+    @staticmethod
+    def covert_message(username, message):
+        user_m = system.find_user_by_username(username)
+        arr = message.split()
+        count = 0
+        converted = ""
+        for word in arr:
+            if word in system.taboo_list:
+                word = " ***"
+                if word in user_m.user_taboo_list:
+                    print(10)
+                    count -= 5
+                else:
+                    user_m.user_taboo_list.append(word)
+                    count -= 1
+            converted += word
+        system.update_user_score(username, count)
+        return converted
 
 
 # initial user: FSU
@@ -917,3 +937,32 @@ print(123)
 print(system.find_user_by_username("LisaHamilton1").group)
 print(system.find_user_by_username("HenryCruz1").group)
 print(123)
+
+system.complain_user("HenryCruz1", "He is bad")
+system.complain_user("LisaHamilton1", "She is always on her phone.")
+system.complain_user("HenryCruz1", "He is annoying")
+
+system.compliment("HenryCruz1", "He is good")
+system.compliment("LisaHamilton1", "She is always engaging")
+system.compliment("HenryCruz1", "He seems to know this stuff.")
+system.compliment("KimZhang1", "She can lead people")
+
+
+
+system.FSU.referenceInfo = ["my@gmail.com", 15]
+
+
+system.FSU.referenceInfo = ["pete@gmail.com", 10]
+
+entered_first_name = "Pete"
+entered_last_name = "Vu"
+entered_email = "pete@gmail.com"
+entered_phone_number = "718-234-6543"
+entered_interests = "chess, checkers"
+entered_reference_username = "FSU"
+
+system.register(entered_first_name, entered_last_name,
+                entered_email, entered_phone_number,
+                entered_interests, entered_reference_username)
+system.approve("pete@gmail.com")
+system.update_user_score("PeteVu1", 30)

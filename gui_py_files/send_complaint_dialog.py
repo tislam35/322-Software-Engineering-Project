@@ -19,9 +19,14 @@ class Ui_complaint(object):
         #collect username and message
         username_to_compliment=str(self.lineEdit.text())
         message=str(self.textEdit.toPlainText())
+        message_convert = " "
+        try:
+            message_convert = system.covert_message(system.current_user.username, message)
+        except Exception as e:
+            print(e)
 
         #if username is not valid, show a pop up window 
-        if(system.complain_user(username_to_compliment,message)==False):
+        if(system.complain_user(username_to_compliment,message_convert)==False):
             msg = QMessageBox()
             msg.setWindowTitle("Failed")
             msg.setText("The username is invalid.")

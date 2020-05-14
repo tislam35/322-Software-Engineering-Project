@@ -8,9 +8,40 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+
+from system import *
 
 
 class Ui_ReferenceDialog(object):
+
+    def referVisitor(self):
+
+        print(0000)
+        msg = QMessageBox()
+        print(1000)
+        refered_email = self.lineEdit.text()
+        initial_score = self.lineEdit_2.text()
+        bool = False
+        try:
+            bool = system.add_reference(refered_email, int(initial_score))
+        except Exception as e:
+            print(e)
+            msg.setWindowTitle("Referral Failed")
+            msg.setText("Score must be number.\nEmail can not exist in system.\nOU must be score between or at 0 and 10.\nVIP must give score between or at 0 and 20")
+            x = msg.exec_()
+            return
+        print(2000)
+        if bool == True:
+            msg.setWindowTitle("Referral Successful")
+            msg.setText("Referral Successful")
+            x = msg.exec_()
+        else:
+            msg.setWindowTitle("Referral Failed")
+            msg.setText(
+                "Score must be number.\nEmail can not exist in system.\nOU must be score between or at 0 and 10.\nVIP must give score between or at 0 and 20")
+            x = msg.exec_()
+
     def setupUi(self, ReferenceDialog):
         ReferenceDialog.setObjectName("ReferenceDialog")
         ReferenceDialog.resize(289, 240)
@@ -48,6 +79,8 @@ class Ui_ReferenceDialog(object):
 
         self.retranslateUi(ReferenceDialog)
         QtCore.QMetaObject.connectSlotsByName(ReferenceDialog)
+
+        self.refer_pushButton.clicked.connect(self.referVisitor)
 
     def retranslateUi(self, ReferenceDialog):
         _translate = QtCore.QCoreApplication.translate

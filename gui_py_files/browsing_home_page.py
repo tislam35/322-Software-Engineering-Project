@@ -90,6 +90,22 @@ class Ui_topRatedProfileMain(object):
         self.ui.setupUi(self.window, self.ub3)
         self.window.show()
 
+    def approveComplait(self):
+         if len(system.complaints) > 0:
+             try:
+                 print(system.complaints[0][0])
+                 print(123)
+                 system.update_user_score(str(system.complaints[0][0]), -5)
+                 print(123)
+                 del system.complaints[0]
+             except Exception as e:
+                 print(e)
+                 print("bad")
+         if len(system.complaints) > 0:
+             self.textBrowser_10.setText(str(system.complaints[0][0]) + "\n" + str(system.complaints[0][1]))
+         else:
+             print("not")
+
     def setupUi(self, topRatedProfileMain):
         self.oldWindow = topRatedProfileMain
         topRatedProfileMain.setObjectName("topRatedProfileMain")

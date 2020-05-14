@@ -1,6 +1,6 @@
 # import os, sys
 # sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath("TeamMe"))))
-from system import *
+# from system import *
 
 #for password generating
 import random
@@ -28,6 +28,7 @@ class OU(object):
         self.whiteBox = []
         self.blackBox = []
         self.invites = []
+        self.user_taboo_list = []
         #if the list below isnt empty we should display the initial
         #score dialog on user login for each user in the list
         self.initialScoresNeeded = []
@@ -36,7 +37,7 @@ class OU(object):
         #setting automessage will be done in the ui file
         self.autoMsg = ""
         self.first_login = True
-        self.referenceInfo = None
+        self.referenceInfo = []
         self.first_time_logging_in = False
 
 	# #gets called on compliment button click
