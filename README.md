@@ -38,6 +38,11 @@ Implementation
 2. Type `cd gui_py_files`. 
 3. Type `python browsing_home_page.py` to start TeamMe application.
 
+Note: we have created 3 different users for you to login and test the application. They are:
+1. SU --> Username: FSU, password: pass123
+2. VIP --> Username: PeteVu1, password: PeteVu
+3. OU --> Username: KimZhang1, password: KimZhang
+
 ## TeamMe Application Walkthrough
 
 ### Browsing the Application as Visitor
