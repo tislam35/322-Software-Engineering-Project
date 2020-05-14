@@ -24,7 +24,7 @@ Python
 
 ## Development Phase
 
-Implementation
+GUI Implementation
 
 ## Installation and Implementation
 
@@ -45,7 +45,22 @@ Note: we have created 3 different users for you to login and test the applicatio
 2. VIP --> Username: PeteVu1, password: PeteVu
 3. OU --> Username: KimZhang1, password: KimZhang
 
-## TeamMe Application Walkthrough
+Other OUs:
+
+Username: HenryCruz1
+Password HenryCruz
+
+Username: LisaHamilton1
+Password: LisaHamilton
+
+# Major Files
+
+1. system.py : contains all our functions for the bullet points
+2. user.py : class for OU, VIP, US
+3. register_visitor.py : class for visitors how are registered but not OU/VIP/SU
+4. group.py : group class
+
+## Some TeamMe GUIs
 
 ### Browsing the Application as Visitor
 
@@ -59,8 +74,12 @@ Note: we have created 3 different users for you to login and test the applicatio
 
 ![](images/Login.png)
 
+## TeamMe Application Walkthrough
+
+1. After you start the application. The TeamMe Home Browser will pop up.
+
 ## Version
 
-V0.01
+V0.51
 
 
