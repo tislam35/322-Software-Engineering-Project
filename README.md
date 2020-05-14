@@ -44,7 +44,7 @@ Implementation
 
 ### Login
 
-### [INSERT MORE ACTIONS]
+### Create a group
 
 ## Version
 
