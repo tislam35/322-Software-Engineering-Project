@@ -76,9 +76,35 @@ Password: LisaHamilton
 
 ## TeamMe Application Walkthrough
 
-1. After you start the application. The TeamMe Home Browser will pop up.
+1. After you start the application. The TeamMe Home Browser will pop up. You can see the top 3 profiles and users. Note, we only have 3 groups in our system, so it only shows the top 2 groups.
 
 ![](images/001.PNG)
+
+2. If we want to create a new user that is not in the system, we need a reference first. Let us login as FSU. Click "Login" on top right cornor. A login window will pop up. Enter username: FSU, password: pass123. Press "Login"
+
+![](images/002.PNG)
+
+3. You came to windown you were last before. If not in Home tab, go to home tab in top left cornor. This is your profile.
+
+![](images/003.PNG)
+
+4. There is Browser tab next to Home tab. Click it. It is same as the TeamMe Home Browser. 
+
+![](images/004.PNG)
+
+4. To view the each group page, click "Group 1", "Group 2", "Group 3" for the group page or "User 1", "User 2", "User 3" for user profile.
+
+![](images/005.PNG)
+![](images/006.PNG)
+
+5. The indox tab, has features related to groups activities but was not implemented on GUI.
+
+![](images/007.PNG)
+
+6. In the Group Management Tab, ther is more features related to group activities but only the  "Write Complaint" and "Write Compliement" were implement.
+
+![](images/008.PNG)
+
 
 ## Version
 
