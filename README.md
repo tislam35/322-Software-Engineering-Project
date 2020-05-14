@@ -50,9 +50,7 @@ Implementation
 
 ### Login
 
-![](images/Registration.png)
-
-### Create a group
+![](images/Login.png)
 
 ## Version
 
