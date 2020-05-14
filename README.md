@@ -94,7 +94,7 @@ Password: LisaHamilton
 
 ![](images/004.PNG)
 
-4. To view the each group page, click "Group 1", "Group 2", "Group 3" for the group page or "User 1", "User 2", "User 3" for user profile.
+4. To view the each group page, click "Group 1", "Group 2", "Group 3" for the group page or "User 1", "User 2", "User 3" for user profile. Note, that once a visitor is approved to be OU or a group is fromed, a new page of the user or group can be seen.
 
 ![](images/005.PNG)
 ![](images/006.PNG)
