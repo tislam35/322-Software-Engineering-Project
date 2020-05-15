@@ -1,6 +1,7 @@
 # TeamMe
 
 <strong>For applcation walkthrough, go to [TeamMe Application Walkthrough](#teammewalkthrough) section of this readme.</strong>
+Memo has been updated to be more clear.
 
 ## Overview
 
@@ -10,7 +11,7 @@ TeamMe is a model software system that faniliates active teaming of people with 
 
 [***Design Report***](https://github.com/tislam35/TeamMe/blob/master/Group%20S%20Design%20Report.pdf)
 
-[***Memo***](https://github.com/tislam35/TeamMe/blob/master/Memo.pdf)
+[***Memo***](https://github.com/tislam35/TeamMe/blob/master/Memo.pdf) (Latest)
 
 
 ## Software Engineers
